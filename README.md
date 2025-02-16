@@ -11,7 +11,7 @@ Thème : ...
 Développeurs :
 
 - iokko
-- shimi93
+- shimi92
 - Quentin Yahia
 
 🎮 Description du jeu
