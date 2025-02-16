@@ -7,3 +7,178 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+theme_override_constants/separation = 400
+alignment = 1
+
+[node name="VBoxContainerSound" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LabelGeneralSound" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerSound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="GridContainerSound" type="GridContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerSound"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="LabelSound" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "General volume"
+horizontal_alignment = 1
+
+[node name="HSliderSound1" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="LabelSound2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sound volume"
+horizontal_alignment = 1
+
+[node name="HSliderSound2" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="LabelSound3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music volume"
+horizontal_alignment = 1
+
+[node name="HSliderSound3" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainerBiding" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Button X"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Button X"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Button X"
+
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Button X"
+
+[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Button X"
+
+[node name="Button5" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Button X"
+
+[node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Reset by default"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 750
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 750
+theme_override_constants/margin_bottom = 25
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back to Menu"
