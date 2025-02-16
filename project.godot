@@ -19,7 +19,7 @@ Durée : 1 semaine
 Thème : ...
 Développeurs :
 - iokko
-- shimi93
+- shimi92
 - Quentin Yahia
 
 🎮 Description du jeu
@@ -41,8 +41,16 @@ Versioning : GitHub
 🏆 Remerciements
 Un grand merci aux organisateurs de la Brackeys Game Jam et à la communauté !"
 config/version="1.0"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1152
+window/size/window_height_override=648
 
 [input]
 
