@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="KeybindRessource" load_steps=8 format=3 uid="uid://8lfr5wdo1ffv"]
+[gd_resource type="Resource" script_class="KeybindRessource" load_steps=9 format=3 uid="uid://8lfr5wdo1ffv"]
 
 [ext_resource type="Script" path="res://assets/resources/settings/KeybindResources.gd" id="1_x845e"]
 
@@ -11,6 +11,11 @@ unicode = 101
 device = -1
 keycode = 65
 unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_pom01"]
+device = -1
+keycode = 32
+unicode = 32
 
 [sub_resource type="InputEventKey" id="InputEventKey_tm3gf"]
 device = -1
@@ -38,5 +43,6 @@ DEFAULT_MOVE_LEFT_KEY = SubResource("InputEventKey_xbknr")
 DEFAULT_MOVE_RIGHT_KEY = SubResource("InputEventKey_vfrcv")
 DEFAULT_MOVE_UP_KEY = SubResource("InputEventKey_5gksx")
 DEFAULT_MOVE_DOWN_KEY = SubResource("InputEventKey_tm3gf")
+DEFAULT_JUMP = SubResource("InputEventKey_pom01")
 DEFAULT_ATTACK = SubResource("InputEventKey_mt0hm")
 DEFAULT_ACTION = SubResource("InputEventKey_g4mak")

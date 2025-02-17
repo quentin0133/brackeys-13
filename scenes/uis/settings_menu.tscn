@@ -157,7 +157,7 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
 layout_mode = 2
-theme_override_constants/separation = 75
+theme_override_constants/separation = 100
 alignment = 1
 script = SubResource("GDScript_c2atv")
 
@@ -177,6 +177,10 @@ action_name = "Up"
 layout_mode = 2
 action_name = "Down"
 
+[node name="HotKeyRebindButton7" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
+layout_mode = 2
+action_name = "Jump"
+
 [node name="HotKeyRebindButton5" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
 layout_mode = 2
 action_name = "Attack"
@@ -188,6 +192,7 @@ action_name = "Action"
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/MarginContainer"]
@@ -198,7 +203,7 @@ text = "Reset by default"
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 750
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 750
 theme_override_constants/margin_bottom = 25
 
