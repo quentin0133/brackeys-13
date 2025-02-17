@@ -1,4 +1,49 @@
-[gd_scene format=3 uid="uid://cwjascb1eanlj"]
+[gd_scene load_steps=3 format=3 uid="uid://cwjascb1eanlj"]
+
+[ext_resource type="PackedScene" uid="uid://djr2t3rkhwdl0" path="res://scenes/uis/hot_key_rebind_button.tscn" id="1_bbcvh"]
+
+[sub_resource type="GDScript" id="GDScript_bxmxr"]
+script/source = "extends Control
+
+signal ShowMainMenu
+
+@onready var slider_master_volume = $VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMasterVolume
+@onready var slider_sound_volume = $VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderSoundVolume
+@onready var slider_music_volume = $VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMusicVolume
+
+
+func _on_main_menu_show_settings():
+	self.show()
+	_load_setting()
+
+
+func _on_button_pressed():
+	self.hide()
+	ShowMainMenu.emit()
+	
+
+func _load_setting():
+	slider_master_volume.value = SettingsManager.settings_dict[\"master_volume\"]
+	slider_sound_volume.value = SettingsManager.settings_dict[\"sound_volume\"]
+	slider_music_volume.value = SettingsManager.settings_dict[\"music_volume\"]
+
+
+func _on_h_slider_master_volume_value_changed(value):
+	SettingsManager.settings_dict[\"master_volume\"] = value
+
+
+func _on_h_slider_sound_volume_value_changed(value):
+	SettingsManager.settings_dict[\"sound_volume\"] = value
+
+
+func _on_h_slider_music_volume_value_changed(value):
+	SettingsManager.settings_dict[\"music_volume\"] = value
+
+
+func _on_button_rest_pressed():
+	SettingsManager.rest_keybinds_dictionary()
+	get_tree().reload_current_scene() # Méthode brute, a amélioré
+"
 
 [node name="Settings_menu" type="Control"]
 layout_mode = 3
@@ -7,6 +52,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_bxmxr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -51,7 +97,7 @@ theme_override_font_sizes/font_size = 30
 text = "General volume"
 horizontal_alignment = 1
 
-[node name="HSliderSound1" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+[node name="HSliderMasterVolume" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -62,7 +108,7 @@ theme_override_font_sizes/font_size = 30
 text = "Sound volume"
 horizontal_alignment = 1
 
-[node name="HSliderSound2" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+[node name="HSliderSoundVolume" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -73,14 +119,15 @@ theme_override_font_sizes/font_size = 30
 text = "Music volume"
 horizontal_alignment = 1
 
-[node name="HSliderSound3" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+[node name="HSliderMusicVolume" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="VBoxContainerBiding" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 75
 alignment = 1
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
@@ -89,77 +136,34 @@ theme_override_font_sizes/font_size = 50
 text = "Controls"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
 layout_mode = 2
-theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 25
-columns = 2
+theme_override_constants/separation = 75
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+[node name="HotKeyRebindButton" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Button X"
+size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="HotKeyRebindButton2" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "x"
+action_name = "move_right"
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+[node name="HotKeyRebindButton3" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Button X"
+action_name = "up"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="HotKeyRebindButton4" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "x"
+action_name = "down"
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
+[node name="HotKeyRebindButton5" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Button X"
+action_name = "attack"
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="HotKeyRebindButton6" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "x"
-
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Button X"
-
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "x"
-
-[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Button X"
-
-[node name="Button5" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "x"
-
-[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Button X"
-
-[node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/GridContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "x"
+action_name = "action"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
 layout_mode = 2
@@ -182,3 +186,9 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Back to Menu"
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMasterVolume" to="." method="_on_h_slider_master_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderSoundVolume" to="." method="_on_h_slider_sound_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMusicVolume" to="." method="_on_h_slider_music_volume_value_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainerBiding/MarginContainer/Button" to="." method="_on_button_rest_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

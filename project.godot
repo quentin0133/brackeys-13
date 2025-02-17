@@ -45,6 +45,10 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.png"
 
+[autoload]
+
+SettingsManager="*res://autoloads/SettingsManager.gd"
+
 [display]
 
 window/size/viewport_width=1920
