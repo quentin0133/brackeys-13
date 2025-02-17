@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4rsdibbo5oko"
-path="res://.godot/imported/journalists.png-848fdf05dfa6cfb892048d9c148ab689.ctex"
+uid="uid://ce3uuu110mpt0"
+path="res://.godot/imported/picture-son-grandma.png-a61aceec5001dca0a1404f93448b44b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/journalists.png"
-dest_files=["res://.godot/imported/journalists.png-848fdf05dfa6cfb892048d9c148ab689.ctex"]
+source_file="res://assets/sprites/grandma-minigame/picture-son-grandma.png"
+dest_files=["res://.godot/imported/picture-son-grandma.png-a61aceec5001dca0a1404f93448b44b3.ctex"]
 
 [params]
 

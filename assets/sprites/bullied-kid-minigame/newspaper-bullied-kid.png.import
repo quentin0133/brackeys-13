@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2xfor2asp7if"
-path="res://.godot/imported/chewing-gum.png-ca8b18bf415fa8244cc08e6a4a974ca6.ctex"
+uid="uid://cclcdtnfd2jrm"
+path="res://.godot/imported/newspaper-bullied-kid.png-d35bb524e685029d0c5c18ef7930cec5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/chewing-gum.png"
-dest_files=["res://.godot/imported/chewing-gum.png-ca8b18bf415fa8244cc08e6a4a974ca6.ctex"]
+source_file="res://assets/sprites/bullied-kid-minigame/newspaper-bullied-kid.png"
+dest_files=["res://.godot/imported/newspaper-bullied-kid.png-d35bb524e685029d0c5c18ef7930cec5.ctex"]
 
 [params]
 

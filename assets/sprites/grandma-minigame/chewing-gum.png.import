@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://denkojd0pl8mb"
-path="res://.godot/imported/newspaper-tackled-kid.png-0318fa7a4c3a370ae453a7cf0238b9bf.ctex"
+uid="uid://2xfor2asp7if"
+path="res://.godot/imported/chewing-gum.png-2b5163f429d570467c16c766c06f965e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/newspaper-tackled-kid.png"
-dest_files=["res://.godot/imported/newspaper-tackled-kid.png-0318fa7a4c3a370ae453a7cf0238b9bf.ctex"]
+source_file="res://assets/sprites/grandma-minigame/chewing-gum.png"
+dest_files=["res://.godot/imported/chewing-gum.png-2b5163f429d570467c16c766c06f965e.ctex"]
 
 [params]
 

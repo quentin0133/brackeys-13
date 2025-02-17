@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djjkl5x0ssv5e"
-path="res://.godot/imported/cigar-box.png-457a6ab99267dc35156e5b9ad8c961da.ctex"
+uid="uid://1wnktry2ikwv"
+path="res://.godot/imported/make-up-kit.png-ea08ab9cbaaf3fcf88f7b9ee581d6004.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/cigar-box.png"
-dest_files=["res://.godot/imported/cigar-box.png-457a6ab99267dc35156e5b9ad8c961da.ctex"]
+source_file="res://assets/sprites/grandma-minigame/make-up-kit.png"
+dest_files=["res://.godot/imported/make-up-kit.png-ea08ab9cbaaf3fcf88f7b9ee581d6004.ctex"]
 
 [params]
 
