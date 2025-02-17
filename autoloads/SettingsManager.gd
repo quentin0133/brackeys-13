@@ -56,6 +56,7 @@ func rest_keybinds_dictionary() -> void:
 		keybind_ressource.MOVE_RIGHT : keybind_ressource.DEFAULT_MOVE_RIGHT_KEY,	
 		keybind_ressource.MOVE_UP : keybind_ressource.DEFAULT_MOVE_UP_KEY,	
 		keybind_ressource.MOVE_DOWN : keybind_ressource.DEFAULT_MOVE_DOWN_KEY,	
+		keybind_ressource.JUMP : keybind_ressource.DEFAULT_JUMP,	
 		keybind_ressource.ATTACK : keybind_ressource.DEFAULT_ATTACK,	
 		keybind_ressource.ACTION : keybind_ressource.DEFAULT_ACTION,
 	}
