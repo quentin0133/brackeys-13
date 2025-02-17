@@ -1,9 +1,215 @@
-[gd_scene format=3 uid="uid://cwjascb1eanlj"]
+[gd_scene load_steps=4 format=3 uid="uid://cwjascb1eanlj"]
 
-[node name="Settings_menu" type="Control"]
+[ext_resource type="PackedScene" uid="uid://djr2t3rkhwdl0" path="res://scenes/uis/hot_key_rebind_button.tscn" id="1_bbcvh"]
+
+[sub_resource type="GDScript" id="GDScript_bxmxr"]
+script/source = "extends Control
+
+signal ShowMainMenu
+signal RestKeyRebind
+
+@onready var slider_master_volume = $VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMasterVolume as HSlider
+@onready var slider_sound_volume = $VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderSoundVolume as HSlider
+@onready var slider_music_volume = $VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMusicVolume as HSlider
+
+
+func _on_main_menu_show_settings():
+	self.show()
+	_load_setting()
+
+
+func _on_button_pressed():
+	self.hide()
+	ShowMainMenu.emit()
+	
+
+func _load_setting():
+	slider_master_volume.value = SettingsManager.settings_dict[\"master_volume\"]
+	slider_sound_volume.value = SettingsManager.settings_dict[\"sound_volume\"]
+	slider_music_volume.value = SettingsManager.settings_dict[\"music_volume\"]
+
+
+func _on_h_slider_master_volume_value_changed(value):
+	SettingsManager.settings_dict[\"master_volume\"] = value
+
+
+func _on_h_slider_sound_volume_value_changed(value):
+	SettingsManager.settings_dict[\"sound_volume\"] = value
+
+
+func _on_h_slider_music_volume_value_changed(value):
+	SettingsManager.settings_dict[\"music_volume\"] = value
+
+
+func _on_button_rest_pressed():
+	SettingsManager.rest_keybinds_dictionary()
+	RestKeyRebind.emit()
+"
+
+[sub_resource type="GDScript" id="GDScript_c2atv"]
+script/source = "extends VBoxContainer
+
+
+func _rest_display_of_keybind()-> void:
+	var count = get_child_count()
+	print(count)
+	print(get_children())
+	for i in count:
+		var child = get_child(0)
+		self.remove_child(child)
+		self.add_child(child)
+
+
+func _on_settings_menu_rest_key_rebind():
+	_rest_display_of_keybind()
+"
+
+[node name="SettingsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_bxmxr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+theme_override_constants/separation = 400
+alignment = 1
+
+[node name="VBoxContainerSound" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LabelGeneralSound" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerSound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="GridContainerSound" type="GridContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerSound"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="LabelSound" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "General volume"
+horizontal_alignment = 1
+
+[node name="HSliderMasterVolume" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="LabelSound2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sound volume"
+horizontal_alignment = 1
+
+[node name="HSliderSoundVolume" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="LabelSound3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music volume"
+horizontal_alignment = 1
+
+[node name="HSliderMusicVolume" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainerBiding" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 75
+alignment = 1
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
+layout_mode = 2
+theme_override_constants/separation = 75
+alignment = 1
+script = SubResource("GDScript_c2atv")
+
+[node name="HotKeyRebindButton" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HotKeyRebindButton2" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
+layout_mode = 2
+action_name = "Right"
+
+[node name="HotKeyRebindButton3" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
+layout_mode = 2
+action_name = "Up"
+
+[node name="HotKeyRebindButton4" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
+layout_mode = 2
+action_name = "Down"
+
+[node name="HotKeyRebindButton5" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
+layout_mode = 2
+action_name = "Attack"
+
+[node name="HotKeyRebindButton6" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
+layout_mode = 2
+action_name = "Action"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Reset by default"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 750
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 750
+theme_override_constants/margin_bottom = 25
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back to Menu"
+
+[connection signal="RestKeyRebind" from="." to="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" method="_on_settings_menu_rest_key_rebind"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMasterVolume" to="." method="_on_h_slider_master_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderSoundVolume" to="." method="_on_h_slider_sound_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMusicVolume" to="." method="_on_h_slider_music_volume_value_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainerBiding/MarginContainer/Button" to="." method="_on_button_rest_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

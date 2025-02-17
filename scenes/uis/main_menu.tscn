@@ -1,9 +1,105 @@
-[gd_scene format=3 uid="uid://td08ua34067u"]
+[gd_scene load_steps=2 format=3 uid="uid://td08ua34067u"]
 
-[node name="Main_menu" type="Control"]
+[sub_resource type="GDScript" id="GDScript_phvel"]
+script/source = "extends Control
+
+signal showSettings
+signal showGover
+
+@onready var slider_master_volume = $VSliderMasterVolume as VSlider
+
+
+func _ready():
+	slider_master_volume.value = SettingsManager.settings_dict[\"master_volume\"]
+	if OS.has_feature(\"web\") :
+		print(get_children())
+		$VBoxContainer/QuitButton.hide()
+
+
+func _on_settings_button_pressed():
+	self.hide()
+	showSettings.emit()
+	
+	
+func _on_quit_button_pressed():
+	get_tree().quit()
+
+
+func _on_someone_menu_show_main_menu():
+	slider_master_volume.value = SettingsManager.settings_dict[\"master_volume\"]
+	self.show()
+
+
+func _on_v_slider_master_volume_value_changed(value):
+	SettingsManager.settings_dict[\"master_volume\"] = value
+
+
+func _on_test_button_pressed():
+	self.hide()
+	showGover.emit()
+	
+"
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_phvel")
+
+[node name="VSliderMasterVolume" type="VSlider" parent="."]
+custom_minimum_size = Vector2(25, 200)
+layout_mode = 2
+offset_left = 1834.0
+offset_top = 743.0
+offset_right = 1859.0
+offset_bottom = 1003.0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1355.0
+offset_top = 111.0
+offset_right = 1785.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 75
+text = "Brackeys 13"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 125.0
+offset_top = 703.0
+offset_right = 325.0
+offset_bottom = 1008.0
+theme_override_constants/separation = 35
+
+[node name="TestButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Test"
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings
+"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[connection signal="value_changed" from="VSliderMasterVolume" to="." method="_on_v_slider_master_volume_value_changed"]
+[connection signal="pressed" from="VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
