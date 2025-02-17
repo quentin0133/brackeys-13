@@ -42,8 +42,7 @@ func _on_button_pressed():
 			i.set_process_unhandled_key_input(false)
 
 
-func _unhandled_key_input(event):	
-	print(event.as_text())
+func _unhandled_key_input(event):
 	for i in SettingsManager.settings_dict[\"keybinds\"] :
 		if (SettingsManager.settings_dict[\"keybinds\"][i].as_text() == event.as_text() ) and (event.as_text() != last_valid_input) :
 			label_Conflict.text = event.as_text() + \" already 

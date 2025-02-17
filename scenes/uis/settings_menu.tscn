@@ -52,8 +52,6 @@ script/source = "extends VBoxContainer
 
 func _rest_display_of_keybind()-> void:
 	var count = get_child_count()
-	print(count)
-	print(get_children())
 	for i in count:
 		var child = get_child(0)
 		self.remove_child(child)
