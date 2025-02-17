@@ -6,7 +6,7 @@ var master_volume : float = 0.0
 var sound_volume : float = 0.0
 var music_volume : float = 0.0
 
-var settings_dict :Dictionary
+var settings_dict : Dictionary
 
 
 func _ready():

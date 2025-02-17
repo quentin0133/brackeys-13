@@ -4,8 +4,9 @@
 script/source = "extends Control
 
 signal showSettings
+signal showGover
 
-@onready var slider_master_volume = $VSliderMasterVolume
+@onready var slider_master_volume = $VSliderMasterVolume as VSlider
 
 
 func _ready():
@@ -24,16 +25,22 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 
-func _on_settings_menu_show_main_menu():
+func _on_someone_menu_show_main_menu():
 	slider_master_volume.value = SettingsManager.settings_dict[\"master_volume\"]
 	self.show()
 
 
 func _on_v_slider_master_volume_value_changed(value):
 	SettingsManager.settings_dict[\"master_volume\"] = value
+
+
+func _on_test_button_pressed():
+	self.hide()
+	showGover.emit()
+	
 "
 
-[node name="Main_menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,5 +100,6 @@ theme_override_font_sizes/font_size = 30
 text = "Exit"
 
 [connection signal="value_changed" from="VSliderMasterVolume" to="." method="_on_v_slider_master_volume_value_changed"]
+[connection signal="pressed" from="VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

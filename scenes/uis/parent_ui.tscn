@@ -1,22 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdrlnhmjgaux1"]
+[gd_scene load_steps=4 format=3 uid="uid://bdrlnhmjgaux1"]
 
 [ext_resource type="PackedScene" uid="uid://td08ua34067u" path="res://scenes/uis/main_menu.tscn" id="1_v4qmk"]
 [ext_resource type="PackedScene" uid="uid://cwjascb1eanlj" path="res://scenes/uis/settings_menu.tscn" id="2_3nd0b"]
+[ext_resource type="PackedScene" uid="uid://cjk22hn7j7yqf" path="res://scenes/uis/gover_menu.tscn" id="3_twc6u"]
 
-[node name="Parent_Ui" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ParentUi" type="CanvasLayer"]
+layer = 2
 
-[node name="Main_menu" parent="." instance=ExtResource("1_v4qmk")]
-layout_mode = 1
+[node name="MainMenu" parent="." instance=ExtResource("1_v4qmk")]
 
-[node name="Settings_menu" parent="." instance=ExtResource("2_3nd0b")]
+[node name="SettingsMenu" parent="." instance=ExtResource("2_3nd0b")]
 visible = false
-layout_mode = 1
 
-[connection signal="showSettings" from="Main_menu" to="Settings_menu" method="_on_main_menu_show_settings"]
-[connection signal="ShowMainMenu" from="Settings_menu" to="Main_menu" method="_on_settings_menu_show_main_menu"]
+[node name="GoverMenu" parent="." instance=ExtResource("3_twc6u")]
+visible = false
+
+[connection signal="showGover" from="MainMenu" to="GoverMenu" method="_someone_call_you_game_over_show_youself"]
+[connection signal="showSettings" from="MainMenu" to="SettingsMenu" method="_on_main_menu_show_settings"]
+[connection signal="ShowMainMenu" from="SettingsMenu" to="MainMenu" method="_on_someone_menu_show_main_menu"]
+[connection signal="ShowMainMenu" from="GoverMenu" to="MainMenu" method="_on_someone_menu_show_main_menu"]

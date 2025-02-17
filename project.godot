@@ -48,6 +48,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SettingsManager="*res://autoloads/SettingsManager.gd"
+GameManager="*res://autoloads/GameManager.gd"
 
 [display]
 
