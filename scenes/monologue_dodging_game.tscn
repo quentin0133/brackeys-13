@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwpxyckqnqpvd"]
+
+[ext_resource type="Script" path="res://scenes/player_grid_snap.gd" id="1_8pqyr"]
+[ext_resource type="Texture2D" uid="uid://cxu54bn4afyb4" path="res://icon.png" id="1_x3g4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsvrl"]
+size = Vector2(698, 1088)
+
+[sub_resource type="GDScript" id="GDScript_iboj2"]
+script/source = "extends Label
+
+@export var text_lines = [\"Blabla bla bla bla bla bla bla\", \"You know when I was your age\", \"Oh you remind me of someone...\"]
+@export var spawn_positions = [Vector2(0, 0), Vector2(200, 0), Vector2(400, 0)]
+
+func spawn_monologue():
+	var monologue = Label.new()
+	monologue.text = text_lines[randi() % text_lines.size()]
+	monologue.position = spawn_positions[randi() % spawn_positions.size()]
+	add_child(monologue)
+
+	var tween = get_tree().create_tween()
+	tween.tween_property(monologue, \"position\", monologue.position + Vector2(0, 400), 2.0)
+	await tween.finished
+	monologue.queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82h4s"]
+size = Vector2(28.693, 3.84178)
+
+[node name="MonologueDodgingGame" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_8pqyr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_jsvrl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_x3g4e")
+
+[node name="Monologue" type="Label" parent="."]
+offset_left = -1154.0
+offset_top = -648.0
+offset_right = -1018.0
+offset_bottom = -625.0
+scale = Vector2(4.785, 4.785)
+text = "Bla bla bla bla bla"
+script = SubResource("GDScript_iboj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monologue"]
+position = Vector2(67.8201, 11.9162)
+scale = Vector2(4.785, 4.785)
+shape = SubResource("RectangleShape2D_82h4s")
