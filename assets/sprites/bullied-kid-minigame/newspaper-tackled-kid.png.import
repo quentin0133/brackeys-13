@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1wnktry2ikwv"
-path="res://.godot/imported/make-up-kit.png-78b229a773339c94cc88d57b017bf275.ctex"
+uid="uid://denkojd0pl8mb"
+path="res://.godot/imported/newspaper-tackled-kid.png-f77bf28b565473184bad4e45a8f785c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/make-up-kit.png"
-dest_files=["res://.godot/imported/make-up-kit.png-78b229a773339c94cc88d57b017bf275.ctex"]
+source_file="res://assets/sprites/bullied-kid-minigame/newspaper-tackled-kid.png"
+dest_files=["res://.godot/imported/newspaper-tackled-kid.png-f77bf28b565473184bad4e45a8f785c0.ctex"]
 
 [params]
 

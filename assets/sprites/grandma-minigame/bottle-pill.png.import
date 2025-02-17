@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cclcdtnfd2jrm"
-path="res://.godot/imported/newspaper-bullied-kid.png-320c43c030c2178eed511e0f7c3ddec1.ctex"
+uid="uid://ceroeeb1q7138"
+path="res://.godot/imported/bottle-pill.png-d7e26234995d41496d4952a9d537175b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/newspaper-bullied-kid.png"
-dest_files=["res://.godot/imported/newspaper-bullied-kid.png-320c43c030c2178eed511e0f7c3ddec1.ctex"]
+source_file="res://assets/sprites/grandma-minigame/bottle-pill.png"
+dest_files=["res://.godot/imported/bottle-pill.png-d7e26234995d41496d4952a9d537175b.ctex"]
 
 [params]
 

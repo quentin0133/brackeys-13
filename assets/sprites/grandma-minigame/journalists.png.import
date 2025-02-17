@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlpkvgcejticq"
-path="res://.godot/imported/perfum-grandma.png-58fbac9a99312adf349d216b14d3917c.ctex"
+uid="uid://c4rsdibbo5oko"
+path="res://.godot/imported/journalists.png-4e19e45b9f94e8499338ef54e35419bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/perfum-grandma.png"
-dest_files=["res://.godot/imported/perfum-grandma.png-58fbac9a99312adf349d216b14d3917c.ctex"]
+source_file="res://assets/sprites/grandma-minigame/journalists.png"
+dest_files=["res://.godot/imported/journalists.png-4e19e45b9f94e8499338ef54e35419bb.ctex"]
 
 [params]
 

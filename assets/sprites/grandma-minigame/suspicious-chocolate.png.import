@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://73a52c7ojca"
-path="res://.godot/imported/candy-ora-ora.png-e9aeaf84549f8b9d1a03caf9d6302709.ctex"
+uid="uid://bou0myoaxg30y"
+path="res://.godot/imported/suspicious-chocolate.png-ae39a312e3a4a4ca45e7514b24ecf6c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/candy-ora-ora.png"
-dest_files=["res://.godot/imported/candy-ora-ora.png-e9aeaf84549f8b9d1a03caf9d6302709.ctex"]
+source_file="res://assets/sprites/grandma-minigame/suspicious-chocolate.png"
+dest_files=["res://.godot/imported/suspicious-chocolate.png-ae39a312e3a4a4ca45e7514b24ecf6c4.ctex"]
 
 [params]
 
