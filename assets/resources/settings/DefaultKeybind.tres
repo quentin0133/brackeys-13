@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="KeybingRessource" load_steps=8 format=3 uid="uid://8lfr5wdo1ffv"]
+[gd_resource type="Resource" script_class="KeybindRessource" load_steps=8 format=3 uid="uid://8lfr5wdo1ffv"]
 
-[ext_resource type="Script" path="res://assets/resources/settings/KeybingResources.gd" id="1_vvnl2"]
+[ext_resource type="Script" path="res://assets/resources/settings/KeybindResources.gd" id="1_x845e"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_g4mak"]
 device = -1
@@ -33,7 +33,7 @@ keycode = 90
 unicode = 122
 
 [resource]
-script = ExtResource("1_vvnl2")
+script = ExtResource("1_x845e")
 DEFAULT_MOVE_LEFT_KEY = SubResource("InputEventKey_xbknr")
 DEFAULT_MOVE_RIGHT_KEY = SubResource("InputEventKey_vfrcv")
 DEFAULT_MOVE_UP_KEY = SubResource("InputEventKey_5gksx")

@@ -6,7 +6,7 @@ extends Control
 
 @onready var label = $HBoxContainer/Label as Label
 @onready var button = $HBoxContainer/Button as Button
-@export var action_name : String = \"move_left\"
+@export var action_name : String = \"Left\"
 
 
 func _ready():
@@ -44,8 +44,13 @@ func _unhandled_key_input(event):
 	SettingsManager.settings_dict[\"keybinds\"][action_name] = event
 	InputMap.action_erase_events(action_name)
 	InputMap.action_add_event(action_name, event)
+	set_process_unhandled_key_input(false)
 	set_label()
 	set_button()
+
+
+func _on_child_exiting_tree(_node):
+	_ready()
 "
 
 [node name="HotKeyRebindButton" type="Control" groups=["hotkey_button"]]
@@ -83,4 +88,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "x"
 
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
