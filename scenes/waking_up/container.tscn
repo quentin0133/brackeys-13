@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlmvnojj17gqt"]
+
+[ext_resource type="Script" path="res://container.gd" id="1_xdo8p"]
+[ext_resource type="Script" path="res://pointer.gd" id="2_bs4rh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yab0"]
+size = Vector2(100, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n1vk4"]
+radius = 0.01
+height = 20.0
+
+[node name="Container" type="Area2D"]
+script = ExtResource("1_xdo8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(50, 0)
+shape = SubResource("RectangleShape2D_4yab0")
+
+[node name="Pointer" type="Area2D" parent="."]
+position = Vector2(50, 0)
+script = ExtResource("2_bs4rh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pointer"]
+shape = SubResource("CapsuleShape2D_n1vk4")
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
