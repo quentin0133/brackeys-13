@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://duikhyllq88dn"]
+
+[ext_resource type="Texture2D" uid="uid://cy6x1ynjonbnu" path="res://assets/sprites/grandma-minigame/liquor.png" id="1_3sno8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enyey"]
+resource_local_to_scene = true
+size = Vector2(154, 306)
+
+[node name="Liquor" type="Area2D"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_enyey")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3sno8")
