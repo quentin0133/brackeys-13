@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0aqsylvsxw7s"]
+
+[ext_resource type="AudioStream" uid="uid://tdc3anp0d63y" path="res://assets/audios/Purple.mp3" id="1_u38yu"]
+[ext_resource type="AudioStream" uid="uid://hygyrowya146" path="res://assets/audios/Purple2.mp3" id="2_k010g"]
+
+[sub_resource type="GDScript" id="GDScript_43omd"]
+script/source = "extends Node
+
+@onready var defeat_sound: AudioStreamPlayer = $Defeat
+"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j75rw"]
+random_pitch = 1.4
+streams_count = 2
+stream_0/stream = ExtResource("1_u38yu")
+stream_1/stream = ExtResource("2_k010g")
+
+[node name="AudioManager" type="Node"]
+script = SubResource("GDScript_43omd")
+
+[node name="Defeat" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_j75rw")
+volume_db = -9.0
+pitch_scale = 0.95
