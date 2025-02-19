@@ -1,9 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwpxyckqnqpvd"]
+[gd_scene load_steps=24 format=3 uid="uid://bwpxyckqnqpvd"]
 
 [ext_resource type="Script" path="res://scenes/player_grid_snap.gd" id="1_8pqyr"]
 [ext_resource type="Texture2D" uid="uid://b4dkyjt1u13b7" path="res://assets/sprites/mini-main-character.png" id="2_husfa"]
 [ext_resource type="Texture2D" uid="uid://unhunsxufee4" path="res://assets/sprites/shadow.png" id="3_rg32g"]
-[ext_resource type="Texture2D" uid="uid://rpflxk4ojni1" path="res://assets/tictactoe grid.png" id="4_rp5hp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ci6ut"]
 atlas = ExtResource("2_husfa")
@@ -177,7 +176,6 @@ size = Vector2(28.693, 3.84178)
 [node name="MonologueDodgingGame" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-scale = Vector2(2, 2)
 script = ExtResource("1_8pqyr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -209,10 +207,4 @@ scale = Vector2(4.785, 4.785)
 shape = SubResource("RectangleShape2D_82h4s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(100, 90)
-zoom = Vector2(2.765, 2.765)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(130, 134)
-scale = Vector2(6, 6)
-texture = ExtResource("4_rp5hp")
+zoom = Vector2(3, 3)
