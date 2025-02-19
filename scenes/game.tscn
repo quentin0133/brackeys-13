@@ -11,20 +11,32 @@ const scene_siu = preload(\"res://scenes/minigames/SIUUUUUU/siuuu-minigame.tscn\
 
 signal show_main_menu
 
+var scene
+
 func _ready():
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if self.get_child_count() == 2 and GameManager.call_main_menu == true:
-		GameManager.call_main_menu = false
-		show_main_menu.emit()
+	if self.get_child_count() == 2:
+		load_next_scene(GameManager.next_scene_to_call)
 
 
 func _on_parent_ui_button_test():
-	var scene = scene_grand_mother.instantiate()
-	add_child(scene)
+	load_next_scene(\"scene_grand_mother\")
+
+
+func load_next_scene(name:String):
+	match name:
+		\"main_menu\":
+			show_main_menu.emit()
+		\"scene_grand_mother\":
+			scene = scene_grand_mother.instantiate()
+			add_child(scene)
+		\"scene_siu\":
+			scene = scene_siu.instantiate()
+			add_child(scene)
 "
 
 [node name="Game" type="Node"]

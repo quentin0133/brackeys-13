@@ -35,7 +35,7 @@ func _ready():
 func _on_liquor_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and !liquor.has_overlapping_areas():
 		print(\"End of the game grand mother\")
-		GameManager.call_main_menu = true
+		GameManager.next_scene_to_call = \"main_menu\"
 		queue_free()
 "
 

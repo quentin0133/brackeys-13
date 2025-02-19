@@ -1,7 +1,7 @@
 extends Node
 
 var score : int = 0
-var call_main_menu : bool = false
+var next_scene_to_call : String = "main_menu"
 
 #GrandMa game
 var select_obstacle :int = 0
