@@ -28,10 +28,10 @@ var delay : int = 5
 
 func _ready():
 	area_2D.obstacle_number = obstacle_number
-	var selectioned_sprite : int = randi_range(0,8)
-	self.texture = sprites[selectioned_sprite] 
-	collision_shape.shape.size = size_shape[selectioned_sprite]
-	collision_shape.transform.origin = position_shape[selectioned_sprite]
+	#var selectioned_sprite : int = randi_range(0,8)
+	self.texture = sprites[obstacle_number] 
+	collision_shape.shape.size = size_shape[obstacle_number]
+	collision_shape.transform.origin = position_shape[obstacle_number]
 	
 
 func _physics_process(delta):
