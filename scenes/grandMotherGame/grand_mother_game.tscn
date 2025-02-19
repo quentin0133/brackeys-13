@@ -10,7 +10,6 @@ script/source = "extends Node
 @onready var liquor : Area2D = $Liquor as Area2D
 
 var obstacleScene = preload(\"res://scenes/grandMotherGame/obstacle.tscn\")
-var something_on_you : bool = false
 var itemMax = 8
 
 
@@ -34,17 +33,9 @@ func _ready():
 		
 
 func _on_liquor_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.pressed and !something_on_you:
+	if event is InputEventMouseButton and event.pressed and !liquor.has_overlapping_areas():
 		print(\"End of the game\")
 		get_tree().quit()
-
-
-func _on_liquor_area_entered(_area):
-	something_on_you = true
-
-
-func _on_liquor_area_exited(_area):
-	something_on_you = false
 "
 
 [node name="GrandMotherGame" type="Node"]
@@ -64,6 +55,4 @@ polygon = PackedVector2Array(81, 105, 1849, 105, 1849, 968, 81, 968, 81, 105)
 
 [node name="Liquor" parent="." instance=ExtResource("2_7mt2y")]
 
-[connection signal="area_entered" from="Liquor" to="." method="_on_liquor_area_entered"]
-[connection signal="area_exited" from="Liquor" to="." method="_on_liquor_area_exited"]
 [connection signal="input_event" from="Liquor" to="." method="_on_liquor_input_event"]
