@@ -1,11 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://ftbjk6jiaank"]
+[gd_scene load_steps=4 format=3 uid="uid://ftbjk6jiaank"]
 
-[ext_resource type="PackedScene" uid="uid://bdrlnhmjgaux1" path="res://scenes/uis/parent_ui.tscn" id="1_tcuif"]
+[ext_resource type="PackedScene" uid="uid://bf14n8kges4qh" path="res://scenes/uis/parent_ui.tscn" id="1_tcuif"]
 [ext_resource type="PackedScene" uid="uid://de4wjigdx16ub" path="res://scenes/uis/hud/parent_hud.tscn" id="2_wkomf"]
 
+[sub_resource type="GDScript" id="GDScript_av3qy"]
+script/source = "extends Node
+
+const scene_grand_mother = preload(\"res://scenes/grandMotherGame/grand_mother_game.tscn\")
+const scene_siu = preload(\"res://scenes/minigames/SIUUUUUU/siuuu-minigame.tscn\")
+
+signal show_main_menu
+
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if self.get_child_count() == 2 and GameManager.call_main_menu == true:
+		GameManager.call_main_menu = false
+		show_main_menu.emit()
+
+
+func _on_parent_ui_button_test():
+	var scene = scene_grand_mother.instantiate()
+	add_child(scene)
+"
+
 [node name="Game" type="Node"]
+script = SubResource("GDScript_av3qy")
 
 [node name="ParentUi" parent="." instance=ExtResource("1_tcuif")]
 
 [node name="ParentHud" parent="." instance=ExtResource("2_wkomf")]
 visible = false
+
+[connection signal="show_main_menu" from="." to="ParentUi" method="_on_game_show_main_menu"]
+[connection signal="button_test" from="ParentUi" to="." method="_on_parent_ui_button_test"]

@@ -5,6 +5,8 @@ script/source = "extends Control
 
 signal showSettings
 signal showGover
+signal start_button
+signal test_button
 
 @onready var slider_master_volume = $VSliderMasterVolume as VSlider
 
@@ -36,8 +38,12 @@ func _on_v_slider_master_volume_value_changed(value):
 
 func _on_test_button_pressed():
 	self.hide()
-	showGover.emit()
-	
+	test_button.emit()
+
+
+func _on_start_button_button_up():
+	self.hide()
+	start_button.emit()
 "
 
 [node name="MainMenu" type="Control"]
@@ -101,5 +107,6 @@ text = "Exit"
 
 [connection signal="value_changed" from="VSliderMasterVolume" to="." method="_on_v_slider_master_volume_value_changed"]
 [connection signal="pressed" from="VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]
+[connection signal="button_up" from="VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
