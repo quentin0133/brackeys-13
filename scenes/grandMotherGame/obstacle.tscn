@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://q2yauv88unhd"]
+
+[ext_resource type="Texture2D" uid="uid://ceroeeb1q7138" path="res://assets/sprites/grandma-minigame/bottle-pill.png" id="1_uchry"]
+[ext_resource type="Texture2D" uid="uid://73a52c7ojca" path="res://assets/sprites/grandma-minigame/candy-ora-ora.png" id="2_j1beu"]
+[ext_resource type="Texture2D" uid="uid://2xfor2asp7if" path="res://assets/sprites/grandma-minigame/chewing-gum.png" id="3_yjomc"]
+[ext_resource type="Texture2D" uid="uid://djjkl5x0ssv5e" path="res://assets/sprites/grandma-minigame/cigar-box.png" id="4_fhwgg"]
+[ext_resource type="Texture2D" uid="uid://1wnktry2ikwv" path="res://assets/sprites/grandma-minigame/make-up-kit.png" id="5_x866r"]
+[ext_resource type="Texture2D" uid="uid://m3l3vv63eqrb" path="res://assets/sprites/grandma-minigame/pepper-spray.png" id="6_vwy5w"]
+[ext_resource type="Texture2D" uid="uid://dlpkvgcejticq" path="res://assets/sprites/grandma-minigame/perfum-grandma.png" id="7_4r4xt"]
+[ext_resource type="Texture2D" uid="uid://ce3uuu110mpt0" path="res://assets/sprites/grandma-minigame/picture-son-grandma.png" id="8_p4n07"]
+[ext_resource type="Texture2D" uid="uid://bou0myoaxg30y" path="res://assets/sprites/grandma-minigame/suspicious-chocolate.png" id="9_8qu5i"]
+
+[sub_resource type="GDScript" id="GDScript_0u3un"]
+resource_local_to_scene = true
+script/source = "extends Sprite2D
+
+@export var sprites: Array[Texture2D]
+@onready var collision_shape : CollisionShape2D = $Area2D/CollisionShape2D as CollisionShape2D
+@onready var area_2D : Area2D = $Area2D as Area2D
+
+var size_shape : Array[Vector2] = [Vector2(169,344),Vector2(441,179),Vector2(421.125,209.375),Vector2(439.563,209.375),Vector2(339.391,234.844),Vector2(302.084,538.422),Vector2(248,393.276),Vector2(200,234.638),Vector2(286,449.319)]
+var position_shape : Array[Vector2] = [Vector2(-8.5,5),Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(-14.958,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)]
+
+var obstacle_number : int = 0
+var is_dragging : bool = false
+var dont_move : bool = false
+var delay : int = 5
+
+func _ready():
+	area_2D.obstacle_number = obstacle_number
+	#var selectioned_sprite : int = randi_range(0,8)
+	self.texture = sprites[obstacle_number] 
+	collision_shape.shape.size = size_shape[obstacle_number]
+	collision_shape.transform.origin = position_shape[obstacle_number]
+	
+
+func _physics_process(delta):
+	if is_dragging == true and dont_move == false:
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, \"position\", get_global_mouse_position(), delay * delta)
+
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and dont_move == false:
+		if event.pressed and (GameManager.select_obstacle == obstacle_number):
+			if get_rect().has_point(to_local(event.position)):
+				is_dragging = true
+		else:
+			is_dragging = false
+
+
+func _on_area_2d_area_entered(area : Area2D):
+	if area_2D.has_overlapping_areas() and (area.obstacle_number > obstacle_number)  and (GameManager.select_obstacle != obstacle_number):
+		dont_move = true
+	
+
+func _on_area_2d_area_exited(_area):
+	dont_move = false
+	
+
+func _on_area_2d_mouse_entered():
+	GameManager.select_obstacle = obstacle_number
+"
+
+[sub_resource type="GDScript" id="GDScript_vgvm5"]
+script/source = "extends Area2D
+
+@export var obstacle_number : int = 0
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34i43"]
+resource_local_to_scene = true
+size = Vector2(286, 449.319)
+
+[node name="Obstacle" type="Sprite2D"]
+script = SubResource("GDScript_0u3un")
+sprites = Array[Texture2D]([ExtResource("1_uchry"), ExtResource("2_j1beu"), ExtResource("3_yjomc"), ExtResource("4_fhwgg"), ExtResource("5_x866r"), ExtResource("6_vwy5w"), ExtResource("7_4r4xt"), ExtResource("8_p4n07"), ExtResource("9_8qu5i")])
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = SubResource("GDScript_vgvm5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_34i43")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

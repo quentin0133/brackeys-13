@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://y11w7wqmtqp2"]
+
+[ext_resource type="Texture2D" uid="uid://laueeud35f7h" path="res://assets/backgrounds/bag-grandma.png" id="1_70nfm"]
+[ext_resource type="PackedScene" uid="uid://duikhyllq88dn" path="res://scenes/grandMotherGame/liquor.tscn" id="2_7mt2y"]
+
+[sub_resource type="GDScript" id="GDScript_2ju0h"]
+script/source = "extends Node
+
+@onready var spwan_area : Polygon2D = $SpawnArea as Polygon2D
+@onready var liquor : Area2D = $Liquor as Area2D
+
+var obstacleScene = preload(\"res://scenes/grandMotherGame/obstacle.tscn\")
+var something_on_you : bool = false
+var itemMax = 8
+
+
+func _ready():	
+	var positionX_liquor : float = randi_range(spwan_area.polygon[0][0]+50.0,spwan_area.polygon[1][0]-50.0)
+	var positionY_liquor : float = randi_range(spwan_area.polygon[0][1]+100.0,spwan_area.polygon[3][1]-200.0)
+	
+	liquor.position = Vector2(positionX_liquor, positionY_liquor)
+	liquor.rotation = randi_range(-360,360)
+	
+	for i in range(itemMax):
+		var positionX : float = randi_range(spwan_area.polygon[0][0]+50.0,spwan_area.polygon[1][0]-50.0)
+		var positionY : float = randi_range(spwan_area.polygon[0][1]+100.0,spwan_area.polygon[3][1]-200.0)
+		var scale : int = randi_range(1,2)
+		var obstacle : Sprite2D = obstacleScene.instantiate()
+		obstacle.obstacle_number = i
+		obstacle.position = Vector2(positionX,positionY)
+		obstacle.rotation = randi_range(-360,360)
+		obstacle.scale = Vector2(scale,scale)
+		add_child(obstacle)
+		
+
+func _on_liquor_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton and event.pressed and !something_on_you:
+		print(\"End of the game\")
+		get_tree().quit()
+
+
+func _on_liquor_area_entered(_area):
+	something_on_you = true
+
+
+func _on_liquor_area_exited(_area):
+	something_on_you = false
+"
+
+[node name="GrandMotherGame" type="Node"]
+script = SubResource("GDScript_2ju0h")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_70nfm")
+
+[node name="SpawnArea" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(81, 105, 1849, 105, 1849, 968, 81, 968, 81, 105)
+
+[node name="Liquor" parent="." instance=ExtResource("2_7mt2y")]
+
+[connection signal="area_entered" from="Liquor" to="." method="_on_liquor_area_entered"]
+[connection signal="area_exited" from="Liquor" to="." method="_on_liquor_area_exited"]
+[connection signal="input_event" from="Liquor" to="." method="_on_liquor_input_event"]

@@ -49,6 +49,7 @@ config/icon="res://icon.png"
 
 SettingsManager="*res://autoloads/SettingsManager.gd"
 GameManager="*res://autoloads/GameManager.gd"
+AudioManager="*res://scenes/audio_manager.tscn"
 
 [display]
 
