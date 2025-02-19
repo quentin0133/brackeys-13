@@ -18,8 +18,8 @@ script/source = "extends Sprite2D
 @onready var collision_shape : CollisionShape2D = $Area2D/CollisionShape2D as CollisionShape2D
 @onready var area_2D : Area2D = $Area2D as Area2D
 
-var size_shape : Array[Vector2] = [Vector2(169,344),Vector2(441,179),Vector2(421.125,209.375),Vector2(439.563,209.375),Vector2(339.391,234.844),Vector2(302.084,538.422),Vector2(248,393.276),Vector2(200,234.638),Vector2(286,449.319)]
-var position_shape : Array[Vector2] = [Vector2(-8.5,5),Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(-14.958,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)]
+var size_shape : Array[Vector2] = [Vector2(169,344),Vector2(441,179),Vector2(421.125,209.375),Vector2(439.563,209.375),Vector2(339.391,234.844),Vector2(202.021,538.422),Vector2(248,393.276),Vector2(200,234.638),Vector2(286,449.319)]
+var position_shape : Array[Vector2] = [Vector2(-8.5,5),Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(30.011,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)]
 
 var obstacle_number : int = 0
 var is_dragging : bool = false
@@ -70,7 +70,6 @@ script/source = "extends Area2D
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34i43"]
 resource_local_to_scene = true
-size = Vector2(286, 449.319)
 
 [node name="Obstacle" type="Sprite2D"]
 script = SubResource("GDScript_0u3un")
