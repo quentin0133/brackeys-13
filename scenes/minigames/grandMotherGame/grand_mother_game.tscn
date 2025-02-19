@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://y11w7wqmtqp2"]
 
 [ext_resource type="Texture2D" uid="uid://laueeud35f7h" path="res://assets/backgrounds/bag-grandma.png" id="1_70nfm"]
-[ext_resource type="PackedScene" uid="uid://duikhyllq88dn" path="res://scenes/grandMotherGame/liquor.tscn" id="2_7mt2y"]
+[ext_resource type="PackedScene" uid="uid://duikhyllq88dn" path="res://scenes/minigames/grandMotherGame/liquor.tscn" id="2_7mt2y"]
 
 [sub_resource type="GDScript" id="GDScript_2ju0h"]
 script/source = "extends Node
@@ -9,7 +9,7 @@ script/source = "extends Node
 @onready var spwan_area : Polygon2D = $SpawnArea as Polygon2D
 @onready var liquor : Area2D = $Liquor as Area2D
 
-var obstacleScene = preload(\"res://scenes/grandMotherGame/obstacle.tscn\")
+var obstacleScene = preload(\"res://scenes/minigames/grandMotherGame/obstacle.tscn\")
 var itemMax = 8
 
 

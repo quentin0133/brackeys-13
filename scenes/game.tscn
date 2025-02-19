@@ -6,7 +6,7 @@
 [sub_resource type="GDScript" id="GDScript_av3qy"]
 script/source = "extends Node
 
-const scene_grand_mother = preload(\"res://scenes/grandMotherGame/grand_mother_game.tscn\")
+const scene_grand_mother = preload(\"res://scenes/minigames/grandMotherGame/grand_mother_game.tscn\")
 const scene_crowd_kid = preload(\"res://scenes/minigames/crowd-and-kid/crowd-and-kid-minigame.tscn\")
 
 signal show_main_menu
