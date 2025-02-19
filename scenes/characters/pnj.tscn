@@ -1,0 +1,73 @@
+[gd_scene load_steps=39 format=3 uid="uid://cfhtckdayxdle"]
+
+[ext_resource type="Script" path="res://scripts/PNJ.gd" id="1_0nixa"]
+[ext_resource type="Texture2D" uid="uid://dwaq53cslpao7" path="res://assets/sprites/PNJs/heads/pnj-head-1.png" id="2_pff1s"]
+[ext_resource type="Texture2D" uid="uid://ch6kgdphq1t81" path="res://assets/sprites/PNJs/bodies/pnj-body-1.png" id="3_ixpd2"]
+[ext_resource type="Texture2D" uid="uid://bp5r8jbdrs4wm" path="res://assets/sprites/PNJs/heads/pnj-head-2.png" id="3_pmmkh"]
+[ext_resource type="Texture2D" uid="uid://clr8845hk7mk3" path="res://assets/sprites/PNJs/heads/pnj-head-3.png" id="4_iccgo"]
+[ext_resource type="Texture2D" uid="uid://dxxq5k3qo61ll" path="res://assets/sprites/PNJs/heads/pnj-head-4.png" id="5_rxjdu"]
+[ext_resource type="Texture2D" uid="uid://b0al3l7tyhuut" path="res://assets/sprites/PNJs/heads/pnj-head-5.png" id="6_jyaon"]
+[ext_resource type="Texture2D" uid="uid://38cevna4rpud" path="res://assets/sprites/PNJs/heads/pnj-head-6.png" id="7_25xnw"]
+[ext_resource type="Texture2D" uid="uid://bv6c5b8gvd20j" path="res://assets/sprites/PNJs/bodies/pnj-body-2.png" id="7_gh2r3"]
+[ext_resource type="Texture2D" uid="uid://cqlrdp6l1tigj" path="res://assets/sprites/PNJs/bodies/pnj-body-3.png" id="8_mdxvx"]
+[ext_resource type="Texture2D" uid="uid://pfivc6cakxk3" path="res://assets/sprites/PNJs/heads/pnj-head-7.png" id="8_ygr3v"]
+[ext_resource type="Texture2D" uid="uid://oixsqsvdty5w" path="res://assets/sprites/PNJs/heads/pnj-head-8.png" id="9_0m0ir"]
+[ext_resource type="Texture2D" uid="uid://c8dgult4kenq5" path="res://assets/sprites/PNJs/bodies/pnj-body-4.png" id="9_25jbq"]
+[ext_resource type="Texture2D" uid="uid://bv3ns2k87gttq" path="res://assets/sprites/PNJs/heads/pnj-head-9.png" id="10_f55cg"]
+[ext_resource type="Texture2D" uid="uid://6msx716b0dpw" path="res://assets/sprites/PNJs/heads/pnj-head-10.png" id="11_yxpvv"]
+[ext_resource type="Texture2D" uid="uid://cpkgnt17gx4r4" path="res://assets/sprites/PNJs/heads/pnj-head-11.png" id="12_ywcgu"]
+[ext_resource type="Texture2D" uid="uid://2fk8vmkth5n7" path="res://assets/sprites/PNJs/heads/pnj-head-12.png" id="13_m0b7h"]
+[ext_resource type="Texture2D" uid="uid://bxnje2lakcsuq" path="res://assets/sprites/PNJs/heads/pnj-head-13.png" id="14_mo6d7"]
+[ext_resource type="Texture2D" uid="uid://cj2df2h7hhwhg" path="res://assets/sprites/PNJs/heads/pnj-head-14.png" id="15_l8jao"]
+[ext_resource type="Texture2D" uid="uid://broig2hei3i57" path="res://assets/sprites/PNJs/heads/pnj-head-15.png" id="16_2xtv3"]
+[ext_resource type="Texture2D" uid="uid://nhac2mu30x3m" path="res://assets/sprites/PNJs/bodies/pnj-body-5.png" id="16_mt2g3"]
+[ext_resource type="Texture2D" uid="uid://bsasn06wn24gm" path="res://assets/sprites/PNJs/heads/pnj-head-16.png" id="17_p1bh7"]
+[ext_resource type="Texture2D" uid="uid://c840v4dsmmeks" path="res://assets/sprites/PNJs/bodies/pnj-body-6.png" id="17_ysafw"]
+[ext_resource type="Texture2D" uid="uid://cu7rd4t17id54" path="res://assets/sprites/PNJs/heads/pnj-head-17.png" id="18_q748b"]
+[ext_resource type="Texture2D" uid="uid://wqy6e5pgca30" path="res://assets/sprites/PNJs/bodies/pnj-body-7.png" id="18_vs2if"]
+[ext_resource type="Texture2D" uid="uid://xhqq3ltv5lbq" path="res://assets/sprites/PNJs/bodies/pnj-body-8.png" id="19_0ef3o"]
+[ext_resource type="Texture2D" uid="uid://8dm0dqwbipy5" path="res://assets/sprites/PNJs/heads/pnj-head-18.png" id="19_xlu8s"]
+[ext_resource type="Texture2D" uid="uid://bxo162r0g5pfy" path="res://assets/sprites/PNJs/heads/pnj-head-19.png" id="20_4eq55"]
+[ext_resource type="Texture2D" uid="uid://d4cimf4uqv4lm" path="res://assets/sprites/PNJs/bodies/pnj-body-9.png" id="20_ulro3"]
+[ext_resource type="Texture2D" uid="uid://t4ta2g8awu7m" path="res://assets/sprites/PNJs/bodies/pnj-body-10.png" id="21_1ovho"]
+[ext_resource type="Texture2D" uid="uid://bmo0tw2aekhxe" path="res://assets/sprites/PNJs/heads/pnj-head-20.png" id="21_yei3l"]
+[ext_resource type="Texture2D" uid="uid://8xtyjitnftuf" path="res://assets/sprites/PNJs/heads/pnj-head-21.png" id="22_8oqh8"]
+[ext_resource type="Texture2D" uid="uid://dbivq0t3qn0w3" path="res://assets/sprites/PNJs/heads/pnj-head-22.png" id="23_sdygy"]
+[ext_resource type="Texture2D" uid="uid://d32mocu0bjyu6" path="res://assets/sprites/PNJs/heads/pnj-head-23.png" id="24_mt55i"]
+[ext_resource type="Texture2D" uid="uid://bxafyebvvbpb5" path="res://assets/sprites/PNJs/bodies/pnj-body-11.png" id="35_4qp64"]
+[ext_resource type="Texture2D" uid="uid://unhunsxufee4" path="res://assets/sprites/shadow.png" id="36_icdvi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7mjap"]
+friction = 0.4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjm2d"]
+radius = 3.0
+
+[node name="PNJ" type="RigidBody2D"]
+collision_layer = 2
+mass = 1.5
+physics_material_override = SubResource("PhysicsMaterial_7mjap")
+gravity_scale = 0.0
+lock_rotation = true
+freeze_mode = 1
+linear_damp = 50.0
+script = ExtResource("1_0nixa")
+heads = Array[Texture2D]([ExtResource("2_pff1s"), ExtResource("3_pmmkh"), ExtResource("4_iccgo"), ExtResource("5_rxjdu"), ExtResource("6_jyaon"), ExtResource("7_25xnw"), ExtResource("8_ygr3v"), ExtResource("9_0m0ir"), ExtResource("10_f55cg"), ExtResource("11_yxpvv"), ExtResource("12_ywcgu"), ExtResource("13_m0b7h"), ExtResource("14_mo6d7"), ExtResource("15_l8jao"), ExtResource("16_2xtv3"), ExtResource("17_p1bh7"), ExtResource("18_q748b"), ExtResource("19_xlu8s"), ExtResource("20_4eq55"), ExtResource("21_yei3l"), ExtResource("22_8oqh8"), ExtResource("23_sdygy"), ExtResource("24_mt55i")])
+bodies = Array[Texture2D]([ExtResource("3_ixpd2"), ExtResource("7_gh2r3"), ExtResource("8_mdxvx"), ExtResource("9_25jbq"), ExtResource("16_mt2g3"), ExtResource("17_ysafw"), ExtResource("18_vs2if"), ExtResource("19_0ef3o"), ExtResource("20_ulro3"), ExtResource("21_1ovho"), ExtResource("35_4qp64")])
+top_left_limit = Vector2(-95, -35)
+bot_right_limit = Vector2(95, 25)
+
+[node name="Head" type="Sprite2D" parent="."]
+texture = ExtResource("6_jyaon")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("9_25jbq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_kjm2d")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(0, 7.5)
+texture = ExtResource("36_icdvi")
