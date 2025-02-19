@@ -428,3 +428,4 @@ autoplay = "text_moving"
 
 [connection signal="body_entered" from="Kid" to="." method="_on_kid_body_entered"]
 [connection signal="body_entered" from="Shit" to="." method="_on_shit_body_entered"]
+[connection signal="animation_finished" from="CanvasLayer/Control/Journal/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
