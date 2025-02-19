@@ -9,7 +9,7 @@ var is_game_loose = false
 @onready var animation: AnimationPlayer = $CanvasLayer/Control/Journal/AnimationPlayer
 @onready var image: TextureRect = $CanvasLayer/Control/Journal
 @onready var kid: RigidBody2D = $Kid
-@onready var indication_text = $CanvasLayer/Label
+@onready var indication_text = $CanvasLayer/IndicationText
 
 func _on_shit_body_entered(body: Node2D) -> void:
 	if (is_game_win):
