@@ -8,6 +8,7 @@ script/source = "extends Node
 
 const scene_grand_mother = preload(\"res://scenes/minigames/grandMotherGame/grand_mother_game.tscn\")
 const scene_crowd_kid = preload(\"res://scenes/minigames/crowd-and-kid/crowd-and-kid-minigame.tscn\")
+const scene_dont_answer = preload(\"res://scenes/minigames/dontAnswer/dont_answer.tscn\")
 
 signal show_main_menu
 
@@ -24,7 +25,7 @@ func _process(_delta):
 
 
 func _on_parent_ui_button_test():
-	load_next_scene(\"scene_crowd_kid\")
+	load_next_scene(\"scene_dont_answer\")
 
 
 func load_next_scene(name:String):
@@ -36,6 +37,9 @@ func load_next_scene(name:String):
 			add_child(scene)
 		\"scene_crowd_kid\":
 			scene = scene_crowd_kid.instantiate()
+			add_child(scene)
+		\"scene_dont_answer\":
+			scene = scene_dont_answer.instantiate()
 			add_child(scene)
 "
 

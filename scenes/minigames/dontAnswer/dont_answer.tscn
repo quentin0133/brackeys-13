@@ -1,0 +1,116 @@
+[gd_scene load_steps=2 format=3 uid="uid://dknc245dgap7w"]
+
+[sub_resource type="GDScript" id="GDScript_7ofqn"]
+script/source = "extends Control
+
+@onready var label : Label = $VBoxContainer/Label as Label
+@onready var button1 : Button = $VBoxContainer/GridContainer/Button as Button
+@onready var button2 : Button = $VBoxContainer/GridContainer/Button2 as Button
+@onready var button3 : Button = $VBoxContainer/GridContainer/Button3 as Button
+@onready var button4 : Button = $VBoxContainer/GridContainer/Button4 as Button
+@onready var timer : Timer = $TimerBeforeEnd as Timer
+
+
+var question : Array = [\"questiona\",\"questionb\",\"questionc\",\"questiond\"]
+var reponse1 : Array = [\"reponse1a\",\"reponse1b\",\"reponse1c\",\"reponse1d\"]
+var reponse2 : Array = [\"reponse2a\",\"reponse2b\",\"reponse2c\",\"reponse2d\"]
+var reponse3 : Array = [\"reponse3a\",\"reponse3b\",\"reponse3c\",\"reponse3d\"]
+var reponse4 : Array = [\"reponse4a\",\"reponse4b\",\"reponse4c\",\"reponse4d\"]
+
+var number : int = 0
+
+func _ready():
+	timer.start()
+	another_question()
+
+
+func another_question():
+	timer.wait_time = 15
+	timer.start()
+	label.text = question[number]
+	button1.text = reponse1[number]
+	button2.text = reponse2[number]
+	button3.text = reponse3[number]
+	button4.text = reponse4[number]
+	number += 1
+	if number > 3 :
+		number = 0
+	
+func _on_timer_before_end_timeout():
+	timer.stop()
+	print(\"End Game\")
+	GameManager.next_scene_to_call = \"scene_crowd_kid\"
+	queue_free()
+"
+
+[node name="DontAnswer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_7ofqn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -480.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 75
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "Ceci est un grand text bien foutu comme tu les aimes non ? aller je sais que ça te fait envie ?"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(750, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "C'est une réponse, une vrai "
+
+[node name="Button2" type="Button" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(750, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "C'est une réponse, une vrai "
+
+[node name="Button3" type="Button" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(750, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "C'est une réponse, une vrai "
+
+[node name="Button4" type="Button" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(750, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "C'est une réponse, une vrai "
+
+[node name="TimerBeforeEnd" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button" to="." method="another_question"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button2" to="." method="another_question"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button3" to="." method="another_question"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button4" to="." method="another_question"]
+[connection signal="timeout" from="TimerBeforeEnd" to="." method="_on_timer_before_end_timeout"]
