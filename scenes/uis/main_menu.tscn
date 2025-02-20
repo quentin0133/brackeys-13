@@ -13,7 +13,6 @@ signal test_button
 func _ready():
 	slider_master_volume.value = SettingsManager.settings_dict[\"master_volume\"]
 	if OS.has_feature(\"web\") :
-		print(get_children())
 		$VBoxContainer/QuitButton.hide()
 
 
@@ -40,9 +39,14 @@ func _on_test_button_pressed():
 	test_button.emit()
 
 
+func _on_chapter_button_button_up():
+	pass
+
+
 func _on_start_button_button_up():
-	self.hide()
-	start_button.emit()
+	pass
+	#self.hide()
+	#start_button.emit()
 "
 
 [node name="MainMenu" type="Control"]
@@ -71,19 +75,29 @@ offset_bottom = 214.0
 theme_override_font_sizes/font_size = 75
 text = "Brackeys 13"
 
+[node name="TestButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+offset_left = 35.0
+offset_top = 636.0
+offset_right = 289.0
+offset_bottom = 686.0
+theme_override_font_sizes/font_size = 30
+text = "Test"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 offset_left = 125.0
-offset_top = 703.0
-offset_right = 325.0
-offset_bottom = 1008.0
+offset_top = 725.0
+offset_right = 379.0
+offset_bottom = 1115.0
 theme_override_constants/separation = 35
 
-[node name="TestButton" type="Button" parent="VBoxContainer"]
+[node name="ChapterButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Test"
+text = "Select mini game"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
@@ -105,7 +119,8 @@ theme_override_font_sizes/font_size = 30
 text = "Exit"
 
 [connection signal="value_changed" from="VSliderMasterVolume" to="." method="_on_v_slider_master_volume_value_changed"]
-[connection signal="pressed" from="VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]
+[connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]
+[connection signal="button_up" from="VBoxContainer/ChapterButton" to="." method="_on_chapter_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
