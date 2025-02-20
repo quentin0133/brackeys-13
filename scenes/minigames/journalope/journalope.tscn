@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bxtmqaykkdwwa" path="res://assets/sprites/main-character/flashed-main-character.png" id="2_cvulu"]
 [ext_resource type="Script" path="res://scripts/mini-games/journalope/player_hide_and_seek.gd" id="2_v2ndh"]
 [ext_resource type="Script" path="res://scripts/mini-games/journalope/loop_background.gd" id="2_yvqll"]
-[ext_resource type="Texture2D" uid="uid://rkjwfqf8rf6s" path="res://assets/sprites/decoration/Box-upside-down.png" id="3_tsnxq"]
-[ext_resource type="Texture2D" uid="uid://nojxqaryfhhu" path="res://assets/sprites/decoration/background-runner.png" id="3_wco5m"]
+[ext_resource type="Texture2D" uid="uid://rkjwfqf8rf6s" path="res://assets/sprites/Decoration/Box-upside-down.png" id="3_tsnxq"]
+[ext_resource type="Texture2D" uid="uid://nojxqaryfhhu" path="res://assets/sprites/Decoration/background-runner.png" id="3_wco5m"]
 [ext_resource type="Script" path="res://scripts/mini-games/journalope/obstacles_generator.gd" id="6_r1vyy"]
 [ext_resource type="Texture2D" uid="uid://bsamlblre8m7n" path="res://assets/sprites/journalope-stalking/journalists-flash.png" id="7_xcvwp"]
 [ext_resource type="PackedScene" uid="uid://dcyh6c24wvvyc" path="res://scenes/minigames/journalope/obstacles/tree.tscn" id="8_3q53q"]
@@ -16,9 +16,9 @@
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_nx4xm"]
 [ext_resource type="Texture2D" uid="uid://dbvonytcgn0lh" path="res://assets/sprites/timer/dynamite.png" id="10_eng7b"]
 [ext_resource type="Texture2D" uid="uid://bmkoad33pnb7u" path="res://assets/sprites/sfx/dynamite_fire.png" id="11_iatli"]
-[ext_resource type="Texture2D" uid="uid://lolbq8m8ihhl" path="res://assets/sprites/decoration/pole.png" id="15_2dvoa"]
+[ext_resource type="Texture2D" uid="uid://lolbq8m8ihhl" path="res://assets/sprites/Decoration/pole.png" id="15_2dvoa"]
 [ext_resource type="PackedScene" uid="uid://dearhoyx36unj" path="res://scenes/minigames/journalope/obstacles/bush.tscn" id="16_2w6tb"]
-[ext_resource type="Texture2D" uid="uid://byqbnsqushdf6" path="res://assets/sprites/decoration/car.png" id="17_1wr8l"]
+[ext_resource type="Texture2D" uid="uid://byqbnsqushdf6" path="res://assets/sprites/Decoration/car.png" id="17_1wr8l"]
 [ext_resource type="PackedScene" uid="uid://cuxa6v2calt10" path="res://scenes/minigames/journalope/obstacles/garbage.tscn" id="17_qitqb"]
 [ext_resource type="PackedScene" uid="uid://b75njoddebi3f" path="res://scenes/minigames/journalope/obstacles/cat_trash.tscn" id="18_i0g7n"]
 [ext_resource type="PackedScene" uid="uid://c3h615nnomoxh" path="res://scenes/minigames/journalope/obstacles/light.tscn" id="20_qp0r2"]
@@ -218,9 +218,9 @@ _data = {
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_11q26"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
 atlas = ExtResource("11_iatli")
-region = Rect2(24, 0, 8, 8)
+region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vmp4"]
 atlas = ExtResource("11_iatli")
@@ -230,9 +230,9 @@ region = Rect2(0, 0, 8, 8)
 atlas = ExtResource("11_iatli")
 region = Rect2(8, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
 atlas = ExtResource("11_iatli")
-region = Rect2(16, 0, 8, 8)
+region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ca55y"]
 animations = [{
@@ -254,9 +254,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_20lyo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v25ve"]
 atlas = ExtResource("7_xcvwp")
-region = Rect2(96, 0, 48, 48)
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lo5j8"]
 atlas = ExtResource("7_xcvwp")
@@ -266,9 +266,9 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("7_xcvwp")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v25ve"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_20lyo"]
 atlas = ExtResource("7_xcvwp")
-region = Rect2(144, 0, 48, 48)
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7i7d"]
 animations = [{
@@ -724,11 +724,11 @@ offset_right = -35.0
 offset_bottom = 8.0
 grow_horizontal = 0
 scale = Vector2(10, 10)
-texture = SubResource("AtlasTexture_s7tjp")
+texture = SubResource("AtlasTexture_rf3q1")
 stretch_mode = 4
 script = ExtResource("9_bfobt")
 sprites = SubResource("SpriteFrames_ca55y")
-frame_index = 3
+frame_index = 2
 auto_play = true
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]
@@ -761,11 +761,11 @@ offset_bottom = -504.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(24, 24)
-texture = SubResource("AtlasTexture_20lyo")
+texture = SubResource("AtlasTexture_v25ve")
 stretch_mode = 4
 script = ExtResource("9_bfobt")
 sprites = SubResource("SpriteFrames_b7i7d")
-frame_index = 2
+frame_index = 3
 auto_play = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameOver/Journalist"]
@@ -907,4 +907,6 @@ scale = Vector2(0.217105, 0.217105)
 texture = ExtResource("3_wco5m")
 
 [connection signal="on_timeout" from="CanvasLayer/Timer" to="." method="_on_timer_on_timeout"]
+[connection signal="animation_finished" from="CanvasLayer/GameOver/Journalist/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="CanvasLayer/IndicationText/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="CanvasLayer/IndicationText/Timer" to="." method="_on_timer_timeout"]

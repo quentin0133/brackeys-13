@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lolbq8m8ihhl"
-path="res://.godot/imported/pole.png-1276ae33926bc76e59d6511d6186ca04.ctex"
+path="res://.godot/imported/pole.png-19b230c225707ecc62201b9a5be8d884.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/decoration/pole.png"
-dest_files=["res://.godot/imported/pole.png-1276ae33926bc76e59d6511d6186ca04.ctex"]
+source_file="res://assets/sprites/Decoration/pole.png"
+dest_files=["res://.godot/imported/pole.png-19b230c225707ecc62201b9a5be8d884.ctex"]
 
 [params]
 

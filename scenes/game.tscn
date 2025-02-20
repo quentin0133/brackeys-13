@@ -1,22 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://ftbjk6jiaank"]
 
 [ext_resource type="PackedScene" uid="uid://bf14n8kges4qh" path="res://scenes/uis/parent_ui.tscn" id="1_tcuif"]
-[ext_resource type="PackedScene" path="res://scenes/uis/hud/parent_hud.tscn" id="2_wkomf"]
+[ext_resource type="PackedScene" uid="uid://de4wjigdx16ub" path="res://scenes/uis/hud/parent_hud.tscn" id="2_wkomf"]
 
 [sub_resource type="GDScript" id="GDScript_av3qy"]
 script/source = "extends Node
 
-<<<<<<< Updated upstream
 const scene_grand_mother = preload(\"res://scenes/minigames/grandMotherGame/grand_mother_game.tscn\")
 const scene_crowd_kid = preload(\"res://scenes/minigames/crowd-and-kid/crowd-and-kid-minigame.tscn\")
 const scene_dont_answer = preload(\"res://scenes/minigames/dontAnswer/dont_answer.tscn\")
-=======
-const scene_grand_mother = preload(\"res://scenes/grandMotherGame/grand_mother_game.tscn\")
-const scene_siu = preload(\"res://scenes/minigames/crowd-and-kid/crowd-and-kid-minigame.tscn\")
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+const scene_journalope = preload(\"res://scenes/minigames/journalope/journalope.tscn\")
 
 signal show_main_menu
 
@@ -28,18 +21,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if self.get_child_count() == 2:
+	if self.get_child_count() == 2 and GameManager.in_game == true:
 		load_next_scene(GameManager.next_scene_to_call)
 
 
 func _on_parent_ui_button_test():
-	load_next_scene(\"scene_dont_answer\")
+	load_next_scene(\"scene_journalope\")
 
 
-func load_next_scene(name:String):
-	match name:
+func load_next_scene(name_of_scene:String):
+	GameManager.in_game = true
+	match name_of_scene:
 		\"main_menu\":
 			show_main_menu.emit()
+			GameManager.in_game = false
 		\"scene_grand_mother\":
 			scene = scene_grand_mother.instantiate()
 			add_child(scene)
@@ -48,6 +43,9 @@ func load_next_scene(name:String):
 			add_child(scene)
 		\"scene_dont_answer\":
 			scene = scene_dont_answer.instantiate()
+			add_child(scene)
+		\"scene_journalope\":
+			scene = scene_journalope.instantiate()
 			add_child(scene)
 "
 

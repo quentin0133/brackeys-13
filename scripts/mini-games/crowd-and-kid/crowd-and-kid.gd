@@ -2,6 +2,7 @@ extends Node
 
 var is_game_win = false
 var is_game_loose = false
+var end_game = false
 
 @export var winning_picture: Texture2D
 @export var loosing_picture: Texture2D
@@ -11,6 +12,12 @@ var is_game_loose = false
 @onready var kid: RigidBody2D = $Kid
 @onready var indication_text = $CanvasLayer/IndicationText
 
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed and end_game :
+			GameManager.next_scene_to_call = "scene_grand_mother"
+			queue_free()
+			
 func _on_shit_body_entered(body: Node2D) -> void:
 	if (is_game_win):
 		return
@@ -31,3 +38,6 @@ func _on_kid_body_entered(body: Node) -> void:
 		kid.constant_force.y = 25
 		kid.constant_torque = 360
 		indication_text.visible = false
+
+func _on_animation_player_animation_finished(_anim_name):
+	end_game = true
