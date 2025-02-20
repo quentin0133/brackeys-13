@@ -4,6 +4,7 @@
 script/source = "extends Control
 
 signal showSettings
+signal showChapter
 signal start_button
 signal test_button
 
@@ -40,6 +41,8 @@ func _on_test_button_pressed():
 
 
 func _on_chapter_button_button_up():
+	self.hide()
+	showChapter.emit()
 	pass
 
 
