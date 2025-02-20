@@ -4,7 +4,6 @@
 script/source = "extends Control
 
 signal showSettings
-signal showGover
 signal start_button
 signal test_button
 

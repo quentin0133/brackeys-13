@@ -16,8 +16,15 @@ extends Node2D
 
 var is_game_win = false
 var is_game_loose = false
+var end_game_flag = false
 
 static var isJournalistShowed = false
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed and end_game_flag :
+			GameManager.next_scene_to_call = "scene_dont_answer"
+			queue_free()
 
 func _on_timer_on_timeout() -> void:
 	game_over()
@@ -41,7 +48,8 @@ func win():
 	while (victory_UI.modulate.a < 1):
 		await get_tree().create_timer(0.005).timeout
 		victory_UI.modulate.a += 0.01
-
+	end_game_flag = true
+	
 func game_over():
 	if (is_game_win):
 		return
@@ -51,9 +59,15 @@ func game_over():
 	generator.is_generating = false
 	animation_player_player.pause()
 	player.texture = player_flashed;
-
+	player.input_enable = false
+	
 
 func _on_timer_timeout() -> void:
 	while (indication.modulate.a > 0):
 		await get_tree().create_timer(0.005).timeout
 		indication.modulate.a -= 0.01
+
+
+func _on_animation_player_animation_finished(anim_name):
+	print("End Game")
+	end_game_flag = true
