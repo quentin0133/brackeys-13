@@ -4,6 +4,7 @@
 script/source = "extends Control
 
 @onready var label : Label = $VBoxContainer/Label as Label
+@onready var hint : Label = $Hint as Label
 @onready var button1 : Button = $VBoxContainer/GridContainer/Button as Button
 @onready var button2 : Button = $VBoxContainer/GridContainer/Button2 as Button
 @onready var button3 : Button = $VBoxContainer/GridContainer/Button3 as Button
@@ -11,15 +12,17 @@ script/source = "extends Control
 @onready var timer : Timer = $TimerBeforeEnd as Timer
 
 
-var question : Array = [\"questiona\",\"questionb\",\"questionc\",\"questiond\"]
-var reponse1 : Array = [\"reponse1a\",\"reponse1b\",\"reponse1c\",\"reponse1d\"]
-var reponse2 : Array = [\"reponse2a\",\"reponse2b\",\"reponse2c\",\"reponse2d\"]
-var reponse3 : Array = [\"reponse3a\",\"reponse3b\",\"reponse3c\",\"reponse3d\"]
-var reponse4 : Array = [\"reponse4a\",\"reponse4b\",\"reponse4c\",\"reponse4d\"]
+var question : Array = [\"Who are you ?\",\"questionb\",\"questionc\",\"questiond\"]
+var reponse1 : Array = [\"Your son\",\"reponse1b\",\"reponse1c\",\" ... \"]
+var reponse2 : Array = [\"I'am vENGEANce ! è_é\",\"reponse2b\",\" ... \",\"reponse2d\"]
+var reponse3 : Array = [\"Someone ?\",\" ... \",\"reponse3c\",\"reponse3d\"]
+var reponse4 : Array = [\" ... \",\"reponse4b\",\"reponse4c\",\"reponse4d\"]
 
 var number : int = 0
+var try : int = 0
 
 func _ready():
+	hint.modulate.a = 0.00
 	timer.start()
 	another_question()
 
@@ -35,6 +38,11 @@ func another_question():
 	number += 1
 	if number > 3 :
 		number = 0
+	if try == 100:
+		print(\"You're such an idiot\")
+	else:
+		try += 1
+		hint.modulate.a += 0.05
 	
 func _on_timer_before_end_timeout():
 	timer.stop()
@@ -51,6 +59,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_7ofqn")
+
+[node name="Hint" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.0980392)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 7.0
+offset_top = 338.0
+offset_right = 7.0
+offset_bottom = 475.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 100
+text = "Oh my god, just ignore him already ! "
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
