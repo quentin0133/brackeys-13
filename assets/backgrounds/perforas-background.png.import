@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhh2dndumntpc"
-path="res://.godot/imported/tree.png-844981f2a76b2314d65e81126af3abd9.ctex"
+uid="uid://bvqmvbw1cj3sr"
+path="res://.godot/imported/perforas-background.png-dfe85785a14bc9d0ca7857ccd144cd9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Decoration/tree.png"
-dest_files=["res://.godot/imported/tree.png-844981f2a76b2314d65e81126af3abd9.ctex"]
+source_file="res://assets/backgrounds/perforas-background.png"
+dest_files=["res://.godot/imported/perforas-background.png-dfe85785a14bc9d0ca7857ccd144cd9a.ctex"]
 
 [params]
 
