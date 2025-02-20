@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqcq4ylfqpd1w"]
+
+[ext_resource type="Script" path="res://scripts/timer.gd" id="1_eq3oa"]
+[ext_resource type="Texture2D" uid="uid://c1pujxi1q2xhb" path="res://assets/sprites/timer/dynamite-cord.png" id="2_3vxwt"]
+[ext_resource type="Texture2D" uid="uid://dbvonytcgn0lh" path="res://assets/sprites/timer/dynamite.png" id="3_7rrdh"]
+[ext_resource type="Script" path="res://scripts/animated_texture_rect.gd" id="4_63b0f"]
+[ext_resource type="Texture2D" uid="uid://bmkoad33pnb7u" path="res://assets/sprites/sfx/dynamite_fire.png" id="5_00wpl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11q26"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
+atlas = ExtResource("5_00wpl")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vmp4"]
+atlas = ExtResource("5_00wpl")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqxac"]
+atlas = ExtResource("5_00wpl")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
+atlas = ExtResource("5_00wpl")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ca55y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vmp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqxac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf3q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7tjp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Timer" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 294.0
+offset_right = -294.0
+offset_bottom = 84.0
+grow_horizontal = 2
+script = ExtResource("1_eq3oa")
+duration = 60
+
+[node name="Progress" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.1
+offset_top = 20.0
+offset_right = -0.800003
+offset_bottom = 24.0
+scale = Vector2(10, 10)
+texture = ExtResource("2_3vxwt")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = -160.0
+offset_top = 20.0
+offset_right = -144.0
+offset_bottom = 36.0
+scale = Vector2(10, 10)
+texture = ExtResource("3_7rrdh")
+stretch_mode = 4
+script = ExtResource("4_63b0f")
+sprites = SubResource("SpriteFrames_11q26")
+
+[node name="FireFX" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -43.0
+offset_right = -35.0
+offset_bottom = 8.0
+grow_horizontal = 0
+scale = Vector2(10, 10)
+texture = SubResource("AtlasTexture_s7tjp")
+stretch_mode = 4
+script = ExtResource("4_63b0f")
+sprites = SubResource("SpriteFrames_ca55y")
+frame_index = 3
+auto_play = true
