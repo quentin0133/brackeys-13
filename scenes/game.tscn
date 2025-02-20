@@ -13,6 +13,9 @@ const scene_dont_answer = preload(\"res://scenes/minigames/dontAnswer/dont_answe
 =======
 const scene_grand_mother = preload(\"res://scenes/grandMotherGame/grand_mother_game.tscn\")
 const scene_siu = preload(\"res://scenes/minigames/crowd-and-kid/crowd-and-kid-minigame.tscn\")
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 signal show_main_menu
