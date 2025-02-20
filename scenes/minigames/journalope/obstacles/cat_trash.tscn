@@ -1,0 +1,159 @@
+[gd_scene load_steps=16 format=3 uid="uid://b75njoddebi3f"]
+
+[ext_resource type="Texture2D" uid="uid://ei0t33ntr70v" path="res://assets/sprites/decoration/cat-in-trash.png" id="1_3x1fk"]
+[ext_resource type="Script" path="res://scripts/mini-games/journalope/obstacle.gd" id="2_ec44u"]
+[ext_resource type="Texture2D" uid="uid://bsamlblre8m7n" path="res://assets/sprites/journalope-stalking/journalists-flash.png" id="3_0t5uj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b4np"]
+atlas = ExtResource("3_0t5uj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb3dx"]
+atlas = ExtResource("3_0t5uj")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elfq7"]
+atlas = ExtResource("3_0t5uj")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlsjf"]
+atlas = ExtResource("3_0t5uj")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4g60h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b4np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb3dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elfq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlsjf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_1ut6k"]
+resource_name = "show_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(13.3333, 90), Vector2(63.3333, 90), Vector2(53.3333, 90)]
+}
+
+[sub_resource type="Animation" id="Animation_iub3l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13.3333, 90)]
+}
+
+[sub_resource type="Animation" id="Animation_ppfj4"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(53.3333, 90), Vector2(13.3333, 90)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bw73d"]
+_data = {
+"RESET": SubResource("Animation_iub3l"),
+"hide": SubResource("Animation_ppfj4"),
+"show_up": SubResource("Animation_1ut6k")
+}
+
+[sub_resource type="Curve" id="Curve_gbjbn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8iwql"]
+curve = SubResource("Curve_gbjbn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_boiwc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 50, 1)
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 175.0
+initial_velocity_max = 225.0
+gravity = Vector3(0, 5, 0)
+damping_min = 65.0
+damping_max = 65.0
+alpha_curve = SubResource("CurveTexture_8iwql")
+
+[node name="CatTrash" type="Sprite2D" node_paths=PackedStringArray("particle")]
+y_sort_enabled = true
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_3x1fk")
+offset = Vector2(0, -50)
+flip_h = true
+script = ExtResource("2_ec44u")
+particle = NodePath("GPUParticles2D")
+
+[node name="Journalope" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchor_left = 0.326667
+anchor_top = -0.608
+anchor_right = 1.96667
+anchor_bottom = 0.352
+offset_left = -44.5
+offset_top = -64.0
+offset_right = -44.5
+offset_bottom = -64.0
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="Journalope"]
+z_index = -1
+position = Vector2(13.3333, 90)
+rotation = 1.59277
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_4g60h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Journalope"]
+libraries = {
+"": SubResource("AnimationLibrary_bw73d")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, -46.6667)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_boiwc")
+lifetime = 0.5
+explosiveness = 1.0

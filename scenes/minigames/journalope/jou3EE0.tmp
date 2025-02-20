@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfd7iu65lpk7i"]
+
+[ext_resource type="Texture2D" uid="uid://k5xu4vtev10r" path="res://assets/sprites/main-character/running-main-character.png" id="1_yp6up"]
+[ext_resource type="Script" path="res://scripts/mini-games/journalope/loop_background.gd" id="2_yvqll"]
+[ext_resource type="Texture2D" uid="uid://nojxqaryfhhu" path="res://assets/sprites/decoration/background-runner.png" id="3_wco5m"]
+
+[sub_resource type="Animation" id="Animation_66kpe"]
+resource_name = "running"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-65, 17), Vector2(-65, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_0vnnf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-65, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgjpn"]
+_data = {
+"RESET": SubResource("Animation_0vnnf"),
+"running": SubResource("Animation_66kpe")
+}
+
+[node name="Journalope" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(10, 10)
+
+[node name="Player" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(-65, 17)
+scale = Vector2(0.154229, 0.157502)
+texture = ExtResource("1_yp6up")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_dgjpn")
+}
+autoplay = "running"
+
+[node name="Ground" type="Node2D" parent="."]
+position = Vector2(-96, 0)
+script = ExtResource("2_yvqll")
+speed = 50.0
+
+[node name="ground_1" type="Sprite2D" parent="Ground"]
+position = Vector2(33, 0)
+scale = Vector2(0.217105, 0.217105)
+texture = ExtResource("3_wco5m")
+
+[node name="ground_2" type="Sprite2D" parent="Ground"]
+position = Vector2(99, 0)
+scale = Vector2(0.217105, 0.217105)
+texture = ExtResource("3_wco5m")
+
+[node name="ground_3" type="Sprite2D" parent="Ground"]
+position = Vector2(165, 0)
+scale = Vector2(0.217105, 0.217105)
+texture = ExtResource("3_wco5m")
+
+[node name="ground_4" type="Sprite2D" parent="Ground"]
+position = Vector2(231, 0)
+scale = Vector2(0.217105, 0.217105)
+texture = ExtResource("3_wco5m")

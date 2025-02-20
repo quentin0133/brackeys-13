@@ -21,7 +21,7 @@ func _input(event):
 
 func _on_shit_body_entered(body: Node2D) -> void:
 	if (is_game_win):
-		pass
+		return
 	if (body.name == "Kid"):
 		is_game_loose = true
 		animation.play("fade_journal")
@@ -30,7 +30,7 @@ func _on_shit_body_entered(body: Node2D) -> void:
 
 func _on_kid_body_entered(body: Node) -> void:
 	if (is_game_loose):
-		pass
+		return
 	if (body.name == "Player"):
 		is_game_win = true
 		animation.play("fade_journal")

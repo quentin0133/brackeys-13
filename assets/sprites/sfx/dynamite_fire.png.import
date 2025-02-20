@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifenwlittll0"
-path="res://.godot/imported/journalists.png-f156c5cd34d8e6682dcbd1ba78dcf285.ctex"
+uid="uid://bmkoad33pnb7u"
+path="res://.godot/imported/dynamite_fire.png-bbc6011823a6a5ed3bca74cf4bc80859.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/journalope-stalking/journalists.png"
-dest_files=["res://.godot/imported/journalists.png-f156c5cd34d8e6682dcbd1ba78dcf285.ctex"]
+source_file="res://assets/sprites/sfx/dynamite_fire.png"
+dest_files=["res://.godot/imported/dynamite_fire.png-bbc6011823a6a5ed3bca74cf4bc80859.ctex"]
 
 [params]
 

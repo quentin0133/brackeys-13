@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rkjwfqf8rf6s"
-path="res://.godot/imported/Box-upside-down.png-07245fd0060fdc57c919095fe13a6e65.ctex"
+uid="uid://bhh2dndumntpc"
+path="res://.godot/imported/tree.png-022863d81c3d43da9c2db7b012b21145.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/decoration/Box-upside-down.png"
-dest_files=["res://.godot/imported/Box-upside-down.png-07245fd0060fdc57c919095fe13a6e65.ctex"]
+source_file="res://assets/sprites/decoration/tree.png"
+dest_files=["res://.godot/imported/tree.png-022863d81c3d43da9c2db7b012b21145.ctex"]
 
 [params]
 

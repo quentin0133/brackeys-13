@@ -1,0 +1,152 @@
+[gd_scene load_steps=16 format=3 uid="uid://g5ghvnb1wtib"]
+
+[ext_resource type="Texture2D" uid="uid://v77w2sw8uba1" path="res://assets/sprites/decoration/nuclear-liquid-container.png" id="1_7pjr5"]
+[ext_resource type="Script" path="res://scripts/mini-games/journalope/obstacle.gd" id="2_avh4y"]
+[ext_resource type="Texture2D" uid="uid://bsamlblre8m7n" path="res://assets/sprites/journalope-stalking/journalists-flash.png" id="3_h311i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv85g"]
+atlas = ExtResource("3_h311i")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdynq"]
+atlas = ExtResource("3_h311i")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sb0d"]
+atlas = ExtResource("3_h311i")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuv4w"]
+atlas = ExtResource("3_h311i")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s17ya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv85g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdynq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sb0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuv4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_bmcw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(29, 162.5)]
+}
+
+[sub_resource type="Animation" id="Animation_3ebyr"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(29, 127.5), Vector2(29, 162.5)]
+}
+
+[sub_resource type="Animation" id="Animation_e6bem"]
+resource_name = "show_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(29, 162.5), Vector2(29, 122.5), Vector2(29, 127.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fw6xv"]
+_data = {
+"RESET": SubResource("Animation_bmcw5"),
+"hide": SubResource("Animation_3ebyr"),
+"show_up": SubResource("Animation_e6bem")
+}
+
+[sub_resource type="Curve" id="Curve_qaqtf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_k7f1q"]
+curve = SubResource("Curve_qaqtf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eayol"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 1, 1)
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 50.0
+initial_velocity_max = 175.0
+gravity = Vector3(0, 65, 0)
+damping_min = 5.0
+damping_max = 35.0
+alpha_curve = SubResource("CurveTexture_k7f1q")
+
+[node name="NuclearLiquidContainer" type="Sprite2D" node_paths=PackedStringArray("particle")]
+y_sort_enabled = true
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_7pjr5")
+offset = Vector2(0, -49)
+script = ExtResource("2_avh4y")
+particle = NodePath("GPUParticles2D")
+
+[node name="Journalope" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -29.0
+offset_top = -217.5
+offset_right = 26.0
+offset_bottom = -83.5
+
+[node name="sprite" type="AnimatedSprite2D" parent="Journalope"]
+z_index = 1
+position = Vector2(29, 162.5)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_s17ya")
+frame_progress = 0.112731
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Journalope"]
+libraries = {
+"": SubResource("AnimationLibrary_fw6xv")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0, 0.91, 0.106167, 1)
+z_index = 1
+position = Vector2(-4.54747e-13, -90)
+emitting = false
+amount = 35
+process_material = SubResource("ParticleProcessMaterial_eayol")
