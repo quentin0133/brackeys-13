@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf14n8kges4qh"]
+[gd_scene load_steps=6 format=3 uid="uid://bf14n8kges4qh"]
 
 [ext_resource type="PackedScene" uid="uid://td08ua34067u" path="res://scenes/uis/main_menu.tscn" id="1_v4qmk"]
 [ext_resource type="PackedScene" uid="uid://cwjascb1eanlj" path="res://scenes/uis/settings_menu.tscn" id="2_3nd0b"]
+[ext_resource type="PackedScene" uid="uid://dxdjiv7cl2i4e" path="res://scenes/uis/chapter_menu.tscn" id="3_0e7s2"]
 [ext_resource type="PackedScene" uid="uid://c7t4tw0gk18cp" path="res://scenes/uis/gover_menu.tscn" id="3_twc6u"]
 
 [sub_resource type="GDScript" id="GDScript_qiud6"]
@@ -32,12 +33,17 @@ script = SubResource("GDScript_qiud6")
 [node name="SettingsMenu" parent="." instance=ExtResource("2_3nd0b")]
 visible = false
 
+[node name="ChapterMenu" parent="." instance=ExtResource("3_0e7s2")]
+visible = false
+
 [node name="GoverMenu" parent="." instance=ExtResource("3_twc6u")]
 visible = false
 
 [connection signal="show_main_menu" from="." to="MainMenu" method="_on_someone_menu_show_main_menu"]
+[connection signal="showChapter" from="MainMenu" to="ChapterMenu" method="_on_main_menu_show_chapter"]
 [connection signal="showSettings" from="MainMenu" to="SettingsMenu" method="_on_main_menu_show_settings"]
 [connection signal="start_button" from="MainMenu" to="." method="_on_main_menu_start_button"]
 [connection signal="test_button" from="MainMenu" to="." method="_on_main_menu_test_button"]
 [connection signal="ShowMainMenu" from="SettingsMenu" to="MainMenu" method="_on_someone_menu_show_main_menu"]
+[connection signal="ShowMainMenu" from="ChapterMenu" to="." method="_on_game_show_main_menu"]
 [connection signal="ShowMainMenu" from="GoverMenu" to="MainMenu" method="_on_someone_menu_show_main_menu"]

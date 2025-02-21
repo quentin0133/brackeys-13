@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b53pcl4mmk8la"
-path="res://.godot/imported/pere-fougas.png-9434c734717bd7759780308ef6a9d0d3.ctex"
+uid="uid://bvqmvbw1cj3sr"
+path="res://.godot/imported/perforas-background.png-dfe85785a14bc9d0ca7857ccd144cd9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/pere-fougas/pere-fougas.png"
-dest_files=["res://.godot/imported/pere-fougas.png-9434c734717bd7759780308ef6a9d0d3.ctex"]
+source_file="res://assets/backgrounds/perforas-background.png"
+dest_files=["res://.godot/imported/perforas-background.png-dfe85785a14bc9d0ca7857ccd144cd9a.ctex"]
 
 [params]
 

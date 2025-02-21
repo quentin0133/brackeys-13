@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxdjiv7cl2i4e"]
+
+[sub_resource type="GDScript" id="GDScript_top5c"]
+script/source = "extends Control
+
+signal ShowMainMenu
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_back_button_pressed():
+	self.hide()
+	ShowMainMenu.emit()
+
+func _on_main_menu_show_chapter():
+	self.show()
+"
+
+[node name="ChapterMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_top5c")
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Back to menu"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
