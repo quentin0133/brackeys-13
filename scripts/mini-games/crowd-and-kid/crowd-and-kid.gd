@@ -14,8 +14,12 @@ var end_game = false
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed and end_game :
+		if event.pressed and end_game && GameManager.story_mode:
 			GameManager.next_scene_to_call = "scene_grand_mother"
+			queue_free()
+		if event.pressed and end_game && !GameManager.story_mode:
+			GameManager.next_scene_to_call = "main_menu"
+			GameManager.update_score("scene_crowd_kid")
 			queue_free()
 			
 func _on_shit_body_entered(body: Node2D) -> void:

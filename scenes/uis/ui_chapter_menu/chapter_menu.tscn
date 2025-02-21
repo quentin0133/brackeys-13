@@ -109,6 +109,10 @@ script = SubResource("GDScript_025ir")
 layout_mode = 2
 scene_name = "scene_journalope"
 
+[node name="GameDetailUi2" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_hl1ti")]
+layout_mode = 2
+scene_name = "scene_crowd_kid"
+
 [node name="MarginContainerBackButton" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
@@ -123,4 +127,5 @@ text = "Back to menu"
 
 [connection signal="refresh" from="." to="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" method="refresh"]
 [connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/GameDetailUi" to="." method="_launch_game"]
+[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/GameDetailUi2" to="." method="_launch_game"]
 [connection signal="pressed" from="VBoxContainer/MarginContainerBackButton/BackButton" to="." method="_on_back_button_pressed"]
