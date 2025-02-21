@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://6uhqvpiu62qo"]
+[gd_scene load_steps=26 format=3 uid="uid://6uhqvpiu62qo"]
 
 [ext_resource type="Script" path="res://scenes/minigames/waking_up/try.gd" id="1_0j4h1"]
 [ext_resource type="PackedScene" uid="uid://dlmvnojj17gqt" path="res://scenes/minigames/waking_up/container.tscn" id="1_pxhdt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bmkoad33pnb7u" path="res://assets/sprites/sfx/dynamite_fire.png" id="7_g0d5e"]
 [ext_resource type="PackedScene" uid="uid://c8vpqg5hr1hef" path="res://scenes/minigames/waking_up/strongarm.tscn" id="9_oeiig"]
 [ext_resource type="PackedScene" uid="uid://dp8r5hnb04xft" path="res://scenes/minigames/waking_up/cactus.tscn" id="10_63o6n"]
+[ext_resource type="Texture2D" uid="uid://bt07621023gwm" path="res://assets/backgrounds/waky-waky-background.png" id="11_gfloj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8ccb"]
 radius = 3.35411
@@ -66,6 +67,73 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 50
 outline_size = 25
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l088b"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_b5ukk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0576806]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:label_settings:font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [50]
+}
+
+[sub_resource type="Animation" id="Animation_6ubo7"]
+resource_name = "text_moving"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0576806, -0.251236]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:label_settings:font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [50, 55, 50]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jbrdi"]
+_data = {
+"RESET": SubResource("Animation_b5ukk"),
+"text_moving": SubResource("Animation_6ubo7")
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_0j4h1")
@@ -224,6 +292,27 @@ label_settings = SubResource("LabelSettings_crqh5")
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="IndicationText" type="Label" parent="CanvasLayer"]
+offset_left = 31.0
+offset_top = 225.0
+offset_right = 976.0
+offset_bottom = 464.0
+rotation = -0.0576806
+pivot_offset = Vector2(250, 75)
+text = "Get that motherfucker!"
+label_settings = SubResource("LabelSettings_l088b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/IndicationText"]
+libraries = {
+"": SubResource("AnimationLibrary_jbrdi")
+}
+autoplay = "text_moving"
+
+[node name="Timer" type="Timer" parent="CanvasLayer/IndicationText"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="JMTAGRANDMERE" parent="." instance=ExtResource("9_oeiig")]
 position = Vector2(948, 150)
 scale = Vector2(30, 30)
@@ -237,6 +326,18 @@ scale = Vector2(15, 15)
 [node name="Area2D2" parent="." instance=ExtResource("10_63o6n")]
 position = Vector2(1447, 943)
 scale = Vector2(15, 15)
+
+[node name="BackgrounCanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="BackgrounCanvasLayer"]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_gfloj")
 
 [connection signal="current_position" from="Arm" to="." method="_on_arm_current_position"]
 [connection signal="current_position" from="Alarm" to="." method="_on_alarm_current_position"]

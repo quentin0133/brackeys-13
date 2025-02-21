@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bwpxyckqnqpvd"]
 
-[ext_resource type="Script" path="res://scenes/player_grid_snap.gd" id="1_8pqyr"]
+[ext_resource type="Script" path="res://scripts/player_grid_snap.gd" id="1_8pqyr"]
 [ext_resource type="Texture2D" uid="uid://b4dkyjt1u13b7" path="res://assets/sprites/mini-main-character.png" id="2_husfa"]
 [ext_resource type="Texture2D" uid="uid://unhunsxufee4" path="res://assets/sprites/shadow.png" id="3_rg32g"]
 [ext_resource type="Texture2D" uid="uid://rpflxk4ojni1" path="res://assets/tictactoe grid.png" id="4_rp5hp"]
