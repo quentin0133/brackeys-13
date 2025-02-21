@@ -17,9 +17,6 @@ signal show_chapter_menu
 
 var scene
 
-func _ready():
-	init_score()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if self.get_child_count() == 2 and GameManager.in_game == true:
@@ -27,12 +24,9 @@ func _process(_delta):
 
 
 func _on_parent_ui_button_test():
+	GameManager.story_mode = true
 	load_next_scene(\"scene_wakywaky\")
 
-
-func init_score():
-	for i in 4:
-		GameManager.score_table.append(GameManager.score)
 
 func load_next_scene(name_of_scene:String):
 	GameManager.in_game = true

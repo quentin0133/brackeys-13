@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxdjiv7cl2i4e"]
+[gd_scene load_steps=3 format=3 uid="uid://dxdjiv7cl2i4e"]
+
+[ext_resource type="PackedScene" uid="uid://c86faj6f3nbws" path="res://scenes/uis/ui_chapter_menu/game_detail_ui.tscn" id="1_hl1ti"]
 
 [sub_resource type="GDScript" id="GDScript_top5c"]
 script/source = "extends Control
@@ -86,6 +88,10 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 250
 alignment = 1
 
+[node name="GameDetailUi" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_hl1ti")]
+layout_mode = 2
+scene_name = "scene_journalope"
+
 [node name="MarginContainerBackButton" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
@@ -98,4 +104,5 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Back to menu"
 
+[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/GameDetailUi" to="." method="_launch_game"]
 [connection signal="pressed" from="VBoxContainer/MarginContainerBackButton/BackButton" to="." method="_on_back_button_pressed"]

@@ -8,8 +8,8 @@ signal ShowMainMenu
 @onready var labbel = $LabelScore as Label
 
 func _ready():
-	labbel.text = \"Score : \" + str(GameManager.score)
-
+	#labbel.text = \"Score : \" + str(GameManager.score)
+	pass
 func _someone_call_you_game_over_show_youself():
 	self.show()
 

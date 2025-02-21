@@ -20,19 +20,28 @@ var end_game_flag = false
 
 static var isJournalistShowed = false
 
+func _ready():
+	if !GameManager.story_mode:
+		timer.visible = false
+
+
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed and end_game_flag :
+		if event.pressed and end_game_flag and GameManager.story_mode :
 			GameManager.next_scene_to_call = "scene_dont_answer"
+			queue_free()
+		elif event.pressed and end_game_flag and !GameManager.story_mode :
+			GameManager.next_scene_to_call = "main_menu"
 			queue_free()
 
 func _on_timer_on_timeout() -> void:
-	game_over()
+	if GameManager.story_mode :
+		game_over()
 
 func _process(delta: float) -> void:
 	if (is_game_win || is_game_loose):
 		return
-	if (abs(ground.global_position.x) > distance_parcoured_winning && !is_game_win && !is_game_loose):
+	if (abs(ground.global_position.x) > distance_parcoured_winning && !is_game_win && !is_game_loose && GameManager.story_mode):
 		win()
 	if (isJournalistShowed && !player.is_hiding):
 		game_over()
@@ -69,5 +78,4 @@ func _on_timer_timeout() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name):
-	print("End Game")
 	end_game_flag = true
