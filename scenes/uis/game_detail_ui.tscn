@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://c86faj6f3nbws"]
+
+[ext_resource type="Texture2D" uid="uid://dos5nelumxq0c" path="res://assets/backgrounds/no-image-icon.png" id="1_ovadw"]
+
+[sub_resource type="GDScript" id="GDScript_yv7me"]
+script/source = "extends Control
+
+@onready var label_text : Label = $HBoxContainer/LabelText as Label
+@onready var label_score : Label = $HBoxContainer/VBoxContainer/LabelScore as Label
+@onready var button : Button = $HBoxContainer/VBoxContainer/Button as Button
+
+@export var scene_name : String = \"main_menu\"
+
+signal launch_game
+
+var number : int = 0
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	for i in 4:
+		GameManager.score_table.append(GameManager.score)
+	set_label()
+	
+	
+func set_label() -> void:
+		# scene_name + _title
+		# scene_name + _text
+		label_text.text = \"Unassigned Title :\\n \\n Unassigned text\"
+		label_score.text = \"Best Score : \" + str(GameManager.score_table[number][0]) + \"\\n\\n Last Score : \" + str(GameManager.score_table[number][1])
+
+
+func _on_button_pressed():
+	launch_game.emit()
+	GameManager.next_scene_to_call = scene_name
+	GameManager.story_mode = false
+	GameManager.in_game = true
+"
+
+[node name="GameDetailUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_yv7me")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 804.0
+offset_bottom = 206.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ovadw")
+expand_mode = 3
+
+[node name="LabelText" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+text = "Ceci est un texte qui explique le jeu en long et large comme on les aime
+Ceci est un texte qui explique le jeu en long et large comme on les aime
+Ceci est un texte qui explique le jeu en long et large comme on les aime
+Ceci est un texte qui explique le jeu en long et large comme on les aime
+Ceci est un texte qui explique le jeu en long et large comme on les aime"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="LabelScore" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Best Score : 999 999
+
+Last Score : 999 999"
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

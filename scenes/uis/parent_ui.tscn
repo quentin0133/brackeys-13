@@ -11,6 +11,7 @@ script/source = "extends CanvasLayer
 signal start_test
 signal button_test
 signal show_main_menu
+signal show_chapter_menu
 
 func _on_main_menu_test_button():
 	button_test.emit()
@@ -22,6 +23,10 @@ func _on_main_menu_start_button():
 
 func _on_game_show_main_menu():
 	show_main_menu.emit()
+	
+	
+func _on_game_show_chapter_menu():
+	show_chapter_menu.emit()
 "
 
 [node name="ParentUi" type="CanvasLayer"]
@@ -39,6 +44,7 @@ visible = false
 [node name="GoverMenu" parent="." instance=ExtResource("3_twc6u")]
 visible = false
 
+[connection signal="show_chapter_menu" from="." to="ChapterMenu" method="_on_main_menu_show_chapter"]
 [connection signal="show_main_menu" from="." to="MainMenu" method="_on_someone_menu_show_main_menu"]
 [connection signal="showChapter" from="MainMenu" to="ChapterMenu" method="_on_main_menu_show_chapter"]
 [connection signal="showSettings" from="MainMenu" to="SettingsMenu" method="_on_main_menu_show_settings"]

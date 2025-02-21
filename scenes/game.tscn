@@ -13,12 +13,12 @@ const scene_journalope = preload(\"res://scenes/minigames/journalope/journalope.
 const scene_wakywaky = preload(\"res://scenes/minigames/waking_up/try.tscn\")
 
 signal show_main_menu
+signal show_chapter_menu
 
 var scene
 
 func _ready():
-	pass # Replace with function body.
-
+	init_score()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -30,11 +30,18 @@ func _on_parent_ui_button_test():
 	load_next_scene(\"scene_wakywaky\")
 
 
+func init_score():
+	for i in 4:
+		GameManager.score_table.append(GameManager.score)
+
 func load_next_scene(name_of_scene:String):
 	GameManager.in_game = true
 	match name_of_scene:
 		\"main_menu\":
 			show_main_menu.emit()
+			GameManager.in_game = false
+		\"chapter_menu\":
+			show_chapter_menu.emit()
 			GameManager.in_game = false
 		\"scene_grand_mother\":
 			scene = scene_grand_mother.instantiate()
@@ -61,4 +68,6 @@ script = SubResource("GDScript_av3qy")
 [node name="ParentHud" parent="." instance=ExtResource("2_wkomf")]
 visible = false
 
+[connection signal="show_chapter_menu" from="." to="ParentUi" method="_on_game_show_chapter_menu"]
+[connection signal="show_main_menu" from="." to="ParentUi" method="_on_game_show_main_menu"]
 [connection signal="button_test" from="ParentUi" to="." method="_on_parent_ui_button_test"]

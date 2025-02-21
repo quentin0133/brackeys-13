@@ -9,17 +9,19 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_back_button_pressed():
+	#get_tree().quit()
 	self.hide()
 	ShowMainMenu.emit()
 
+
 func _on_main_menu_show_chapter():
 	self.show()
+
+
+func _launch_game():
+	self.hide()
 "
 
 [node name="ChapterMenu" type="Control"]
@@ -31,10 +33,69 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_top5c")
 
-[node name="BackButton" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainerTitle" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainerTitle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "List of mini games"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 350
+theme_override_constants/margin_bottom = 100
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+z_index = -5
+z_as_relative = false
+y_sort_enabled = true
+layout_mode = 2
+color = Color(0.408329, 0.408329, 0.408329, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 75
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 250
+alignment = 1
+
+[node name="MarginContainerBackButton" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainerBackButton"]
 custom_minimum_size = Vector2(200, 50)
-layout_mode = 0
+layout_mode = 2
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Back to menu"
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainerBackButton/BackButton" to="." method="_on_back_button_pressed"]
