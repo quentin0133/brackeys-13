@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmt0l0i0cgelj"]
+
+[ext_resource type="Texture2D" uid="uid://b0dn1tjp4g4y" path="res://assets/backgrounds/bus.png" id="1_n7o07"]
+[ext_resource type="PackedScene" uid="uid://c1g11vmotcp4k" path="res://scenes/characters/player.tscn" id="2_4rtug"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5c6x7"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8oq1o"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ixfr3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sxjw2"]
+normal = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acuid"]
+size = Vector2(24, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvmin"]
+size = Vector2(4.54545, 32.7273)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rrtgg"]
+
+[node name="Bus" type="Node2D"]
+
+[node name="Bus" type="Sprite2D" parent="."]
+position = Vector2(0, -176)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_n7o07")
+
+[node name="LimitLeft" type="StaticBody2D" parent="Bus"]
+position = Vector2(-31.5, 0)
+collision_layer = 3
+collision_mask = 3
+collision_priority = 10.0
+
+[node name="Node2D" type="CollisionShape2D" parent="Bus/LimitLeft"]
+shape = SubResource("WorldBoundaryShape2D_5c6x7")
+
+[node name="LimitRight" type="StaticBody2D" parent="Bus"]
+position = Vector2(31.5556, 0)
+collision_layer = 3
+collision_mask = 3
+collision_priority = 10.0
+
+[node name="Node2D" type="CollisionShape2D" parent="Bus/LimitRight"]
+shape = SubResource("WorldBoundaryShape2D_8oq1o")
+
+[node name="LimitBot" type="StaticBody2D" parent="Bus"]
+position = Vector2(0, 160)
+collision_layer = 3
+collision_mask = 3
+collision_priority = 10.0
+
+[node name="Node2D" type="CollisionShape2D" parent="Bus/LimitBot"]
+shape = SubResource("WorldBoundaryShape2D_ixfr3")
+
+[node name="LimitTop" type="StaticBody2D" parent="Bus"]
+position = Vector2(0, -160)
+collision_layer = 3
+collision_mask = 3
+collision_priority = 10.0
+
+[node name="Node2D" type="CollisionShape2D" parent="Bus/LimitTop"]
+shape = SubResource("WorldBoundaryShape2D_sxjw2")
+
+[node name="Driver" type="StaticBody2D" parent="Bus"]
+position = Vector2(21.8182, 149.091)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bus/Driver"]
+position = Vector2(-2.3, -2.85)
+shape = SubResource("RectangleShape2D_acuid")
+
+[node name="CornerLeft" type="StaticBody2D" parent="Bus"]
+position = Vector2(-30, 156.364)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Bus/CornerLeft"]
+position = Vector2(3.5, -1.4)
+build_mode = 1
+polygon = PackedVector2Array(-5, 5, -5, -5, 1.95454, 5.03636)
+
+[node name="ReducedLeft" type="StaticBody2D" parent="Bus"]
+position = Vector2(-29.0909, -0.909088)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bus/ReducedLeft"]
+position = Vector2(-1.36364, 0.909103)
+shape = SubResource("RectangleShape2D_kvmin")
+
+[node name="ReducedRight" type="StaticBody2D" parent="Bus"]
+position = Vector2(-20, -0.909088)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bus/ReducedRight"]
+position = Vector2(50.9091, 0.909103)
+shape = SubResource("RectangleShape2D_kvmin")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_rrtgg")
+
+[node name="Player" parent="." instance=ExtResource("2_4rtug")]
+position = Vector2(-16, -19)
+collision_layer = 3
+max_contacts_reported = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(6.14, 6.14)
+limit_left = -150
+limit_top = -352
+limit_right = 150
+limit_bottom = 0
