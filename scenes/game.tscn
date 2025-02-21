@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ftbjk6jiaank"]
 
 [ext_resource type="PackedScene" uid="uid://bf14n8kges4qh" path="res://scenes/uis/parent_ui.tscn" id="1_tcuif"]
-[ext_resource type="PackedScene" path="res://scenes/uis/hud/parent_hud.tscn" id="2_wkomf"]
+[ext_resource type="PackedScene" uid="uid://de4wjigdx16ub" path="res://scenes/uis/hud/parent_hud.tscn" id="2_wkomf"]
 
 [sub_resource type="GDScript" id="GDScript_av3qy"]
 script/source = "extends Node
@@ -10,6 +10,7 @@ const scene_grand_mother = preload(\"res://scenes/minigames/grandMotherGame/gran
 const scene_crowd_kid = preload(\"res://scenes/minigames/crowd-and-kid/crowd-and-kid-minigame.tscn\")
 const scene_dont_answer = preload(\"res://scenes/minigames/dontAnswer/dont_answer.tscn\")
 const scene_journalope = preload(\"res://scenes/minigames/journalope/journalope.tscn\")
+const scene_wakywaky = preload(\"res://scenes/minigames/waking_up/try.tscn\")
 
 signal show_main_menu
 
@@ -26,7 +27,7 @@ func _process(_delta):
 
 
 func _on_parent_ui_button_test():
-	load_next_scene(\"scene_journalope\")
+	load_next_scene(\"scene_wakywaky\")
 
 
 func load_next_scene(name_of_scene:String):
@@ -46,6 +47,9 @@ func load_next_scene(name_of_scene:String):
 			add_child(scene)
 		\"scene_journalope\":
 			scene = scene_journalope.instantiate()
+			add_child(scene)
+		\"scene_wakywaky\":
+			scene = scene_wakywaky.instantiate()
 			add_child(scene)
 "
 
