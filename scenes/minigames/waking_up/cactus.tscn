@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dp8r5hnb04xft"]
 
-[ext_resource type="Script" path="res://cactus.gd" id="1_h3ifd"]
+[ext_resource type="Script" path="res://scripts/mini-games/waky-waky/cactus.gd" id="1_h3ifd"]
 [ext_resource type="Texture2D" uid="uid://civ08ty2ifcm3" path="res://assets/sprites/decoration/cactus.png" id="2_5mq8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tk4ik"]

@@ -10,7 +10,7 @@ const scene_grand_mother = preload(\"res://scenes/minigames/grandMotherGame/gran
 const scene_crowd_kid = preload(\"res://scenes/minigames/crowd-and-kid/crowd-and-kid-minigame.tscn\")
 const scene_dont_answer = preload(\"res://scenes/minigames/dontAnswer/dont_answer.tscn\")
 const scene_journalope = preload(\"res://scenes/minigames/journalope/journalope.tscn\")
-const scene_wakywaky = preload(\"res://scenes/minigames/waking_up/try.tscn\")
+const scene_wakywaky = preload(\"res://scenes/minigames/waking_up/waky-waky.tscn\")
 
 signal show_main_menu
 signal show_chapter_menu

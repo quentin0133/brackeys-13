@@ -1,36 +1,36 @@
 [gd_scene load_steps=26 format=3 uid="uid://6uhqvpiu62qo"]
 
-[ext_resource type="Script" path="res://scenes/minigames/waking_up/try.gd" id="1_0j4h1"]
-[ext_resource type="PackedScene" uid="uid://dlmvnojj17gqt" path="res://scenes/minigames/waking_up/container.tscn" id="1_pxhdt"]
-[ext_resource type="Script" path="res://scripts/timer.gd" id="3_gba7e"]
-[ext_resource type="Texture2D" uid="uid://c1pujxi1q2xhb" path="res://assets/sprites/timer/dynamite-cord.png" id="4_fltk4"]
-[ext_resource type="Texture2D" uid="uid://q3vse88nwyc8" path="res://assets/sprites/nerd.png" id="4_riiud"]
-[ext_resource type="Texture2D" uid="uid://dbvonytcgn0lh" path="res://assets/sprites/timer/dynamite.png" id="5_anqfi"]
-[ext_resource type="Script" path="res://scripts/animated_texture_rect.gd" id="6_qk1qx"]
-[ext_resource type="Texture2D" uid="uid://bmkoad33pnb7u" path="res://assets/sprites/sfx/dynamite_fire.png" id="7_g0d5e"]
-[ext_resource type="PackedScene" uid="uid://c8vpqg5hr1hef" path="res://scenes/minigames/waking_up/strongarm.tscn" id="9_oeiig"]
-[ext_resource type="PackedScene" uid="uid://dp8r5hnb04xft" path="res://scenes/minigames/waking_up/cactus.tscn" id="10_63o6n"]
-[ext_resource type="Texture2D" uid="uid://bt07621023gwm" path="res://assets/backgrounds/waky-waky-background.png" id="11_gfloj"]
+[ext_resource type="Script" path="res://scripts/mini-games/waky-waky/waky-waky.gd" id="1_cwxsv"]
+[ext_resource type="PackedScene" uid="uid://dlmvnojj17gqt" path="res://scenes/minigames/waking_up/container.tscn" id="2_fsei4"]
+[ext_resource type="Texture2D" uid="uid://q3vse88nwyc8" path="res://assets/sprites/nerd.png" id="3_e8s7y"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="4_0f2ys"]
+[ext_resource type="Texture2D" uid="uid://c1pujxi1q2xhb" path="res://assets/sprites/timer/dynamite-cord.png" id="5_82n1m"]
+[ext_resource type="Texture2D" uid="uid://dbvonytcgn0lh" path="res://assets/sprites/timer/dynamite.png" id="6_om53c"]
+[ext_resource type="Script" path="res://scripts/animated_texture_rect.gd" id="7_i3rqn"]
+[ext_resource type="Texture2D" uid="uid://bmkoad33pnb7u" path="res://assets/sprites/sfx/dynamite_fire.png" id="8_12t8f"]
+[ext_resource type="PackedScene" uid="uid://c8vpqg5hr1hef" path="res://scenes/minigames/waking_up/strongarm.tscn" id="9_51doj"]
+[ext_resource type="PackedScene" uid="uid://dp8r5hnb04xft" path="res://scenes/minigames/waking_up/cactus.tscn" id="10_sb0cg"]
+[ext_resource type="Texture2D" uid="uid://bt07621023gwm" path="res://assets/backgrounds/waky-waky-background.png" id="11_e2wxr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8ccb"]
 radius = 3.35411
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptih7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqxac"]
-atlas = ExtResource("7_g0d5e")
-region = Rect2(8, 0, 8, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vmp4"]
-atlas = ExtResource("7_g0d5e")
+atlas = ExtResource("8_12t8f")
 region = Rect2(0, 0, 8, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqxac"]
+atlas = ExtResource("8_12t8f")
+region = Rect2(8, 0, 8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
-atlas = ExtResource("7_g0d5e")
+atlas = ExtResource("8_12t8f")
 region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
-atlas = ExtResource("7_g0d5e")
+atlas = ExtResource("8_12t8f")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d3h73"]
@@ -135,14 +135,14 @@ _data = {
 "text_moving": SubResource("Animation_6ubo7")
 }
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_0j4h1")
+[node name="waky-waky" type="Node2D"]
+script = ExtResource("1_cwxsv")
 
-[node name="Arm" parent="." instance=ExtResource("1_pxhdt")]
+[node name="Arm" parent="." instance=ExtResource("2_fsei4")]
 position = Vector2(36, 482)
 scale = Vector2(18.2148, -1.07426)
 
-[node name="Alarm" parent="." instance=ExtResource("1_pxhdt")]
+[node name="Alarm" parent="." instance=ExtResource("2_fsei4")]
 position = Vector2(36, 760)
 scale = Vector2(18.2148, -1.07426)
 
@@ -157,7 +157,7 @@ shape = SubResource("CircleShape2D_x8ccb")
 
 [node name="Sprite2D" type="Sprite2D" parent="NIKOUMOUK"]
 z_index = -3
-texture = ExtResource("4_riiud")
+texture = ExtResource("3_e8s7y")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -169,7 +169,7 @@ offset_left = 294.0
 offset_right = -294.0
 offset_bottom = 84.0
 grow_horizontal = 2
-script = ExtResource("3_gba7e")
+script = ExtResource("4_0f2ys")
 duration = 60
 
 [node name="Progress" type="TextureRect" parent="CanvasLayer/Timer"]
@@ -180,7 +180,7 @@ offset_top = 20.0
 offset_right = -0.800003
 offset_bottom = 24.0
 scale = Vector2(10, 10)
-texture = ExtResource("4_fltk4")
+texture = ExtResource("5_82n1m")
 expand_mode = 1
 stretch_mode = 1
 
@@ -191,9 +191,9 @@ offset_top = 20.0
 offset_right = -144.0
 offset_bottom = 36.0
 scale = Vector2(10, 10)
-texture = ExtResource("5_anqfi")
+texture = ExtResource("6_om53c")
 stretch_mode = 4
-script = ExtResource("6_qk1qx")
+script = ExtResource("7_i3rqn")
 sprites = SubResource("SpriteFrames_ptih7")
 
 [node name="FireFX" type="TextureRect" parent="CanvasLayer/Timer"]
@@ -206,11 +206,10 @@ offset_right = -35.0
 offset_bottom = 8.0
 grow_horizontal = 0
 scale = Vector2(10, 10)
-texture = SubResource("AtlasTexture_hqxac")
+texture = SubResource("AtlasTexture_3vmp4")
 stretch_mode = 4
-script = ExtResource("6_qk1qx")
+script = ExtResource("7_i3rqn")
 sprites = SubResource("SpriteFrames_d3h73")
-frame_index = 1
 auto_play = true
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]
@@ -313,17 +312,17 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="JMTAGRANDMERE" parent="." instance=ExtResource("9_oeiig")]
+[node name="JMTAGRANDMERE" parent="." instance=ExtResource("9_51doj")]
 position = Vector2(948, 150)
 scale = Vector2(30, 30)
 collision_layer = 3
 collision_mask = 3
 
-[node name="Area2D" parent="." instance=ExtResource("10_63o6n")]
+[node name="Area2D" parent="." instance=ExtResource("10_sb0cg")]
 position = Vector2(485, 947)
 scale = Vector2(15, 15)
 
-[node name="Area2D2" parent="." instance=ExtResource("10_63o6n")]
+[node name="Area2D2" parent="." instance=ExtResource("10_sb0cg")]
 position = Vector2(1447, 943)
 scale = Vector2(15, 15)
 
@@ -337,7 +336,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_gfloj")
+texture = ExtResource("11_e2wxr")
 
 [connection signal="current_position" from="Arm" to="." method="_on_arm_current_position"]
 [connection signal="current_position" from="Alarm" to="." method="_on_alarm_current_position"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8vpqg5hr1hef"]
 
 [ext_resource type="Texture2D" uid="uid://dqkfmbcng76ss" path="res://assets/sprites/main-character/fist-main-character.png" id="1_5lgwr"]
-[ext_resource type="Script" path="res://scenes/minigames/waking_up/strongarm.gd" id="1_wkrhg"]
+[ext_resource type="Script" path="res://scripts/mini-games/waky-waky/strongarm.gd" id="1_wkrhg"]
 
 [sub_resource type="Animation" id="Animation_sayi3"]
 length = 0.001
