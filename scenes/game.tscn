@@ -19,7 +19,7 @@ var scene
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if self.get_child_count() == 2 and GameManager.in_game == true:
+	if self.get_child_count() == 2 and GameManager.in_game :
 		load_next_scene(GameManager.next_scene_to_call)
 
 
