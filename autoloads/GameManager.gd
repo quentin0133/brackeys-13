@@ -8,7 +8,7 @@ var show_score : bool = false
 var data_game = {
 	"scene_journalope" : ['Journalope','Description',0,'Best Score','Last Score',0,0,true],
 	"scene_crowd_kid" : ['Crow and Kid','Description',1,'Best Score','Last Score',0,0,false],
-	"scene_wakywaky" : ['title','Description','Score hud','Best Score','Last Score',0,false],
+	"scene_wakywaky" : ['Waky waky','Description',2,'Best Score','Last Score',0,0,false],
 	"scene_grand_mother" : ['title','Description','Score hud','Best Score','Last Score',0,0,false],
 	"scene_dont_answer" : ['title','Description','Score hud','Best Score','Last Score',0,0,false],
 	"main_menu" : ['Default title','Default description','Score hud','Best Score','Last Score',0,0,false]

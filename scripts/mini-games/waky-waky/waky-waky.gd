@@ -64,5 +64,6 @@ func _on_timer_on_timeout() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	#BUG : Crash si tu touche a 00.1 sec
 	print("ouch")
 	$CanvasLayer/Timer.current_duration -= 10

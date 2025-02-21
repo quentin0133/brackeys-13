@@ -101,17 +101,36 @@ vertical_scroll_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 250
+size_flags_vertical = 3
 alignment = 1
 script = SubResource("GDScript_025ir")
 
-[node name="GameDetailUi" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_hl1ti")]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GameDetailUi" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer" instance=ExtResource("1_hl1ti")]
 layout_mode = 2
 scene_name = "scene_journalope"
 
-[node name="GameDetailUi2" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_hl1ti")]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GameDetailUi" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2" instance=ExtResource("1_hl1ti")]
 layout_mode = 2
 scene_name = "scene_crowd_kid"
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GameDetailUi" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer3" instance=ExtResource("1_hl1ti")]
+layout_mode = 2
+scene_name = "scene_wakywaky"
 
 [node name="MarginContainerBackButton" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -126,6 +145,4 @@ theme_override_font_sizes/font_size = 30
 text = "Back to menu"
 
 [connection signal="refresh" from="." to="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" method="refresh"]
-[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/GameDetailUi" to="." method="_launch_game"]
-[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/GameDetailUi2" to="." method="_launch_game"]
 [connection signal="pressed" from="VBoxContainer/MarginContainerBackButton/BackButton" to="." method="_on_back_button_pressed"]
