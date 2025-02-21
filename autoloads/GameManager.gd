@@ -14,10 +14,8 @@ var data_game = {
 	
 }
 
-func update_score(scene_name: String, score: int):
-	data_game[scene_name][6] = score
-	if score > data_game[scene_name][5] :
-		data_game[scene_name][5] = score
-
+func update_score(scene_name: String):
+	if data_game[scene_name][6]  > data_game[scene_name][5] :
+		data_game[scene_name][5] = data_game[scene_name][6] 
 #GrandMa game
 var select_obstacle :int = 0

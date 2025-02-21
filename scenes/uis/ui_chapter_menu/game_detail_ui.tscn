@@ -24,6 +24,7 @@ func _ready():
 	#for i in 4:
 	#	GameManager.score_table.append(GameManager.score)
 	set_detail_ui()
+	print(GameManager.data_game[scene_name])
 	
 	
 func set_detail_ui() -> void:
@@ -37,6 +38,11 @@ func _on_button_pressed():
 	GameManager.next_scene_to_call = scene_name
 	GameManager.story_mode = false
 	GameManager.in_game = true
+	GameManager.data_game[scene_name][6] = 0
+
+
+func _on_child_exiting_tree(node):
+	_ready()
 "
 
 [node name="GameDetailUi" type="Control"]
@@ -85,4 +91,5 @@ Last Score : 999 999"
 layout_mode = 2
 text = "Play"
 
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

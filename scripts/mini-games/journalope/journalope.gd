@@ -32,6 +32,7 @@ func _input(event):
 			queue_free()
 		elif event.pressed and end_game_flag and !GameManager.story_mode :
 			GameManager.next_scene_to_call = "main_menu"
+			GameManager.update_score("scene_journalope")
 			queue_free()
 
 func _on_timer_on_timeout() -> void:
@@ -41,11 +42,13 @@ func _on_timer_on_timeout() -> void:
 func _process(delta: float) -> void:
 	if (is_game_win || is_game_loose):
 		return
-	if (abs(ground.global_position.x) > distance_parcoured_winning && !is_game_win && !is_game_loose && GameManager.story_mode):
+	elif (abs(ground.global_position.x) > distance_parcoured_winning && !is_game_win && !is_game_loose && GameManager.story_mode):
 		win()
-	if (isJournalistShowed && !player.is_hiding):
+	elif (isJournalistShowed && !player.is_hiding):
 		game_over()
-
+	elif (isJournalistShowed && player.is_hiding && !GameManager.story_mode):
+		GameManager.data_game["scene_journalope"][6] += 100
+	
 func win():
 	is_game_win = true
 	#print("Win")

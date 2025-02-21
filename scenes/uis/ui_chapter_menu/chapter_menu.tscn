@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxdjiv7cl2i4e"]
+[gd_scene load_steps=4 format=3 uid="uid://dxdjiv7cl2i4e"]
 
 [ext_resource type="PackedScene" uid="uid://c86faj6f3nbws" path="res://scenes/uis/ui_chapter_menu/game_detail_ui.tscn" id="1_hl1ti"]
 
@@ -6,6 +6,7 @@
 script/source = "extends Control
 
 signal ShowMainMenu
+signal refresh
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -20,10 +21,25 @@ func _on_back_button_pressed():
 
 func _on_main_menu_show_chapter():
 	self.show()
+	refresh.emit()
 
 
 func _launch_game():
 	self.hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_025ir"]
+script/source = "extends VBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func refresh()-> void:
+	print(get_child(0))
+	var count = get_child_count()
+	for i in count:
+		var child = get_child(0)
+		self.remove_child(child)
+		self.add_child(child)
 "
 
 [node name="ChapterMenu" type="Control"]
@@ -87,6 +103,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 250
 alignment = 1
+script = SubResource("GDScript_025ir")
 
 [node name="GameDetailUi" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_hl1ti")]
 layout_mode = 2
@@ -104,5 +121,6 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Back to menu"
 
+[connection signal="refresh" from="." to="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" method="refresh"]
 [connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/GameDetailUi" to="." method="_launch_game"]
 [connection signal="pressed" from="VBoxContainer/MarginContainerBackButton/BackButton" to="." method="_on_back_button_pressed"]

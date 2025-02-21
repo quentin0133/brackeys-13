@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwjascb1eanlj"]
 
-[ext_resource type="PackedScene" path="res://scenes/uis/hot_key_rebind_button.tscn" id="1_bbcvh"]
+[ext_resource type="PackedScene" uid="uid://djr2t3rkhwdl0" path="res://scenes/uis/hot_key_rebind_button.tscn" id="1_bbcvh"]
 
 [sub_resource type="GDScript" id="GDScript_bxmxr"]
 script/source = "extends Control
