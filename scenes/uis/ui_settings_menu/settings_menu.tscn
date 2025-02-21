@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwjascb1eanlj"]
 
-[ext_resource type="PackedScene" uid="uid://djr2t3rkhwdl0" path="res://scenes/uis/hot_key_rebind_button.tscn" id="1_bbcvh"]
+[ext_resource type="PackedScene" uid="uid://djr2t3rkhwdl0" path="res://scenes/uis/ui_settings_menu/hot_key_rebind_button.tscn" id="1_bbcvh"]
 
 [sub_resource type="GDScript" id="GDScript_bxmxr"]
 script/source = "extends Control
@@ -174,18 +174,6 @@ action_name = "Up"
 [node name="HotKeyRebindButton4" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
 layout_mode = 2
 action_name = "Down"
-
-[node name="HotKeyRebindButton7" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
-layout_mode = 2
-action_name = "Jump"
-
-[node name="HotKeyRebindButton5" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
-layout_mode = 2
-action_name = "Attack"
-
-[node name="HotKeyRebindButton6" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" instance=ExtResource("1_bbcvh")]
-layout_mode = 2
-action_name = "Action"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainerBiding"]
 layout_mode = 2

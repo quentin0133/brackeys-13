@@ -29,10 +29,7 @@ func create_keybinds_dictionary() -> Dictionary:
 		keybind_ressource.MOVE_LEFT : keybind_ressource.DEFAULT_MOVE_LEFT_KEY,
 		keybind_ressource.MOVE_RIGHT : keybind_ressource.DEFAULT_MOVE_RIGHT_KEY,	
 		keybind_ressource.MOVE_UP : keybind_ressource.DEFAULT_MOVE_UP_KEY,	
-		keybind_ressource.MOVE_DOWN : keybind_ressource.DEFAULT_MOVE_DOWN_KEY,	
-		keybind_ressource.JUMP : keybind_ressource.DEFAULT_JUMP,	
-		keybind_ressource.ATTACK : keybind_ressource.DEFAULT_ATTACK,	
-		keybind_ressource.ACTION : keybind_ressource.DEFAULT_ACTION,
+		keybind_ressource.MOVE_DOWN : keybind_ressource.DEFAULT_MOVE_DOWN_KEY
 	}
 	return keybinds_dict
 
@@ -42,10 +39,7 @@ func create_keybinds_name_dictionary() -> Dictionary:
 		keybind_ressource.MOVE_LEFT : "Left",
 		keybind_ressource.MOVE_RIGHT : "Right",	
 		keybind_ressource.MOVE_UP : "Up",	
-		keybind_ressource.MOVE_DOWN : "Down",	
-		keybind_ressource.JUMP : "Jump",	
-		keybind_ressource.ATTACK : "Attack",	
-		keybind_ressource.ACTION : "Action",
+		keybind_ressource.MOVE_DOWN : "Down"
 	}
 	return keybinds_name_dict
 
@@ -55,9 +49,6 @@ func rest_keybinds_dictionary() -> void:
 		keybind_ressource.MOVE_LEFT : keybind_ressource.DEFAULT_MOVE_LEFT_KEY,
 		keybind_ressource.MOVE_RIGHT : keybind_ressource.DEFAULT_MOVE_RIGHT_KEY,	
 		keybind_ressource.MOVE_UP : keybind_ressource.DEFAULT_MOVE_UP_KEY,	
-		keybind_ressource.MOVE_DOWN : keybind_ressource.DEFAULT_MOVE_DOWN_KEY,	
-		keybind_ressource.JUMP : keybind_ressource.DEFAULT_JUMP,	
-		keybind_ressource.ATTACK : keybind_ressource.DEFAULT_ATTACK,	
-		keybind_ressource.ACTION : keybind_ressource.DEFAULT_ACTION,
+		keybind_ressource.MOVE_DOWN : keybind_ressource.DEFAULT_MOVE_DOWN_KEY
 	}
 	settings_dict["keybinds"] = keybinds_dict
