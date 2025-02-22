@@ -45,6 +45,8 @@ var reponse4 : Array = [\" ... \",\"Somewhere ?\",\"None of [b]my[/b] business\"
 
 var number : int = 0
 var try : int = 0
+var hint_int : int = 1
+var hint_a : float = 0.05
 var show_container : bool = true
 var show_label : bool = true
 var first_time : bool = true
@@ -73,16 +75,36 @@ func another_question():
 		label_button4.text = \"[center]\" + reponse4[number] + \"[/center]\"
 		number += 1
 		
+	if endgame_phase:
+		timer_endgame.start(15)
+		print(try)
+		if try == 250:
+			hint.text = \"\"
+		if try == 200:
+			hint.text = \"U_u \\n Ok si tu veux perdre ton temps\"
+			try += 5
+		if try == 150:
+			hint.text = \"You're such an idiot \\n (Il y a rien d'autre \\n après ce message vraiment)\"
+			try += 5
+		elif try == 100:
+			hint.text = \"You're such an idiot\"
+			hint_int = 5
+			hint_a = 0.5
+			try += 5
+		elif try == 50:
+			hint.text = \"Juste arrête de le répondre !\"
+			hint_int = 2
+			hint_a = 0.25
+			try += 2
+		else:
+			try += hint_int
+			hint.modulate.a += hint_a
+	
 	if number > 3 :
 		number = 0
 		if !endgame_phase:
 			timer_endgame.start(15)
-			endgame_phase = false
-	if try == 100:
-		print(\"You're such an idiot\")
-	else:
-		try += 1
-		#hint.modulate.a += 0.05
+			endgame_phase = true
 	
 func _on_timer_before_end_timeout():
 	timer_endgame.stop()
@@ -182,6 +204,7 @@ script = SubResource("GDScript_7ofqn")
 
 [node name="Hint" type="Label" parent="."]
 self_modulate = Color(1, 1, 1, 0.0980392)
+z_index = 5
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
