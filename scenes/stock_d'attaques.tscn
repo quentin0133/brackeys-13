@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=3 uid="uid://bli677sgjc27s"]
+
+[ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/path_follow_2d.gd" id="1_j7gc8"]
+[ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/area_2d.gd" id="2_vkgwl"]
+
+[sub_resource type="Curve2D" id="Curve2D_f1gb7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 450, 0, 0, 0, 0, 0, -1000, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unbhk"]
+size = Vector2(658, 20)
+
+[sub_resource type="Curve2D" id="Curve2D_j55u1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 0, 500)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oi62"]
+size = Vector2(48, 154)
+
+[sub_resource type="Curve2D" id="Curve2D_gdd1j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 1, 473, 0, 0, 0, 0, 103, 476, 0, 0, 0, 0, 103, -78, 0, 0, 0, 0, 204, -74, 0, 0, 0, 0, 216, 470)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30cg3"]
+size = Vector2(183, 74)
+
+[sub_resource type="Curve2D" id="Curve2D_3xgps"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -317, -1, 0, 0, 0, 0, 1019, -1, 0, 0, 0, 0, 1016, 96, 0, 0, 0, 0, -378, 109, 0, 0, 0, 0, -375, 201, 0, 0, 0, 0, 1016, 207)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgjmj"]
+size = Vector2(542.034, 60.36)
+
+[node name="Stock d\'attaques" type="Node2D"]
+
+[node name="AttaqueHorizontale" type="Path2D" parent="."]
+curve = SubResource("Curve2D_f1gb7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AttaqueHorizontale"]
+position = Vector2(450, 0)
+rotation = 3.14159
+loop = false
+script = ExtResource("1_j7gc8")
+
+[node name="Area2D" type="Area2D" parent="AttaqueHorizontale/PathFollow2D"]
+script = ExtResource("2_vkgwl")
+
+[node name="Label" type="Label" parent="AttaqueHorizontale/PathFollow2D/Area2D"]
+offset_top = 17.0
+offset_right = 656.0
+offset_bottom = 47.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 21
+text = "Did you know that the earth revolves around itself at 42069kmh?"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttaqueHorizontale/PathFollow2D/Area2D"]
+position = Vector2(-327, 1)
+shape = SubResource("RectangleShape2D_unbhk")
+
+[node name="AttaqueVerticale" type="Path2D" parent="."]
+curve = SubResource("Curve2D_j55u1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AttaqueVerticale"]
+position = Vector2(0, -100)
+rotation = 1.5708
+loop = false
+script = ExtResource("1_j7gc8")
+
+[node name="Area2D" type="Area2D" parent="AttaqueVerticale/PathFollow2D"]
+script = ExtResource("2_vkgwl")
+
+[node name="Label" type="Label" parent="AttaqueVerticale/PathFollow2D/Area2D"]
+offset_left = -200.0
+offset_top = 17.0
+offset_right = -156.0
+offset_bottom = 179.0
+rotation = -1.5708
+theme_override_font_sizes/font_size = 21
+text = "Why 
+are 
+you 
+ugly 
+sir ?"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttaqueVerticale/PathFollow2D/Area2D"]
+position = Vector2(-121, -4.99999)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_0oi62")
+
+[node name="AttaqueVerticaleVague" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gdd1j")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AttaqueVerticaleVague"]
+position = Vector2(0, -100)
+rotation = 1.5708
+rotates = false
+loop = false
+script = ExtResource("1_j7gc8")
+
+[node name="Area2D" type="Area2D" parent="AttaqueVerticaleVague/PathFollow2D"]
+script = ExtResource("2_vkgwl")
+
+[node name="Label" type="Label" parent="AttaqueVerticaleVague/PathFollow2D/Area2D"]
+offset_left = -215.88
+offset_top = 31.57
+offset_right = -135.88
+offset_bottom = 226.57
+rotation = -1.5708
+theme_override_font_sizes/font_size = 21
+text = "Do you 
+have 
+games 
+on 
+your 
+phone ?"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttaqueVerticaleVague/PathFollow2D/Area2D"]
+position = Vector2(-115.5, -3.99957)
+shape = SubResource("RectangleShape2D_30cg3")
+
+[node name="AttaqueHorizontaleVague" type="Path2D" parent="."]
+position = Vector2(3, -2)
+curve = SubResource("Curve2D_3xgps")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AttaqueHorizontaleVague"]
+position = Vector2(-317, -1)
+rotation = -0.00121212
+rotates = false
+loop = false
+script = ExtResource("1_j7gc8")
+
+[node name="Area2D" type="Area2D" parent="AttaqueHorizontaleVague/PathFollow2D"]
+script = ExtResource("2_vkgwl")
+
+[node name="Label" type="Label" parent="AttaqueHorizontaleVague/PathFollow2D/Area2D"]
+offset_left = -564.9
+offset_top = -34.0
+offset_right = -19.9
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 21
+text = "Last time, an old man told me to get into his van
+ to give me some sweets, but he didn't even have any!"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttaqueHorizontaleVague/PathFollow2D/Area2D"]
+position = Vector2(-291.977, -2.84545)
+shape = SubResource("RectangleShape2D_vgjmj")

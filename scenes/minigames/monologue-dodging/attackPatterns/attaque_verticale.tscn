@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfforknl2kpf2"]
+
+[ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/path_follow_2d.gd" id="1_ha1oh"]
+[ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/area_2d.gd" id="2_17sx6"]
+
+[sub_resource type="Curve2D" id="Curve2D_3r76u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 0, 500)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62y4d"]
+size = Vector2(48, 154)
+
+[node name="AttaqueVerticale" type="Path2D"]
+curve = SubResource("Curve2D_3r76u")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, -100)
+rotation = 1.5708
+loop = false
+script = ExtResource("1_ha1oh")
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+script = ExtResource("2_17sx6")
+
+[node name="Label" type="Label" parent="PathFollow2D/Area2D"]
+offset_left = -200.0
+offset_top = 17.0
+offset_right = -156.0
+offset_bottom = 179.0
+rotation = -1.5708
+theme_override_font_sizes/font_size = 21
+text = "Why 
+are 
+you 
+ugly 
+sir ?"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
+position = Vector2(-121, -4.99999)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_62y4d")

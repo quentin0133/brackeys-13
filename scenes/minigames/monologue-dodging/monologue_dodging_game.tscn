@@ -1,9 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwpxyckqnqpvd"]
+[gd_scene load_steps=28 format=3 uid="uid://bwpxyckqnqpvd"]
 
 [ext_resource type="Script" path="res://scripts/player_grid_snap.gd" id="1_8pqyr"]
+[ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/monologue_dodging_game.gd" id="1_iheio"]
 [ext_resource type="Texture2D" uid="uid://b4dkyjt1u13b7" path="res://assets/sprites/mini-main-character.png" id="2_husfa"]
+[ext_resource type="PackedScene" uid="uid://ffxm5fx4mepf" path="res://scenes/minigames/monologue-dodging/attackPatterns/attaque_horizontale.tscn" id="2_sl0x2"]
+[ext_resource type="PackedScene" uid="uid://d0kbfivnpa4sk" path="res://scenes/minigames/monologue-dodging/attackPatterns/attaque_horizontale_vague.tscn" id="3_47qms"]
 [ext_resource type="Texture2D" uid="uid://unhunsxufee4" path="res://assets/sprites/shadow.png" id="3_rg32g"]
 [ext_resource type="Texture2D" uid="uid://rpflxk4ojni1" path="res://assets/tictactoe grid.png" id="4_rp5hp"]
+[ext_resource type="PackedScene" uid="uid://bfforknl2kpf2" path="res://scenes/minigames/monologue-dodging/attackPatterns/attaque_verticale.tscn" id="4_trvei"]
+[ext_resource type="PackedScene" uid="uid://6fdqmjf287hn" path="res://scenes/minigames/monologue-dodging/attackPatterns/attaque_verticale_vague.tscn" id="5_dcrwe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ci6ut"]
 atlas = ExtResource("2_husfa")
@@ -153,28 +158,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lxmfq"]
 radius = 3.16228
 
-[sub_resource type="GDScript" id="GDScript_iboj2"]
-script/source = "extends Label
-
-@export var text_lines = [\"Blabla bla bla bla bla bla bla\", \"You know when I was your age\", \"Oh you remind me of someone...\"]
-@export var spawn_positions = [Vector2(0, 0), Vector2(200, 0), Vector2(400, 0)]
-
-func spawn_monologue():
-	var monologue = Label.new()
-	monologue.text = text_lines[randi() % text_lines.size()]
-	monologue.position = spawn_positions[randi() % spawn_positions.size()]
-	add_child(monologue)
-
-	var tween = get_tree().create_tween()
-	tween.tween_property(monologue, \"position\", monologue.position + Vector2(0, 400), 2.0)
-	await tween.finished
-	monologue.queue_free()
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_82h4s"]
-size = Vector2(28.693, 3.84178)
-
 [node name="MonologueDodgingGame" type="Node2D"]
+script = ExtResource("1_iheio")
+attack_scenes = Array[PackedScene]([ExtResource("2_sl0x2"), ExtResource("3_47qms"), ExtResource("4_trvei"), ExtResource("5_dcrwe")])
 
 [node name="Player" type="CharacterBody2D" parent="."]
 scale = Vector2(2, 2)
@@ -194,25 +180,18 @@ z_index = -5
 position = Vector2(0, 7.5)
 texture = ExtResource("3_rg32g")
 
-[node name="Monologue" type="Label" parent="."]
-offset_left = -1154.0
-offset_top = -648.0
-offset_right = -1018.0
-offset_bottom = -625.0
-scale = Vector2(4.785, 4.785)
-text = "Bla bla bla bla bla"
-script = SubResource("GDScript_iboj2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Monologue"]
-position = Vector2(67.8201, 11.9162)
-scale = Vector2(4.785, 4.785)
-shape = SubResource("RectangleShape2D_82h4s")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(100, 90)
 zoom = Vector2(2.765, 2.765)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Grille" type="Sprite2D" parent="."]
+z_index = -100
 position = Vector2(130, 134)
 scale = Vector2(6, 6)
 texture = ExtResource("4_rp5hp")
+
+[node name="AttackSpawnerTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="AttackSpawnerTimer" to="." method="_on_attack_spawner_timer_timeout"]
