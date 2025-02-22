@@ -8,7 +8,7 @@
 [sub_resource type="GDScript" id="GDScript_qiud6"]
 script/source = "extends CanvasLayer
 
-signal start_test
+signal button_start
 signal button_test
 signal show_main_menu
 signal show_chapter_menu
@@ -18,7 +18,7 @@ func _on_main_menu_test_button():
 
 
 func _on_main_menu_start_button():
-	start_test.emit()
+	button_start.emit()
 
 
 func _on_game_show_main_menu():

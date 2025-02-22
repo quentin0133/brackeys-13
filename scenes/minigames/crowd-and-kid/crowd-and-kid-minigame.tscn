@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1yhf1k08bvnk" path="res://assets/tileset/environment-tileset.png" id="3_0ewt5"]
 [ext_resource type="Script" path="res://scripts/pnj_generator.gd" id="3_jo6nq"]
 [ext_resource type="Texture2D" uid="uid://dvhkhmcai7r34" path="res://assets/sprites/kid/kid.png" id="4_toi8t"]
-[ext_resource type="Texture2D" uid="uid://cf3ogot21bvcf" path="res://assets/sprites/shit/shit.png" id="5_7et8i"]
+[ext_resource type="Texture2D" uid="uid://cf3ogot21bvcf" path="res://assets/sprites/Shit/shit.png" id="5_7et8i"]
 [ext_resource type="Texture2D" uid="uid://cclcdtnfd2jrm" path="res://assets/sprites/bullied-kid-minigame/newspaper-bullied-kid.png" id="7_xaqhg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pahvy"]

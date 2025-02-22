@@ -16,11 +16,11 @@ func _input(event: InputEvent) -> void:
 		if playing:
 			$AnimationPlayer.play("hit")
 		elif (GameManager.story_mode):
-			GameManager.next_scene_to_call = "scene_journalope"
+			GameManager.next_scene_to_call = "scene_grand_mother"
 			if(get_parent()):
 				get_parent().queue_free()
 		elif (!GameManager.story_mode):
-			GameManager.next_scene_to_call = "main_menu"
+			GameManager.next_scene_to_call = "chapter_menu"
 			if(get_parent()):
 				get_parent().queue_free()
 

@@ -7,10 +7,6 @@ script/source = "extends Control
 
 signal ShowMainMenu
 signal refresh
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 
 func _on_back_button_pressed():
@@ -34,7 +30,6 @@ script/source = "extends VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func refresh()-> void:
-	print(get_child(0))
 	var count = get_child_count()
 	for i in count:
 		var child = get_child(0)

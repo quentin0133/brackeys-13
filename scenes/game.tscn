@@ -52,6 +52,11 @@ func load_next_scene(name_of_scene:String):
 		\"scene_wakywaky\":
 			scene = scene_wakywaky.instantiate()
 			add_child(scene)
+
+
+func _on_parent_ui_button_start():
+	GameManager.story_mode = true
+	load_next_scene(\"scene_wakywaky\")
 "
 
 [node name="Game" type="Node"]
@@ -64,4 +69,5 @@ visible = false
 
 [connection signal="show_chapter_menu" from="." to="ParentUi" method="_on_game_show_chapter_menu"]
 [connection signal="show_main_menu" from="." to="ParentUi" method="_on_game_show_main_menu"]
+[connection signal="button_start" from="ParentUi" to="." method="_on_parent_ui_button_start"]
 [connection signal="button_test" from="ParentUi" to="." method="_on_parent_ui_button_test"]

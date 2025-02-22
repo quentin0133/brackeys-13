@@ -7,8 +7,8 @@ script/source = "extends CanvasLayer
 
 
 func _process(_delta):
-	label.text = \"Score : \" + str(GameManager.data_game[GameManager.next_scene_to_call][6])
 	if (!GameManager.story_mode && GameManager.in_game && GameManager.show_score):
+		label.text = \"Score : \" + str(GameManager.data_game[GameManager.next_scene_to_call][6])
 		self.show()
 	else:
 		self.hide()

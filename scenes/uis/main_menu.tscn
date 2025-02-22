@@ -9,13 +9,15 @@ signal start_button
 signal test_button
 
 @onready var slider_master_volume = $VSliderMasterVolume as VSlider
-
+@onready var chapter_button = $VBoxContainer/ChapterButton as Button
 
 func _ready():
 	slider_master_volume.value = SettingsManager.settings_dict[\"master_volume\"]
 	if OS.has_feature(\"web\") :
 		$VBoxContainer/QuitButton.hide()
 
+func _process(delta):
+	chapter_button.visible = GameManager.story_mode_finish
 
 func _on_settings_button_pressed():
 	self.hide()
@@ -47,9 +49,8 @@ func _on_chapter_button_button_up():
 
 
 func _on_start_button_button_up():
-	pass
-	#self.hide()
-	#start_button.emit()
+	self.hide()
+	start_button.emit()
 "
 
 [node name="MainMenu" type="Control"]
