@@ -12,7 +12,7 @@ var show_timer_hud : bool = false
 var timer_lock : bool = false
 
 var data_game = {
-	"scene_journalope" : ['Journalope','Description',0,'Best Score','Last Score',0,0,true],
+	"scene_journalope" : ['Journalope','Description',0,'Best sprint','Last sprint',0,0,true],
 	"scene_crowd_kid" : ['Crow and Kid','Description',1,'Best Score','Last Score',0,0,false],
 	"scene_wakywaky" : ['Waky waky','Description',2,'Best Score','Last Score',0,0,false],
 	"scene_grand_mother" : ['Grand Mother Game','Description',3,'Best Score','Last Score',0,0,false],

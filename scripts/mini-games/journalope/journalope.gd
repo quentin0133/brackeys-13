@@ -30,11 +30,12 @@ func _input(event):
 		if event.pressed and end_game_flag and GameManager.story_mode and is_game_win :
 			GameManager.next_scene_to_call = "scene_dont_answer"
 			queue_free()
-		elif event.pressed and end_game_flag and !GameManager.story_mode and is_game_win :
+		elif event.pressed and end_game_flag and !GameManager.story_mode  :
 			GameManager.next_scene_to_call = "chapter_menu"
 			GameManager.update_score("scene_journalope")
 			queue_free()
-		else:
+		elif is_game_loose and end_game_flag and GameManager.story_mode:
+			is_game_loose =false
 			queue_free()
 
 func _on_timer_on_timeout() -> void:
@@ -48,9 +49,7 @@ func _process(delta: float) -> void:
 		win()
 	elif (isJournalistShowed && !player.is_hiding):
 		game_over()
-	# TODO : Remplacer le score par le chemin parcouru
-	elif (isJournalistShowed && player.is_hiding && !GameManager.story_mode): 
-		GameManager.data_game["scene_journalope"][6] += 100
+
 	
 func win():
 	is_game_win = true
