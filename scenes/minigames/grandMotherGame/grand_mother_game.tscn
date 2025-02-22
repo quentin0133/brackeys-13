@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://y11w7wqmtqp2"]
+[gd_scene load_steps=6 format=3 uid="uid://y11w7wqmtqp2"]
 
 [ext_resource type="Texture2D" uid="uid://laueeud35f7h" path="res://assets/backgrounds/bag-grandma.png" id="1_70nfm"]
 [ext_resource type="PackedScene" uid="uid://duikhyllq88dn" path="res://scenes/minigames/grandMotherGame/liquor.tscn" id="2_7mt2y"]
@@ -8,15 +8,39 @@ script/source = "extends Node
 
 @onready var spwan_area : Polygon2D = $SpawnArea as Polygon2D
 @onready var liquor : Area2D = $Liquor as Area2D
+@onready var victory_UI: Control = $Victory
+@onready var lose_UI: Control = $Lose
+
 
 var obstacleScene = preload(\"res://scenes/minigames/grandMotherGame/obstacle.tscn\")
-var itemMax = 8
-
+var itemMax = 1
+var end_game_flag = false
 func _process(_delta):
 	if GameManager.timer_timeout:
+		lose_UI.visible = true
+		while (lose_UI.modulate.a < 1):
+			await get_tree().create_timer(0.005).timeout
+			lose_UI.modulate.a += 0.01
 		endgame()
 
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and end_game_flag and event.pressed:
+		if!GameManager.story_mode :
+			GameManager.next_scene_to_call = \"chapter_menu\"
+			GameManager.update_score(\"scene_journalope\")
+		queue_free()
+
+
 func _ready():	
+	print('what')
+	
+	if GameManager.story_mode:
+		GameManager.next_scene_to_call = \"scene_crowd_kid\"
+	else:
+		GameManager.next_scene_to_call = \"chapter_menu\"
+	
+	victory_UI.visible = false
+	lose_UI.visible = false
 	GameManager.timer_hud = 11
 	GameManager.show_timer_hud = true
 	
@@ -40,16 +64,30 @@ func _ready():
 
 func _on_liquor_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and !liquor.has_overlapping_areas():
+		GameManager.timer_lock = false
+		
+
+		print('win')
+		victory_UI.visible = true
+		while (victory_UI.modulate.a < 1):
+			await get_tree().create_timer(0.005).timeout
+			victory_UI.modulate.a += 0.01
 		endgame()
 
+
 func endgame():
-	print(\"End of the game grand mother\")
-	if( GameManager.story_mode):
-		GameManager.next_scene_to_call = \"scene_crowd_kid\"
-	else:
-		GameManager.next_scene_to_call = \"chapter_menu\"
-	queue_free()
+	end_game_flag = true
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcoy5"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ly1u6"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GrandMotherGame" type="Node"]
 script = SubResource("GDScript_2ju0h")
@@ -67,5 +105,87 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(81, 105, 1849, 105, 1849, 968, 81, 968, 81, 105)
 
 [node name="Liquor" parent="." instance=ExtResource("2_7mt2y")]
+
+[node name="Victory" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="ColorRect" parent="Victory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Label" type="Label" parent="Victory"]
+layout_mode = 0
+offset_left = 694.0
+offset_top = 469.0
+offset_right = 1226.0
+offset_bottom = 610.0
+text = "You've won! Congratz!"
+label_settings = SubResource("LabelSettings_xcoy5")
+horizontal_alignment = 1
+
+[node name="ClickToContinue" type="Label" parent="Victory"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 985.0
+offset_right = 1460.0
+offset_bottom = 1067.0
+text = "Click to continue"
+label_settings = SubResource("LabelSettings_ly1u6")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Lose" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="ColorRect" parent="Lose"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Label" type="Label" parent="Lose"]
+layout_mode = 0
+offset_left = 694.0
+offset_top = 469.0
+offset_right = 1226.0
+offset_bottom = 610.0
+text = "Perdu !
+Tu n'as pas trouvé 
+le médicament a temps !"
+label_settings = SubResource("LabelSettings_xcoy5")
+horizontal_alignment = 1
+
+[node name="ClickToContinue" type="Label" parent="Lose"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 985.0
+offset_right = 1460.0
+offset_bottom = 1067.0
+text = "Click to continue"
+label_settings = SubResource("LabelSettings_ly1u6")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="input_event" from="Liquor" to="." method="_on_liquor_input_event"]

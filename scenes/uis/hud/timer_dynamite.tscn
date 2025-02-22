@@ -8,10 +8,6 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_11q26"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
-atlas = ExtResource("5_00wpl")
-region = Rect2(16, 0, 8, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vmp4"]
 atlas = ExtResource("5_00wpl")
 region = Rect2(0, 0, 8, 8)
@@ -19,6 +15,10 @@ region = Rect2(0, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqxac"]
 atlas = ExtResource("5_00wpl")
 region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
+atlas = ExtResource("5_00wpl")
+region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
 atlas = ExtResource("5_00wpl")
@@ -88,11 +88,10 @@ offset_right = -35.0
 offset_bottom = 8.0
 grow_horizontal = 0
 scale = Vector2(10, 10)
-texture = SubResource("AtlasTexture_rf3q1")
+texture = SubResource("AtlasTexture_3vmp4")
 stretch_mode = 4
 script = ExtResource("4_63b0f")
 sprites = SubResource("SpriteFrames_ca55y")
-frame_index = 2
 auto_play = true
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
