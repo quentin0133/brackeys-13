@@ -12,8 +12,14 @@ script/source = "extends Node
 var obstacleScene = preload(\"res://scenes/minigames/grandMotherGame/obstacle.tscn\")
 var itemMax = 8
 
+func _process(_delta):
+	if GameManager.timer_timeout:
+		endgame()
 
 func _ready():	
+	GameManager.timer_hud = 11
+	GameManager.show_timer_hud = true
+	
 	var positionX_liquor : float = randi_range(spwan_area.polygon[0][0]+50.0,spwan_area.polygon[1][0]-50.0)
 	var positionY_liquor : float = randi_range(spwan_area.polygon[0][1]+100.0,spwan_area.polygon[3][1]-200.0)
 	
@@ -34,12 +40,15 @@ func _ready():
 
 func _on_liquor_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and !liquor.has_overlapping_areas():
-		print(\"End of the game grand mother\")
-		if( GameManager.story_mode):
-			GameManager.next_scene_to_call = \"scene_crowd_kid\"
-		else:
-			GameManager.next_scene_to_call = \"chapter_menu\"
-		queue_free()
+		endgame()
+
+func endgame():
+	print(\"End of the game grand mother\")
+	if( GameManager.story_mode):
+		GameManager.next_scene_to_call = \"scene_crowd_kid\"
+	else:
+		GameManager.next_scene_to_call = \"chapter_menu\"
+	queue_free()
 "
 
 [node name="GrandMotherGame" type="Node"]

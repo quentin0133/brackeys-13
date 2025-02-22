@@ -5,13 +5,21 @@ script/source = "extends CanvasLayer
 
 @onready var label : Label = $Control/Label as Label
 
+var timer_hud = preload(\"res://scenes/uis/hud/timer_dynamite.tscn\")
 
 func _process(_delta):
 	if (!GameManager.story_mode && GameManager.in_game && GameManager.show_score):
+		get_child(0).visible = true
 		label.text = \"Score : \" + str(GameManager.data_game[GameManager.next_scene_to_call][6])
 		self.show()
-	else:
+	elif (!GameManager.timer_lock && GameManager.in_game && GameManager.show_timer_hud):
+		get_child(0).visible = false
+		GameManager.timer_lock = true
+		add_child(timer_hud.instantiate())
+		self.show()
+	elif(!GameManager.show_score && !GameManager.show_timer_hud):
 		self.hide()
+	pass
 "
 
 [node name="ParentHud" type="CanvasLayer"]
