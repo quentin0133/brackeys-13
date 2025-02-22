@@ -18,7 +18,7 @@ script/source = "extends Sprite2D
 @onready var collision_shape : CollisionShape2D = $Area2D/CollisionShape2D as CollisionShape2D
 @onready var area_2D : Area2D = $Area2D as Area2D
 
-var size_shape : Array[Vector2] = [Vector2(169,344),Vector2(441,179),Vector2(421.125,209.375),Vector2(439.563,209.375),Vector2(339.391,234.844),Vector2(202.021,538.422),Vector2(248,393.276),Vector2(200,234.638),Vector2(286,449.319)]
+var size_shape : Array[Vector2] = [Vector2(169,344),Vector2(418,81.125),Vector2(421.125,209.375),Vector2(439.563,209.375),Vector2(339.391,234.844),Vector2(202.021,538.422),Vector2(248,393.276),Vector2(200,234.638),Vector2(286,449.319)]
 var position_shape : Array[Vector2] = [Vector2(-8.5,5),Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(0,0),Vector2(30.011,0),Vector2(0,0),Vector2(0,0),Vector2(0,0)]
 
 var obstacle_number : int = 0
@@ -41,24 +41,25 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and dont_move == false:
-		if event.pressed and (GameManager.select_obstacle == obstacle_number):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT :
+		if event.pressed and (GameManager.select_obstacle == obstacle_number) and !dont_move :
 			if get_rect().has_point(to_local(event.position)):
 				is_dragging = true
 		else:
 			is_dragging = false
-
-
+		
+			
 func _on_area_2d_area_entered(area : Area2D):
-	if area_2D.has_overlapping_areas() and (area.obstacle_number > obstacle_number)  and (GameManager.select_obstacle != obstacle_number):
-		dont_move = true
-	
-
+#	if area_2D.has_overlapping_areas() and (area.obstacle_number > obstacle_number)  and (GameManager.select_obstacle != obstacle_number):
+#		dont_move = true
+#		print( str(obstacle_number) + ' bloqué par ' + str(area.obstacle_number) )
+	pass
 func _on_area_2d_area_exited(_area):
-	dont_move = false
-	
+#	dont_move = false
+	pass
 
 func _on_area_2d_mouse_entered():
+	print('Select :' + str(obstacle_number))
 	GameManager.select_obstacle = obstacle_number
 "
 
@@ -68,8 +69,7 @@ script/source = "extends Area2D
 @export var obstacle_number : int = 0
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_34i43"]
-resource_local_to_scene = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mr41"]
 
 [node name="Obstacle" type="Sprite2D"]
 script = SubResource("GDScript_0u3un")
@@ -81,7 +81,7 @@ collision_mask = 2
 script = SubResource("GDScript_vgvm5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_34i43")
+shape = SubResource("RectangleShape2D_4mr41")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

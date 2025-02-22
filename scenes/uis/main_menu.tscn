@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://td08ua34067u"]
+[gd_scene load_steps=3 format=3 uid="uid://td08ua34067u"]
+
+[ext_resource type="Texture2D" uid="uid://d0vule7d4tl88" path="res://assets/images/illustration/Speaker_Icon.png" id="1_47g0k"]
 
 [sub_resource type="GDScript" id="GDScript_phvel"]
 script/source = "extends Control
@@ -34,8 +36,9 @@ func _on_someone_menu_show_main_menu():
 
 
 func _on_v_slider_master_volume_value_changed(value):
+	AudioServer.set_bus_volume_db(0,linear_to_db(value))
 	SettingsManager.settings_dict[\"master_volume\"] = value
-
+	print(SettingsManager.settings_dict[\"master_volume\"])
 
 func _on_test_button_pressed():
 	self.hide()
@@ -69,6 +72,8 @@ offset_left = 1834.0
 offset_top = 743.0
 offset_right = 1859.0
 offset_bottom = 1003.0
+max_value = 1.0
+step = 0.001
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -121,6 +126,15 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1716.0
+offset_top = 825.0
+offset_right = 2196.0
+offset_bottom = 1305.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_47g0k")
 
 [connection signal="value_changed" from="VSliderMasterVolume" to="." method="_on_v_slider_master_volume_value_changed"]
 [connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]

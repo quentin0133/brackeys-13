@@ -13,8 +13,10 @@ script/source = "extends Node
 
 
 var obstacleScene = preload(\"res://scenes/minigames/grandMotherGame/obstacle.tscn\")
-var itemMax = 1
+var itemMax = 8
 var end_game_flag = false
+
+
 func _process(_delta):
 	if GameManager.timer_timeout:
 		lose_UI.visible = true
@@ -22,6 +24,7 @@ func _process(_delta):
 			await get_tree().create_timer(0.005).timeout
 			lose_UI.modulate.a += 0.01
 		endgame()
+
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and end_game_flag and event.pressed:

@@ -2,7 +2,7 @@ extends Node
 
 @onready var keybind_ressource : KeybindRessource = preload("res://assets/resources/settings/DefaultKeybind.tres")
 
-var master_volume : float = 0.0
+var master_volume : float = 0.2
 var sound_volume : float = 0.0
 var music_volume : float = 0.0
 
