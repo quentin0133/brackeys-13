@@ -1,8 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://6uhqvpiu62qo"]
+[gd_scene load_steps=34 format=3 uid="uid://6uhqvpiu62qo"]
 
 [ext_resource type="Script" path="res://scripts/mini-games/waky-waky/waky-waky.gd" id="1_cwxsv"]
-[ext_resource type="PackedScene" uid="uid://dlmvnojj17gqt" path="res://scenes/minigames/waking_up/container.tscn" id="2_fsei4"]
-[ext_resource type="Texture2D" uid="uid://q3vse88nwyc8" path="res://assets/sprites/nerd.png" id="3_e8s7y"]
+[ext_resource type="PackedScene" uid="uid://4jv7jiyjgo8o" path="res://scenes/minigames/waking_up/container.tscn" id="2_fsei4"]
+[ext_resource type="Texture2D" uid="uid://cmy0mkep88daa" path="res://assets/sprites/waking-up/wacky-wacky.png" id="3_j4i11"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="4_0f2ys"]
 [ext_resource type="Texture2D" uid="uid://c1pujxi1q2xhb" path="res://assets/sprites/timer/dynamite-cord.png" id="5_82n1m"]
 [ext_resource type="Texture2D" uid="uid://dbvonytcgn0lh" path="res://assets/sprites/timer/dynamite.png" id="6_om53c"]
@@ -18,7 +18,47 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8ccb"]
 radius = 3.35411
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0yug"]
+atlas = ExtResource("3_j4i11")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6dff"]
+atlas = ExtResource("3_j4i11")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g3xr"]
+atlas = ExtResource("3_j4i11")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyx76"]
+atlas = ExtResource("3_j4i11")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26qlj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0yug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6dff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g3xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyx76")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptih7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
+atlas = ExtResource("8_12t8f")
+region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vmp4"]
 atlas = ExtResource("8_12t8f")
@@ -31,10 +71,6 @@ region = Rect2(8, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
 atlas = ExtResource("8_12t8f")
 region = Rect2(16, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
-atlas = ExtResource("8_12t8f")
-region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d3h73"]
 animations = [{
@@ -158,9 +194,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NIKOUMOUK"]
 shape = SubResource("CircleShape2D_x8ccb")
 
-[node name="Sprite2D" type="Sprite2D" parent="NIKOUMOUK"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="NIKOUMOUK"]
 z_index = -3
-texture = ExtResource("3_e8s7y")
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_26qlj")
+autoplay = "default"
+frame_progress = 0.980476
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -209,10 +248,11 @@ offset_right = -35.0
 offset_bottom = 8.0
 grow_horizontal = 0
 scale = Vector2(10, 10)
-texture = SubResource("AtlasTexture_3vmp4")
+texture = SubResource("AtlasTexture_s7tjp")
 stretch_mode = 4
 script = ExtResource("7_i3rqn")
 sprites = SubResource("SpriteFrames_d3h73")
+frame_index = 3
 auto_play = true
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]

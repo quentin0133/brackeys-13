@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	arm.pointer.velocity = 300
+	alarm.pointer.direction = Vector2.LEFT
 	alarm.pointer.velocity = 5000
 
 
@@ -72,12 +73,11 @@ func _on_timer_on_timeout() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#BUG : Crash si tu touche a 00.1 sec
 	AudioManager.defeat_sound.play()
-	print("ouch")
 	$FlashDmg.visible = true
 	$FlashDmg.modulate.a = 1.0
 	var tween = create_tween()
 	tween.tween_property($FlashDmg, "modulate:a", 0.0, 0.5)
 	await tween.finished
 	$FlashDmg.visible = false
-
-	timer.current_duration -= 10
+	if is_instance_valid(timer):
+		timer.current_duration -= 10

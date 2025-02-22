@@ -9,14 +9,16 @@ var playing = true
 
 var max_dist = 600
 @onready var starting: Vector2 = Vector2.ZERO
+@onready var animation = $AnimationPlayer
 
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if playing:
-			$AnimationPlayer.play("hit")
-			await get_tree().create_timer(0.3).timeout
-			AudioManager.hit.play()
+			if !animation.is_playing():
+				animation.play("hit")
+				await get_tree().create_timer(0.3).timeout
+				AudioManager.hit.play()
 		elif (GameManager.story_mode):
 			GameManager.next_scene_to_call = "scene_grand_mother"
 			if(get_parent()):
