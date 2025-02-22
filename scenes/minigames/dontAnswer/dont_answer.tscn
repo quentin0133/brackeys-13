@@ -37,7 +37,7 @@ script/source = "extends Control
 
 @onready var background : ColorRect = $Backgroud as ColorRect
 
-var question : Array = [\"Who are you ?\",\"What is your destination ?\",\"Where i am ?\",\"Who i am ?\"]
+var question : Array = [\"Who are you ?\",\"What is your destination ?\",\"Where am I ?\",\"Who am I ?\"]
 var reponse1 : Array = [\"Your son\",\"Gare du nord\",\" ... \",\" ??? \"]
 var reponse2 : Array = [\"I'am vENGEANce ! è_é\",\"None of [b]your[/b] business\",\"On the bus grandpa !\",\" ??? \"]
 var reponse3 : Array = [\"Someone ?\",\" ... \",\"Have you already forgotten where you are ???\",\" ??? \"]
@@ -81,10 +81,10 @@ func another_question():
 		if try == 250:
 			hint.text = \"\"
 		if try == 200:
-			hint.text = \"U_u \\n Ok si tu veux perdre ton temps\"
+			hint.text = \"U_u \\n Ok if you wanna waste your time\"
 			try += 5
 		if try == 150:
-			hint.text = \"You're such an idiot \\n (Il y a rien d'autre \\n après ce message vraiment)\"
+			hint.text = \"You're such an idiot \\n (There's really nothing \\n after this text, rly)\"
 			try += 5
 		elif try == 100:
 			hint.text = \"You're such an idiot\"
@@ -92,7 +92,7 @@ func another_question():
 			hint_a = 0.5
 			try += 5
 		elif try == 50:
-			hint.text = \"Juste arrête de le répondre !\"
+			hint.text = \"Just stop answering !\"
 			hint_int = 2
 			hint_a = 0.25
 			try += 2
@@ -187,7 +187,7 @@ func _on_timer_container():
 
 
 func _on_timer_for_transition_during_talk_timeout():
-	label.text = \"Au fait ...\"
+	label.text = \"Hmhhh ... Oh, and ...\"
 	show_label = true
 	seconde_time = true
 	timer_label.start(0.1)
