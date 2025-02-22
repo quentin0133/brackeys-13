@@ -11,6 +11,7 @@ const scene_crowd_kid = preload(\"res://scenes/minigames/crowd-and-kid/crowd-and
 const scene_dont_answer = preload(\"res://scenes/minigames/dontAnswer/dont_answer.tscn\")
 const scene_journalope = preload(\"res://scenes/minigames/journalope/journalope.tscn\")
 const scene_wakywaky = preload(\"res://scenes/minigames/waking_up/waky-waky.tscn\")
+const scene_monologue = preload(\"res://scenes/minigames/monologue-dodging/monologue_dodging_game.tscn\")
 
 signal show_main_menu
 signal show_chapter_menu
@@ -51,6 +52,9 @@ func load_next_scene(name_of_scene:String):
 			add_child(scene)
 		\"scene_wakywaky\":
 			scene = scene_wakywaky.instantiate()
+			add_child(scene)
+		\"scene_monologue\":
+			scene = scene_monologue.instantiate()
 			add_child(scene)
 
 
