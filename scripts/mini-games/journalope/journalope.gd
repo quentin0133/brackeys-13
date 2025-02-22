@@ -27,12 +27,14 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed and end_game_flag and GameManager.story_mode :
+		if event.pressed and end_game_flag and GameManager.story_mode and is_game_win :
 			GameManager.next_scene_to_call = "scene_dont_answer"
 			queue_free()
-		elif event.pressed and end_game_flag and !GameManager.story_mode :
+		elif event.pressed and end_game_flag and !GameManager.story_mode and is_game_win :
 			GameManager.next_scene_to_call = "chapter_menu"
 			GameManager.update_score("scene_journalope")
+			queue_free()
+		else:
 			queue_free()
 
 func _on_timer_on_timeout() -> void:
