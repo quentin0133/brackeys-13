@@ -22,7 +22,7 @@ script/source = "extends Control
 @onready var timer_label : Timer = $VBoxContainer/Label/TimerLabel as Timer
 @onready var timer_transition : Timer = $TimerForTransition as Timer
 @onready var timer_transition_talk : Timer = $TimerForTransitionDuringTalk as Timer
-@onready var timer_begin : Timer = $Backgroud/TimerForTransitionInTheBegin as Timer
+@onready var timer_begin : Timer = $Backgroud/TimerBegin as Timer
 @onready var timer_backgroud : Timer = $Backgroud_with_light/TimerForBackgroud as Timer
 @onready var timer_fourgas : Timer = $FourgasWitoutShadow/TimerFourgas as Timer
 
@@ -36,12 +36,15 @@ script/source = "extends Control
 @onready var label_button4 : RichTextLabel = $VBoxContainer/GridContainer/Button4/MarginContainer/RichTextLabel as RichTextLabel
 
 @onready var background : ColorRect = $Backgroud as ColorRect
+@onready var margin_edit : MarginContainer = $VBoxContainer/MarginContainer as MarginContainer
 
 var question : Array = [\"Who are you ?\",\"What is your destination ?\",\"Where am I ?\",\"Who am I ?\"]
 var reponse1 : Array = [\"Your son\",\"Gare du nord\",\" ... \",\" ??? \"]
 var reponse2 : Array = [\"I'am vENGEANce ! è_é\",\"None of [b]your[/b] business\",\"On the bus grandpa !\",\" ??? \"]
 var reponse3 : Array = [\"Someone ?\",\" ... \",\"Have you already forgotten where you are ???\",\" ??? \"]
 var reponse4 : Array = [\" ... \",\"Somewhere ?\",\"None of [b]my[/b] business\",\" ??? \"]
+
+var test_fouras = [\"Il est toujours au cœur des flammes,\\n Mais c'est loin d'elles qu'on le fonde. \\nEncore nombreuses y sont les femmes, \\nEt les étudiants y abondent. \\nQui est-il ?\",\"Foyer\"]
 
 var number : int = 0
 var try : int = 0
@@ -61,6 +64,10 @@ func _ready():
 	container.modulate.a = 0.00
 	label.modulate.a = 0.00
 	timer_begin.start(3)
+
+
+func another_question_fouras():
+	label.text = test_fouras[0]
 
 
 func another_question():
@@ -106,6 +113,7 @@ func another_question():
 			timer_endgame.start(15)
 			endgame_phase = true
 	
+	
 func _on_timer_before_end_timeout():
 	timer_endgame.stop()
 	print(\"End Game\")
@@ -116,11 +124,13 @@ func _on_timer_before_end_timeout():
 		GameManager.next_scene_to_call = \"chapter_menu\"
 	queue_free()
 
+
 func pause():
 	show_container = false
 	show_label = false
 	timer_container.start(0.1)
 	timer_transition_talk.start(3)
+
 
 func papy_want_to_talk():
 	first_time = false
@@ -129,6 +139,7 @@ func papy_want_to_talk():
 	another_question()
 	timer_container.start(0.1)
 	timer_label.start(0.1)
+
 
 func _on_timer_for_transition_in_the_begin_timeout():
 	timer_fourgas.start(0.1)
@@ -141,18 +152,25 @@ func _on_timer_fourgas_timeout():
 		timer_transition.start(1)
 
 
+func _on_timer_for_transition_timeout():
+	timer_backgroud.start(0.1)
+	
+	
 func _on_timer_for_backgroud_timeout():
 	background_with_light.modulate.a += 0.10
 	fourgas.modulate.a += 0.10
 	if background_with_light.modulate.a > 1:
-		timer_backgroud.stop()
-		timer_container.start(0.1)
-		timer_label.start(0.1)
-		another_question()
-
-
-func _on_timer_for_transition_timeout():
-	timer_backgroud.start(0.1)
+		#if GameManager.story_mode:
+			another_question()
+			timer_backgroud.stop()
+			timer_container.start(0.1)
+			timer_label.start(0.1)
+		#else:
+		#	timer_backgroud.stop()
+		#	container.visible = false
+		#	margin_edit.visible = true
+		#	another_question_fouras()
+		#	timer_label.start(0.1)
 
 
 func _on_timer_label():
@@ -191,6 +209,13 @@ func _on_timer_for_transition_during_talk_timeout():
 	show_label = true
 	seconde_time = true
 	timer_label.start(0.1)
+
+
+func _on_line_edit_text_submitted(new_text):
+	print(new_text)
+	if new_text.to_lower() in test_fouras[1].to_lower():
+		print('yes')
+		
 "
 
 [node name="DontAnswer" type="Control"]
@@ -342,6 +367,22 @@ bbcode_enabled = true
 text = "[center] C'est une réponse, [b]une vrai [/b][/center] "
 fit_content = true
 
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 750
+theme_override_constants/margin_right = 750
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.462745, 0.462745, 0.462745, 0.478431)
+
 [node name="TimerContainer" type="Timer" parent="VBoxContainer"]
 
 [node name="TimerBeforeEnd" type="Timer" parent="."]
@@ -390,7 +431,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TimerForTransitionInTheBegin" type="Timer" parent="Backgroud"]
+[node name="TimerBegin" type="Timer" parent="Backgroud"]
 one_shot = true
 
 [node name="TimerForTransition" type="Timer" parent="."]
@@ -407,11 +448,12 @@ one_shot = true
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button2" to="." method="another_question"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button3" to="." method="another_question"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button4" to="." method="another_question"]
+[connection signal="text_submitted" from="VBoxContainer/MarginContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="timeout" from="VBoxContainer/TimerContainer" to="." method="_on_timer_container"]
 [connection signal="timeout" from="TimerBeforeEnd" to="." method="_on_timer_before_end_timeout"]
 [connection signal="timeout" from="FourgasWitoutShadow/TimerFourgas" to="." method="_on_timer_fourgas_timeout"]
 [connection signal="timeout" from="Backgroud_with_light/TimerForBackgroud" to="." method="_on_timer_for_backgroud_timeout"]
-[connection signal="timeout" from="Backgroud/TimerForTransitionInTheBegin" to="." method="_on_timer_for_transition_in_the_begin_timeout"]
+[connection signal="timeout" from="Backgroud/TimerBegin" to="." method="_on_timer_for_transition_in_the_begin_timeout"]
 [connection signal="timeout" from="TimerForTransition" to="." method="_on_timer_for_transition_timeout"]
 [connection signal="timeout" from="TimerForTransitionDuringTalk" to="." method="_on_timer_for_transition_during_talk_timeout"]
 [connection signal="timeout" from="LastTimer" to="." method="papy_want_to_talk"]
