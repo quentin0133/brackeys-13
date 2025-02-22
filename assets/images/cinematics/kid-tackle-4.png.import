@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctc0ej7j57i3x"
-path="res://.godot/imported/cinematic-grandma-2.png-5c46914973b2e8f02efe207d707c4e70.ctex"
+uid="uid://cc7ptj2b5lce8"
+path="res://.godot/imported/kid-tackle-4.png-b84643a2740abbe3ed261de924f1ca07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/cinematics/cinematic-grandma-2.png"
-dest_files=["res://.godot/imported/cinematic-grandma-2.png-5c46914973b2e8f02efe207d707c4e70.ctex"]
+source_file="res://assets/images/cinematics/kid-tackle-4.png"
+dest_files=["res://.godot/imported/kid-tackle-4.png-b84643a2740abbe3ed261de924f1ca07.ctex"]
 
 [params]
 

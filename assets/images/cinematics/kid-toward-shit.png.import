@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hbiifxapajb4"
-path="res://.godot/imported/cinematic-grandma-8.png-6a51309a52b67a1faa192bdc2ae8f774.ctex"
+uid="uid://dtmg7grfbg0xg"
+path="res://.godot/imported/kid-toward-shit.png-04400b45911ba15f92236b0e25ce19f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/cinematics/cinematic-grandma-8.png"
-dest_files=["res://.godot/imported/cinematic-grandma-8.png-6a51309a52b67a1faa192bdc2ae8f774.ctex"]
+source_file="res://assets/images/cinematics/kid-toward-shit.png"
+dest_files=["res://.godot/imported/kid-toward-shit.png-04400b45911ba15f92236b0e25ce19f5.ctex"]
 
 [params]
 
