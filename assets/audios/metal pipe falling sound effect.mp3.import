@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crqjfe2mdv3n4"
+path="res://.godot/imported/metal pipe falling sound effect.mp3-cf094d52459843885b7326e8c139c53d.mp3str"
+
+[deps]
+
+source_file="res://assets/audios/metal pipe falling sound effect.mp3"
+dest_files=["res://.godot/imported/metal pipe falling sound effect.mp3-cf094d52459843885b7326e8c139c53d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

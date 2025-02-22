@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0aqsylvsxw7s"]
+[gd_scene load_steps=12 format=3 uid="uid://d0aqsylvsxw7s"]
 
 [ext_resource type="AudioStream" uid="uid://tdc3anp0d63y" path="res://assets/audios/Purple.mp3" id="1_u38yu"]
 [ext_resource type="AudioStream" uid="uid://hygyrowya146" path="res://assets/audios/Purple2.mp3" id="2_k010g"]
+[ext_resource type="AudioStream" uid="uid://cqhigig2in44u" path="res://assets/audios/Hit.wav" id="3_7wp8c"]
+[ext_resource type="AudioStream" uid="uid://dms6a4dato4rf" path="res://assets/audios/paparazzi1.ogg" id="4_aiyl5"]
+[ext_resource type="AudioStream" uid="uid://2rykgylsmbwv" path="res://assets/audios/paparazzi2.ogg" id="5_3pjbt"]
+[ext_resource type="AudioStream" uid="uid://hcs5a5mg32m7" path="res://assets/audios/hiding sounds.ogg" id="6_xtyb4"]
 
 [sub_resource type="GDScript" id="GDScript_43omd"]
 script/source = "extends Node
 
 @onready var defeat_sound: AudioStreamPlayer = $Defeat
+@onready var hit: AudioStreamPlayer = $Hit
+@onready var paparazzi: AudioStreamPlayer = $Paparazzi
+@onready var hiding_sounds: AudioStreamPlayer = $HidingSounds
 "
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j75rw"]
@@ -15,6 +22,24 @@ streams_count = 2
 stream_0/stream = ExtResource("1_u38yu")
 stream_1/stream = ExtResource("2_k010g")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_312xg"]
+random_pitch = 1.4
+streams_count = 1
+stream_0/stream = ExtResource("3_7wp8c")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jojni"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 2
+stream_0/stream = ExtResource("4_aiyl5")
+stream_1/stream = ExtResource("5_3pjbt")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fg7ua"]
+random_pitch = 1.5
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("6_xtyb4")
+
 [node name="AudioManager" type="Node"]
 script = SubResource("GDScript_43omd")
 
@@ -22,3 +47,16 @@ script = SubResource("GDScript_43omd")
 stream = SubResource("AudioStreamRandomizer_j75rw")
 volume_db = -9.0
 pitch_scale = 0.95
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_312xg")
+pitch_scale = 0.85
+
+[node name="Paparazzi" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_jojni")
+volume_db = -3.0
+pitch_scale = 1.1
+
+[node name="HidingSounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_fg7ua")
+pitch_scale = 1.2

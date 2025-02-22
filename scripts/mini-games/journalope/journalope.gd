@@ -58,6 +58,7 @@ func win():
 	animation_player_player.play("winning")
 	player.input_enable = false
 	await get_tree().create_timer(2.35).timeout
+	$Poteau.play()
 	while (victory_UI.modulate.a < 1):
 		await get_tree().create_timer(0.005).timeout
 		victory_UI.modulate.a += 0.01
@@ -73,7 +74,9 @@ func game_over():
 	animation_player_player.pause()
 	player.texture = player_flashed;
 	player.input_enable = false
-	
+	$MortParFlash.play()
+	$RunningSounds.stop()
+
 
 func _on_timer_timeout() -> void:
 	while (indication.modulate.a > 0):

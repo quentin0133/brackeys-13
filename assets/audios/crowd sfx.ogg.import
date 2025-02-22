@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3fcqwpvden3o"
+path="res://.godot/imported/crowd sfx.ogg-304b9742608995eb5f760cf80193bcaf.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audios/crowd sfx.ogg"
+dest_files=["res://.godot/imported/crowd sfx.ogg-304b9742608995eb5f760cf80193bcaf.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

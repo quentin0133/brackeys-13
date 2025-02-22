@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dr3l011pxmr8b"
+path="res://.godot/imported/jojos bizarre adventure yes yes yes sound effect (#436).ogg-7855eb6eedabdb82b6cb1274057704e4.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audios/jojos bizarre adventure yes yes yes sound effect (#436).ogg"
+dest_files=["res://.godot/imported/jojos bizarre adventure yes yes yes sound effect (#436).ogg-7855eb6eedabdb82b6cb1274057704e4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

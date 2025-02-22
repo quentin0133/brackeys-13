@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bfd7iu65lpk7i"]
+[gd_scene load_steps=71 format=3 uid="uid://bfd7iu65lpk7i"]
 
 [ext_resource type="Script" path="res://scripts/mini-games/journalope/journalope.gd" id="1_lmx7g"]
 [ext_resource type="Texture2D" uid="uid://k5xu4vtev10r" path="res://assets/sprites/main-character/running-main-character.png" id="1_yp6up"]
@@ -23,6 +23,14 @@
 [ext_resource type="PackedScene" uid="uid://b75njoddebi3f" path="res://scenes/minigames/journalope/obstacles/cat_trash.tscn" id="18_i0g7n"]
 [ext_resource type="PackedScene" uid="uid://c3h615nnomoxh" path="res://scenes/minigames/journalope/obstacles/light.tscn" id="20_qp0r2"]
 [ext_resource type="PackedScene" uid="uid://g5ghvnb1wtib" path="res://scenes/minigames/journalope/obstacles/nuclear_liquid_container.tscn" id="21_3kbhc"]
+[ext_resource type="AudioStream" uid="uid://c0m7w5hxoe2ao" path="res://assets/audios/Disappearing yellow emoji meme.mp3" id="24_b4aux"]
+[ext_resource type="AudioStream" uid="uid://dv15813mmn2ax" path="res://assets/audios/poteau.ogg" id="25_3tvwt"]
+[ext_resource type="AudioStream" uid="uid://dojmcsse6hvsc" path="res://assets/audios/run1.ogg" id="26_c1uks"]
+[ext_resource type="AudioStream" uid="uid://hgqqrj8v7jry" path="res://assets/audios/run2.ogg" id="27_v2prj"]
+[ext_resource type="AudioStream" uid="uid://uqf0fla04b3b" path="res://assets/audios/run3.ogg" id="28_lrm0i"]
+[ext_resource type="AudioStream" uid="uid://pskwlkx8m7l2" path="res://assets/audios/run4.ogg" id="29_uxp2w"]
+[ext_resource type="AudioStream" uid="uid://n7skmh0rmfc5" path="res://assets/audios/run5.ogg" id="30_uks6n"]
+[ext_resource type="AudioStream" uid="uid://btp4cyvcnbl33" path="res://assets/audios/cardboard.ogg" id="31_cslyi"]
 
 [sub_resource type="Animation" id="Animation_0vnnf"]
 length = 0.001
@@ -218,6 +226,10 @@ _data = {
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_11q26"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
+atlas = ExtResource("11_iatli")
+region = Rect2(16, 0, 8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vmp4"]
 atlas = ExtResource("11_iatli")
 region = Rect2(0, 0, 8, 8)
@@ -225,10 +237,6 @@ region = Rect2(0, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqxac"]
 atlas = ExtResource("11_iatli")
 region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
-atlas = ExtResource("11_iatli")
-region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
 atlas = ExtResource("11_iatli")
@@ -254,9 +262,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v25ve"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_20lyo"]
 atlas = ExtResource("7_xcvwp")
-region = Rect2(144, 0, 48, 48)
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lo5j8"]
 atlas = ExtResource("7_xcvwp")
@@ -266,9 +274,9 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("7_xcvwp")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_20lyo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v25ve"]
 atlas = ExtResource("7_xcvwp")
-region = Rect2(96, 0, 48, 48)
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7i7d"]
 animations = [{
@@ -649,6 +657,14 @@ _bundled = {
 "version": 3
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wnbkt"]
+streams_count = 5
+stream_0/stream = ExtResource("26_c1uks")
+stream_1/stream = ExtResource("27_v2prj")
+stream_2/stream = ExtResource("28_lrm0i")
+stream_3/stream = ExtResource("29_uxp2w")
+stream_4/stream = ExtResource("30_uks6n")
+
 [node name="Journalope" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_lmx7g")
@@ -724,10 +740,11 @@ offset_right = -35.0
 offset_bottom = 8.0
 grow_horizontal = 0
 scale = Vector2(10, 10)
-texture = SubResource("AtlasTexture_3vmp4")
+texture = SubResource("AtlasTexture_rf3q1")
 stretch_mode = 4
 script = ExtResource("9_bfobt")
 sprites = SubResource("SpriteFrames_ca55y")
+frame_index = 2
 auto_play = true
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]
@@ -760,11 +777,11 @@ offset_bottom = -504.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(24, 24)
-texture = SubResource("AtlasTexture_v25ve")
+texture = SubResource("AtlasTexture_20lyo")
 stretch_mode = 4
 script = ExtResource("9_bfobt")
 sprites = SubResource("SpriteFrames_b7i7d")
-frame_index = 3
+frame_index = 2
 auto_play = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameOver/Journalist"]
@@ -904,6 +921,20 @@ z_index = -5
 position = Vector2(297, 0)
 scale = Vector2(0.217105, 0.217105)
 texture = ExtResource("3_wco5m")
+
+[node name="MortParFlash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_b4aux")
+
+[node name="Poteau" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_3tvwt")
+volume_db = -9.0
+
+[node name="RunningSounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_wnbkt")
+autoplay = true
+
+[node name="CardboardSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_cslyi")
 
 [connection signal="on_timeout" from="CanvasLayer/Timer" to="." method="_on_timer_on_timeout"]
 [connection signal="animation_finished" from="CanvasLayer/GameOver/Journalist/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

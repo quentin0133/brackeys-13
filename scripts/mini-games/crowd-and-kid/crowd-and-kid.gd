@@ -26,6 +26,7 @@ func _on_shit_body_entered(body: Node2D) -> void:
 	if (is_game_win):
 		return
 	if (body.name == "Kid"):
+		$ShitSound.play()
 		is_game_loose = true
 		animation.play("fade_journal")
 		image.texture = loosing_picture
@@ -35,6 +36,7 @@ func _on_kid_body_entered(body: Node) -> void:
 	if (is_game_loose):
 		return
 	if (body.name == "Player"):
+		AudioManager.hit.play()
 		is_game_win = true
 		animation.play("fade_journal")
 		image.texture = winning_picture

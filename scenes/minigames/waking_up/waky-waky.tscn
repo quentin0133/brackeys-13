@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://6uhqvpiu62qo"]
+[gd_scene load_steps=29 format=3 uid="uid://6uhqvpiu62qo"]
 
 [ext_resource type="Script" path="res://scripts/mini-games/waky-waky/waky-waky.gd" id="1_cwxsv"]
 [ext_resource type="PackedScene" uid="uid://dlmvnojj17gqt" path="res://scenes/minigames/waking_up/container.tscn" id="2_fsei4"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://c8vpqg5hr1hef" path="res://scenes/minigames/waking_up/strongarm.tscn" id="9_51doj"]
 [ext_resource type="PackedScene" uid="uid://dp8r5hnb04xft" path="res://scenes/minigames/waking_up/cactus.tscn" id="10_sb0cg"]
 [ext_resource type="Texture2D" uid="uid://bt07621023gwm" path="res://assets/backgrounds/waky-waky-background.png" id="11_e2wxr"]
+[ext_resource type="AudioStream" uid="uid://u1vy5oaefjgd" path="res://assets/audios/Alarm Clock Loud Ringing.mp3" id="12_jlud3"]
+[ext_resource type="AudioStream" uid="uid://dr3l011pxmr8b" path="res://assets/audios/jojos bizarre adventure yes yes yes sound effect (#436).ogg" id="13_gx85i"]
+[ext_resource type="AudioStream" uid="uid://bmv8erhq503ck" path="res://assets/audios/AUUGHHH Sound Effect.ogg" id="14_yfgoe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8ccb"]
 radius = 3.35411
@@ -343,6 +346,18 @@ visible = false
 offset_top = 176.0
 offset_right = 1922.0
 offset_bottom = 871.0
+
+[node name="AlarmSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_jlud3")
+autoplay = true
+
+[node name="Victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_gx85i")
+volume_db = 9.0
+
+[node name="Defeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_yfgoe")
+volume_db = -9.0
 
 [connection signal="current_position" from="Arm" to="." method="_on_arm_current_position"]
 [connection signal="current_position" from="Alarm" to="." method="_on_alarm_current_position"]

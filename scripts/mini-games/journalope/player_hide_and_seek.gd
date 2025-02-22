@@ -9,6 +9,10 @@ var input_enable = true
 
 static var is_hiding = false
 
+func _process(delta):
+	if not $"../RunningSounds".is_playing() and animation_player.current_animation == "running":
+		$"../RunningSounds".play()
+
 func _input(event: InputEvent) -> void:
 	if (!input_enable):
 		return
@@ -19,6 +23,8 @@ func _input(event: InputEvent) -> void:
 			run_mode()
 
 func hide_mode():
+	$"../RunningSounds".stop()
+	$"../CardboardSFX".play()
 	ground.speed = 0
 	animation_player.play("hide")
 	is_hiding = true

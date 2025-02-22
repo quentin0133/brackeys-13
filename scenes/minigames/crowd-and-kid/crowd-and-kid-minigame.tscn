@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://d4jxnfq3lo0u3"]
+[gd_scene load_steps=27 format=4 uid="uid://d4jxnfq3lo0u3"]
 
 [ext_resource type="Script" path="res://scripts/mini-games/crowd-and-kid/crowd-and-kid.gd" id="1_o8cqd"]
 [ext_resource type="PackedScene" uid="uid://c1g11vmotcp4k" path="res://scenes/characters/player.tscn" id="1_uclt4"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://1yhf1k08bvnk" path="res://assets/tileset/environment-tileset.png" id="3_0ewt5"]
 [ext_resource type="Script" path="res://scripts/pnj_generator.gd" id="3_jo6nq"]
 [ext_resource type="Texture2D" uid="uid://dvhkhmcai7r34" path="res://assets/sprites/kid/kid.png" id="4_toi8t"]
-[ext_resource type="Texture2D" uid="uid://cf3ogot21bvcf" path="res://assets/sprites/shit/shit.png" id="5_7et8i"]
+[ext_resource type="Texture2D" uid="uid://cf3ogot21bvcf" path="res://assets/sprites/Shit/shit.png" id="5_7et8i"]
 [ext_resource type="Texture2D" uid="uid://cclcdtnfd2jrm" path="res://assets/sprites/bullied-kid-minigame/newspaper-bullied-kid.png" id="7_xaqhg"]
+[ext_resource type="AudioStream" uid="uid://b3fcqwpvden3o" path="res://assets/audios/crowd sfx.ogg" id="9_bnibw"]
+[ext_resource type="AudioStream" uid="uid://tj7on42k5emi" path="res://assets/audios/SLAP SOUND EFFECT.ogg" id="10_ty25s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pahvy"]
 texture = ExtResource("3_0ewt5")
@@ -425,6 +427,13 @@ libraries = {
 "": SubResource("AnimationLibrary_jbrdi")
 }
 autoplay = "text_moving"
+
+[node name="CrowdSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_bnibw")
+autoplay = true
+
+[node name="ShitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ty25s")
 
 [connection signal="body_entered" from="Kid" to="." method="_on_kid_body_entered"]
 [connection signal="body_entered" from="Shit" to="." method="_on_shit_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tj7on42k5emi"
+path="res://.godot/imported/SLAP SOUND EFFECT.ogg-62a27fc93669eb7f58ad1d411639d9d6.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audios/SLAP SOUND EFFECT.ogg"
+dest_files=["res://.godot/imported/SLAP SOUND EFFECT.ogg-62a27fc93669eb7f58ad1d411639d9d6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

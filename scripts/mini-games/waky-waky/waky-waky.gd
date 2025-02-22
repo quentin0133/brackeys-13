@@ -46,11 +46,13 @@ func _on_nikoumouk_body_entered(body: Node2D) -> void:
 	win()
 
 func win():
+	$Victory.play()
 	stop()
 	$CanvasLayer/Victory.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
 	
 func game_over():
+	$Defeat.play()
 	stop()
 	$CanvasLayer/GameOver.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
@@ -60,6 +62,7 @@ func stop():
 	arm.queue_free()
 	alarm.queue_free()
 	$CanvasLayer/Timer.queue_free()
+	$AlarmSounds.queue_free()
 	
 
 func _on_timer_on_timeout() -> void:
@@ -68,6 +71,7 @@ func _on_timer_on_timeout() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#BUG : Crash si tu touche a 00.1 sec
+	AudioManager.defeat_sound.play()
 	print("ouch")
 	$FlashDmg.visible = true
 	$FlashDmg.modulate.a = 1.0

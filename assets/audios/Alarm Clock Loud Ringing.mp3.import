@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://u1vy5oaefjgd"
+path="res://.godot/imported/Alarm Clock Loud Ringing.mp3-2446d519ab6f59f4fac81e9b40f8f618.mp3str"
+
+[deps]
+
+source_file="res://assets/audios/Alarm Clock Loud Ringing.mp3"
+dest_files=["res://.godot/imported/Alarm Clock Loud Ringing.mp3-2446d519ab6f59f4fac81e9b40f8f618.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
