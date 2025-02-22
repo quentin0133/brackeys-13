@@ -1,16 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://dknc245dgap7w"]
+[gd_scene load_steps=5 format=3 uid="uid://dknc245dgap7w"]
+
+[ext_resource type="Texture2D" uid="uid://bvqmvbw1cj3sr" path="res://assets/backgrounds/perforas-background.png" id="1_caipx"]
+[ext_resource type="Texture2D" uid="uid://b53pcl4mmk8la" path="res://assets/sprites/pere-fougas/pere-fougas.png" id="2_xny18"]
+[ext_resource type="Texture2D" uid="uid://dr3o26yu8p0bt" path="res://assets/sprites/pere-fougas/pere-fougas-without-shadow.png" id="3_bcoto"]
 
 [sub_resource type="GDScript" id="GDScript_7ofqn"]
 script/source = "extends Control
 
 @onready var label : Label = $VBoxContainer/Label as Label
 @onready var hint : Label = $Hint as Label
+@onready var container : VBoxContainer = $VBoxContainer as VBoxContainer
+
 @onready var button1 : Button = $VBoxContainer/GridContainer/Button as Button
 @onready var button2 : Button = $VBoxContainer/GridContainer/Button2 as Button
 @onready var button3 : Button = $VBoxContainer/GridContainer/Button3 as Button
 @onready var button4 : Button = $VBoxContainer/GridContainer/Button4 as Button
-@onready var timer : Timer = $TimerBeforeEnd as Timer
 
+@onready var timer : Timer = $TimerBeforeEnd as Timer
+@onready var timer_container : Timer = $VBoxContainer/TimerForQuestion as Timer
+@onready var timer_transition : Timer = $TimerForTransition as Timer
+@onready var timer_begin : Timer = $Backgroud/TimerForTransitionInTheBegin as Timer
+@onready var timer_backgroud : Timer = $Backgroud_with_light/TimerForBackgroud as Timer
+@onready var timer_fourgas : Timer = $FourgasWitoutShadow/TimerFourgas as Timer
+
+@onready var background_with_light : TextureRect = $Backgroud_with_light as TextureRect
+@onready var fourgas : TextureRect = $Fourgas as TextureRect
+@onready var fourgas_witout_shadow : TextureRect = $FourgasWitoutShadow as TextureRect
+
+@onready var background : ColorRect = $Backgroud as ColorRect
 
 var question : Array = [\"Who are you ?\",\"questionb\",\"questionc\",\"questiond\"]
 var reponse1 : Array = [\"Your son\",\"reponse1b\",\"reponse1c\",\" ... \"]
@@ -23,8 +40,11 @@ var try : int = 0
 
 func _ready():
 	hint.modulate.a = 0.00
-	timer.start()
-	another_question()
+	background_with_light.modulate.a = 0.00
+	fourgas.modulate.a = 0.00
+	fourgas_witout_shadow.modulate.a = 0.00
+	container.modulate.a = 0.00
+	timer_begin.start(3)
 
 
 func another_question():
@@ -47,8 +67,46 @@ func another_question():
 func _on_timer_before_end_timeout():
 	timer.stop()
 	print(\"End Game\")
-	GameManager.next_scene_to_call = \"scene_crowd_kid\"
+	if GameManager.story_mode :
+		GameManager.next_scene_to_call = \"main_menu\"
+		GameManager.story_mode_finish = true
+	else:
+		GameManager.next_scene_to_call = \"chapter_menu\"
 	queue_free()
+
+func begin():
+	pass
+
+
+func _on_timer_fourgas_timeout():
+	fourgas_witout_shadow.modulate.a += 0.10
+	if fourgas_witout_shadow.modulate.a > 1:
+		timer_fourgas.stop()
+		timer_transition.start(1)
+
+
+
+func _on_timer_for_backgroud_timeout():
+	background_with_light.modulate.a += 0.10
+	fourgas.modulate.a += 0.10
+	if background_with_light.modulate.a > 1:
+		timer_backgroud.stop()
+		timer_container.start(0.1)
+		another_question()
+
+
+func _on_timer_for_transition_timeout():
+	timer_backgroud.start(0.1)
+
+
+func _on_timer_for_transition_in_the_begin_timeout():
+	timer_fourgas.start(0.1)
+
+
+func _on_timer_for_question_timeout():
+	container.modulate.a += 0.10
+	if container.modulate.a > 1:
+		timer_container.stop()
 "
 
 [node name="DontAnswer" type="Control"]
@@ -79,6 +137,7 @@ text = "Oh my god, just ignore him already ! "
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -131,12 +190,68 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "C'est une réponse, une vrai "
 
+[node name="TimerForQuestion" type="Timer" parent="VBoxContainer"]
+
 [node name="TimerBeforeEnd" type="Timer" parent="."]
 wait_time = 15.0
 autostart = true
+
+[node name="Fourgas" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 562.0
+offset_top = -2.0
+offset_right = 1246.0
+offset_bottom = 778.0
+texture = ExtResource("2_xny18")
+
+[node name="FourgasWitoutShadow" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_left = 612.0
+offset_top = 7.0
+offset_right = 1212.0
+offset_bottom = 751.0
+texture = ExtResource("3_bcoto")
+
+[node name="TimerFourgas" type="Timer" parent="FourgasWitoutShadow"]
+wait_time = 0.1
+
+[node name="Backgroud_with_light" type="TextureRect" parent="."]
+z_index = -4
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("1_caipx")
+
+[node name="TimerForBackgroud" type="Timer" parent="Backgroud_with_light"]
+wait_time = 0.1
+
+[node name="Backgroud" type="ColorRect" parent="."]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TimerForTransitionInTheBegin" type="Timer" parent="Backgroud"]
+one_shot = true
+
+[node name="TimerForTransition" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button" to="." method="another_question"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button2" to="." method="another_question"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button3" to="." method="another_question"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button4" to="." method="another_question"]
+[connection signal="timeout" from="VBoxContainer/TimerForQuestion" to="." method="_on_timer_for_question_timeout"]
 [connection signal="timeout" from="TimerBeforeEnd" to="." method="_on_timer_before_end_timeout"]
+[connection signal="timeout" from="FourgasWitoutShadow/TimerFourgas" to="." method="_on_timer_fourgas_timeout"]
+[connection signal="timeout" from="Backgroud_with_light/TimerForBackgroud" to="." method="_on_timer_for_backgroud_timeout"]
+[connection signal="timeout" from="Backgroud/TimerForTransitionInTheBegin" to="." method="_on_timer_for_transition_in_the_begin_timeout"]
+[connection signal="timeout" from="TimerForTransition" to="." method="_on_timer_for_transition_timeout"]

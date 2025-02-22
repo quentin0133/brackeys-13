@@ -11,7 +11,7 @@ var data_game = {
 	"scene_crowd_kid" : ['Crow and Kid','Description',1,'Best Score','Last Score',0,0,false],
 	"scene_wakywaky" : ['Waky waky','Description',2,'Best Score','Last Score',0,0,false],
 	"scene_grand_mother" : ['Grand Mother Game','Description',3,'Best Score','Last Score',0,0,false],
-	"scene_dont_answer" : ['Father Fouras','Description','Score hud','Best Score','Last Score',0,0,false]
+	"scene_dont_answer" : ['Father Fouras','Description',4,'Best Score','Last Score',0,0,false]
 	#"main_menu" : ['Default title','Default description','Score hud','Best Score','Last Score',0,0,false]
 }
 
