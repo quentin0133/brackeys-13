@@ -132,6 +132,15 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 scene_name = "scene_wakywaky"
 
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GameDetailUi" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer4" instance=ExtResource("1_hl1ti")]
+layout_mode = 2
+scene_name = "scene_grand_mother"
+
 [node name="MarginContainerBackButton" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
@@ -145,4 +154,8 @@ theme_override_font_sizes/font_size = 30
 text = "Back to menu"
 
 [connection signal="refresh" from="." to="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" method="refresh"]
+[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/GameDetailUi" to="." method="_launch_game"]
+[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/GameDetailUi" to="." method="_launch_game"]
+[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer3/GameDetailUi" to="." method="_launch_game"]
+[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer4/GameDetailUi" to="." method="_launch_game"]
 [connection signal="pressed" from="VBoxContainer/MarginContainerBackButton/BackButton" to="." method="_on_back_button_pressed"]
