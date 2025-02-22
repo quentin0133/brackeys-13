@@ -5,7 +5,7 @@ script/source = "extends CanvasLayer
 
 @onready var label : Label = $Control/Label as Label
 
-var timer_hud = preload(\"res://scenes/uis/hud/timer_dynamite.tscn\")
+var timer_hud = preload(\"res://scenes/uis/hud/timer_dynamite_standalone.tscn\")
 
 func _process(_delta):
 	if (!GameManager.story_mode && GameManager.in_game && GameManager.show_score):
