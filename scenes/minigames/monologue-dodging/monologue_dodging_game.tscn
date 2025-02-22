@@ -269,7 +269,7 @@ offset_right = 448.0
 offset_bottom = 288.0
 
 [node name="Health" type="Sprite2D" parent="."]
-position = Vector2(-184, -84)
+position = Vector2(95, 259)
 scale = Vector2(0.653125, 0.653125)
 texture = ExtResource("10_0jewp")
 
