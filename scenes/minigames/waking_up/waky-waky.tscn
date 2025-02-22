@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://6uhqvpiu62qo"]
 
 [ext_resource type="Script" path="res://scripts/mini-games/waky-waky/waky-waky.gd" id="1_cwxsv"]
-[ext_resource type="PackedScene" uid="uid://dlmvnojj17gqt" path="res://scenes/minigames/waking_up/container.tscn" id="2_fsei4"]
+[ext_resource type="PackedScene" uid="uid://4jv7jiyjgo8o" path="res://scenes/minigames/waking_up/container.tscn" id="2_fsei4"]
 [ext_resource type="Texture2D" uid="uid://cmy0mkep88daa" path="res://assets/sprites/waking-up/wacky-wacky.png" id="3_j4i11"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="4_0f2ys"]
 [ext_resource type="Texture2D" uid="uid://c1pujxi1q2xhb" path="res://assets/sprites/timer/dynamite-cord.png" id="5_82n1m"]
@@ -56,10 +56,6 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptih7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
-atlas = ExtResource("8_12t8f")
-region = Rect2(24, 0, 8, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vmp4"]
 atlas = ExtResource("8_12t8f")
 region = Rect2(0, 0, 8, 8)
@@ -71,6 +67,10 @@ region = Rect2(8, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
 atlas = ExtResource("8_12t8f")
 region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
+atlas = ExtResource("8_12t8f")
+region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d3h73"]
 animations = [{
@@ -248,7 +248,7 @@ offset_right = -35.0
 offset_bottom = 8.0
 grow_horizontal = 0
 scale = Vector2(10, 10)
-texture = SubResource("AtlasTexture_s7tjp")
+texture = SubResource("AtlasTexture_3vmp4")
 stretch_mode = 4
 script = ExtResource("7_i3rqn")
 sprites = SubResource("SpriteFrames_d3h73")
@@ -388,6 +388,7 @@ offset_bottom = 871.0
 
 [node name="AlarmSounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_jlud3")
+volume_db = -6.0
 autoplay = true
 
 [node name="Victory" type="AudioStreamPlayer" parent="."]

@@ -45,6 +45,8 @@ func _input(event):
 		if event.pressed and (GameManager.select_obstacle == obstacle_number) and !dont_move :
 			if get_rect().has_point(to_local(event.position)):
 				is_dragging = true
+				
+				AudioManager.items_sfx.play()
 		else:
 			is_dragging = false
 		

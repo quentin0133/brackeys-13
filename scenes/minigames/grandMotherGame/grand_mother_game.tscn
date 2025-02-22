@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://y11w7wqmtqp2"]
+[gd_scene load_steps=8 format=3 uid="uid://y11w7wqmtqp2"]
 
 [ext_resource type="Texture2D" uid="uid://laueeud35f7h" path="res://assets/backgrounds/bag-grandma.png" id="1_70nfm"]
 [ext_resource type="PackedScene" uid="uid://duikhyllq88dn" path="res://scenes/minigames/grandMotherGame/liquor.tscn" id="2_7mt2y"]
+[ext_resource type="AudioStream" uid="uid://bgnar4n88h3ha" path="res://assets/audios/glass.ogg" id="3_tgmvf"]
+[ext_resource type="AudioStream" uid="uid://xk300xgicxw2" path="res://assets/audios/Oh Yeah sound effect.mp3" id="4_iwq60"]
 
 [sub_resource type="GDScript" id="GDScript_2ju0h"]
 script/source = "extends Node
@@ -68,8 +70,8 @@ func _ready():
 func _on_liquor_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and !liquor.has_overlapping_areas():
 		GameManager.timer_lock = false
-		
-
+		$Glass.play()
+		$Victory2.play()
 		print('win')
 		victory_UI.visible = true
 		while (victory_UI.modulate.a < 1):
@@ -190,5 +192,11 @@ text = "Click to continue"
 label_settings = SubResource("LabelSettings_ly1u6")
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Glass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tgmvf")
+
+[node name="Victory2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iwq60")
 
 [connection signal="input_event" from="Liquor" to="." method="_on_liquor_input_event"]

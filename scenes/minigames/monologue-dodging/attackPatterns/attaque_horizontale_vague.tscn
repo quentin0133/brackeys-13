@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0kbfivnpa4sk"]
+[gd_scene load_steps=6 format=3 uid="uid://d0kbfivnpa4sk"]
 
 [ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/path_follow_2d.gd" id="1_2s8pb"]
 [ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/area_2d.gd" id="2_yy875"]
+[ext_resource type="Texture2D" uid="uid://bj367xgjspiv5" path="res://assets/images/Warning.png" id="3_jn4nl"]
 
 [sub_resource type="Curve2D" id="Curve2D_j52te"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -317, -1, 0, 0, 0, 0, 1019, -1, 0, 0, 0, 0, 1016, 96, 0, 0, 0, 0, -378, 109, 0, 0, 0, 0, -375, 201, 0, 0, 0, 0, 1016, 207)
+"points": PackedVector2Array(0, 0, 0, 0, -317, -1, 0, 0, 0, 0, 863, 5, 0, 0, 0, 0, 861, 107, 0, 0, 0, 0, -193, 104, 0, 0, 0, 0, -191, 204, 0, 0, 0, 0, 863, 198)
 }
 point_count = 6
 
@@ -38,3 +39,7 @@ text = "Last time, an old man told me to get into his van
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
 position = Vector2(-291.977, -2.84545)
 shape = SubResource("RectangleShape2D_yksdm")
+
+[node name="Warning" type="Sprite2D" parent="."]
+position = Vector2(-185, 2)
+texture = ExtResource("3_jn4nl")
