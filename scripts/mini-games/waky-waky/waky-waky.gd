@@ -4,6 +4,7 @@ extends Node2D
 @onready var alarm = $Alarm as SlideContainer
 @onready var gm = $JMTAGRANDMERE
 @onready var nk = $NIKOUMOUK
+@onready var timer = $CanvasLayer/Timer
 
 var rdm = RandomNumberGenerator.new()
 var trolling = false
@@ -66,4 +67,4 @@ func _on_timer_on_timeout() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#BUG : Crash si tu touche a 00.1 sec
 	print("ouch")
-	$CanvasLayer/Timer.current_duration -= 10
+	timer.current_duration -= 10
