@@ -9,16 +9,16 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_do02b"]
 animations = [{
 "frames": [{
-"duration": 3.0,
+"duration": 2.0,
 "texture": ExtResource("1_rq8m4")
 }, {
 "duration": 22.0,
 "texture": ExtResource("2_rtjys")
 }, {
-"duration": 10.0,
+"duration": 8.0,
 "texture": ExtResource("3_4vq1v")
 }, {
-"duration": 1.0,
+"duration": 8.0,
 "texture": ExtResource("4_6imwj")
 }],
 "loop": false,
@@ -31,11 +31,10 @@ script/source = "extends AnimatedSprite2D
 
 func _ready():
 	$\"2cinematicWin\".play()
-	
-func _input(event):
-	if event.is_action_pressed(\"Action\") or event.is_action_pressed(\"Attack\"):
-		GameManager.next_scene_to_call = \"scene_journalope\"
-		queue_free()
+
+func animation_finished():
+	GameManager.next_scene_to_call = \"scene_journalope\"
+	queue_free()
 "
 
 [node name="2cinematicWin" type="AnimatedSprite2D"]
@@ -43,9 +42,13 @@ position = Vector2(960, 539)
 scale = Vector2(1.01442, 1.01442)
 sprite_frames = SubResource("SpriteFrames_do02b")
 autoplay = "default"
+frame = 3
+frame_progress = 1.0
 script = SubResource("GDScript_deqjl")
 
 [node name="2cinematicWin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_r8wwb")
 volume_db = -9.0
 autoplay = true
+
+[connection signal="animation_finished" from="." to="." method="animation_finished"]
