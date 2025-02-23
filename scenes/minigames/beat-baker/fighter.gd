@@ -9,6 +9,7 @@ var state: String = "down"
 
 var cooldown = 1.0
 var playing = true
+var canContinue = false
 
 var baguettes = 0
 signal explode
@@ -49,14 +50,15 @@ func _input(event: InputEvent) -> void:
 			s.move_local_x(2)
 			s.move_local_y(-6)
 			cooldown = 1.0
-		elif (GameManager.story_mode):
-			GameManager.next_scene_to_call = "main_menu"
-			if(get_parent()):
-				get_parent().queue_free()
-		elif (!GameManager.story_mode):
-			GameManager.next_scene_to_call = "chapter_menu"
-			if(get_parent()):
-				get_parent().queue_free()
+		elif canContinue:
+			if (GameManager.story_mode):
+				GameManager.next_scene_to_call = "main_menu"
+				if(get_parent()):
+					get_parent().queue_free()
+			elif (!GameManager.story_mode):
+				GameManager.next_scene_to_call = "chapter_menu"
+				if(get_parent()):
+					get_parent().queue_free()
 
 func eat(): 
 	baguettes += 1

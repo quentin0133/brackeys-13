@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxj7wmjydchbt"]
+[gd_scene load_steps=9 format=3 uid="uid://bxj7wmjydchbt"]
 
 [ext_resource type="Texture2D" uid="uid://cht3krrui2ywf" path="res://assets/images/cinematics/Return-to-home-cinematic.png" id="1_oi8vh"]
 [ext_resource type="Texture2D" uid="uid://tg4puxk8b27y" path="res://assets/images/cinematics/i slepe.png" id="2_2574s"]
@@ -27,9 +27,48 @@ func _input(event):
 		else:
 			GameManager.story_mode_finish = true
 			GameManager.next_scene_to_call = \"main_menu\"
+			
 			queue_free()
 	
 "
+
+[sub_resource type="Animation" id="Animation_hitce"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [38]
+}
+
+[sub_resource type="Animation" id="Animation_q5cvr"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [38, 48]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1r2px"]
+_data = {
+"RESET": SubResource("Animation_hitce"),
+"new_animation": SubResource("Animation_q5cvr")
+}
 
 [node name="7cinematic" type="Sprite2D"]
 position = Vector2(963.978, 543.102)
@@ -43,3 +82,32 @@ stream = ExtResource("3_n03as")
 [node name="0cinematic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_bfvgi")
 volume_db = -9.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -244.0
+offset_top = -130.0
+offset_right = 245.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(244, 33)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 38
+text = "Click to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Label"]
+libraries = {
+"": SubResource("AnimationLibrary_1r2px")
+}
+autoplay = "new_animation"

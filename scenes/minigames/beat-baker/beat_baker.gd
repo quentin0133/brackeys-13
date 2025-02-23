@@ -2,9 +2,11 @@ extends Node2D
 
 @onready var baker = $Baker as Area2D
 @onready var baker_pattern = $"Baker-Patern" as SlideContainer
+@onready var victory = $CanvasLayer/Victory;
 
 var end_game : bool = false
 var win_flag : bool = false
+
 func _ready() -> void:
 	AudioManager.defeat_music.stop()
 	AudioManager.baker_music.play()
@@ -41,22 +43,26 @@ func is_safe():
 func win():
 	win_flag=true
 	stop()
-	$CanvasLayer/Victory.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
-	await get_tree().create_timer(0.6).timeout
-	$YES.play()
-	await get_tree().create_timer(0.4).timeout
+	while (victory.modulate.a < 1):
+		if (victory.modulate.a == 0.6):
+			$YES.play()
+		victory.modulate.a += 0.01
+		await get_tree().create_timer(0.01).timeout
 	end_game=true
+	$Fighter.canContinue = true
 	
 func game_over():
 	if !baker.proud : return
 	$NO.play()
 	AudioManager.defeat_music.play()
 	stop()
-	$CanvasLayer/GameOver.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
-	await get_tree().create_timer(1.0).timeout
+	while (victory.modulate.a < 1):
+		victory.modulate.a += 0.01
+		await get_tree().create_timer(0.01).timeout
 	end_game=true
+	$Fighter.canContinue = true
 
 func stop():
 	AudioManager.baker_music.stop()

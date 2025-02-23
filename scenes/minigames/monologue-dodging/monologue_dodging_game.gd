@@ -22,7 +22,6 @@ func _on_attack_spawner_timer_timeout() -> void:
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and end_game_flag and event.pressed:
-
 		if!GameManager.story_mode :
 			GameManager.next_scene_to_call = "chapter_menu"
 		elif GameManager.story_mode and flag_lose:
@@ -38,7 +37,7 @@ func lose():
 	AudioManager.monologue_music.stop()
 	GameManager.timer_lock = false
 	while (lose_UI.modulate.a < 1):
-		await get_tree().create_timer(0.005).timeout
+		await get_tree().create_timer(0.01).timeout
 		lose_UI.modulate.a += 0.01
 	end_game_flag = true
 	flag_lose = true
@@ -49,6 +48,6 @@ func win():
 	AudioManager.monologue_music.stop()
 	GameManager.timer_lock = false
 	while (victory_UI.modulate.a < 1):
-		await get_tree().create_timer(0.005).timeout
+		await get_tree().create_timer(0.01).timeout
 		victory_UI.modulate.a += 0.01
 	end_game_flag = true

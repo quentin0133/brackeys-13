@@ -13,7 +13,6 @@ signal RestKeyRebind
 @onready var slider_sound_volume = $VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderSoundVolume as HSlider
 @onready var slider_music_volume = $VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMusicVolume as HSlider
 
-
 func _on_main_menu_show_settings():
 	self.show()
 	_load_setting()

@@ -8,6 +8,7 @@ extends Node
 @onready var kid: RigidBody2D = $Kid
 @onready var kidAnimation: AnimatedSprite2D = $Kid/AnimatedSprite2D
 @onready var indication_text = $CanvasLayer/IndicationText
+@onready var indication_text2 = $CanvasLayer/IndicationText2
 
 var is_game_win = false
 var is_game_loose = false
@@ -55,6 +56,7 @@ func _on_shit_body_entered(body: Node2D) -> void:
 		animation.play("fade_journal")
 		image.texture = loosing_picture
 		indication_text.visible = false
+		indication_text2.visible = false
 		kidAnimation.global_rotation_degrees = 90
 
 func _on_kid_body_entered(body: Node) -> void:
@@ -71,6 +73,7 @@ func _on_kid_body_entered(body: Node) -> void:
 		kid.constant_force.y = 25
 		kid.constant_torque = 360
 		indication_text.visible = false
+		indication_text2.visible = false
 
 func _on_animation_player_animation_finished(_anim_name):
 	end_game = true

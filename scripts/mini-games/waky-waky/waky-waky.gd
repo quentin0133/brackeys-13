@@ -5,6 +5,7 @@ extends Node2D
 @onready var gm = $JMTAGRANDMERE
 @onready var nk = $NIKOUMOUK
 @onready var timer = $CanvasLayer/Timer
+@onready var flashDamage = $CanvasLayer/FlashDmg
 
 var rdm = RandomNumberGenerator.new()
 var trolling = false
@@ -51,15 +52,21 @@ func _on_nikoumouk_body_entered(body: Node2D) -> void:
 func win():
 	$Victory.play()
 	stop()
-	$CanvasLayer/Victory.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
+	while ($CanvasLayer/Victory.modulate.a < 1):
+		$CanvasLayer/Victory.modulate.a += 0.01
+		await get_tree().create_timer(0.01).timeout
+	gm.canContinue = true
 	
 func game_over():
 	$Defeat.play()
 	stop()
-	$CanvasLayer/GameOver.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
 	AudioManager.defeat_music.play()
+	while ($CanvasLayer/Victory.modulate.a < 1):
+		$CanvasLayer/Victory.modulate.a += 0.01
+		await get_tree().create_timer(0.01).timeout
+	gm.canContinue = true
 
 func stop():
 	gm.playing = false
@@ -75,13 +82,12 @@ func _on_timer_on_timeout() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	#BUG : Crash si tu touche a 00.1 sec
 	AudioManager.defeat_sound.play()
-	$FlashDmg.visible = true
-	$FlashDmg.modulate.a = 1.0
+	flashDamage.visible = true
+	flashDamage.modulate.a = 1.0
 	var tween = create_tween()
-	tween.tween_property($FlashDmg, "modulate:a", 0.0, 0.5)
+	tween.tween_property(flashDamage, "modulate:a", 0.0, 0.5)
 	await tween.finished
-	$FlashDmg.visible = false
+	flashDamage.visible = false
 	if is_instance_valid(timer):
 		timer.current_duration -= 10

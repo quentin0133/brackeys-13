@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1yhf1k08bvnk" path="res://assets/tileset/environment-tileset.png" id="3_0ewt5"]
 [ext_resource type="Script" path="res://scripts/pnj_generator.gd" id="3_jo6nq"]
 [ext_resource type="Texture2D" uid="uid://dvhkhmcai7r34" path="res://assets/sprites/kid/kid.png" id="4_toi8t"]
-[ext_resource type="Texture2D" uid="uid://cf3ogot21bvcf" path="res://assets/sprites/Shit/shit.png" id="5_7et8i"]
+[ext_resource type="Texture2D" uid="uid://cf3ogot21bvcf" path="res://assets/sprites/shit/shit.png" id="5_7et8i"]
 [ext_resource type="Texture2D" uid="uid://cclcdtnfd2jrm" path="res://assets/sprites/bullied-kid-minigame/newspaper-bullied-kid.png" id="7_xaqhg"]
 [ext_resource type="AudioStream" uid="uid://b3fcqwpvden3o" path="res://assets/audios/crowd sfx.ogg" id="9_bnibw"]
 [ext_resource type="AudioStream" uid="uid://tj7on42k5emi" path="res://assets/audios/SLAP SOUND EFFECT.ogg" id="10_ty25s"]
@@ -133,7 +133,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_s5djf"]
 resource_name = "fade_journal"
-length = 5.5
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -201,7 +201,7 @@ tracks/5/path = NodePath("../ClickToContinueText:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(4.5, 5.5),
+"times": PackedFloat32Array(1.5, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -334,8 +334,8 @@ can_sleep = false
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 1
-linear_damp = 1.5
-constant_force = Vector2(17.5, 0)
+linear_damp = 1.75
+constant_force = Vector2(17, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Kid"]
 position = Vector2(-0.5, 8)
@@ -443,6 +443,17 @@ libraries = {
 "": SubResource("AnimationLibrary_jbrdi")
 }
 autoplay = "text_moving"
+
+[node name="IndicationText2" type="Label" parent="CanvasLayer"]
+offset_left = 1089.0
+offset_top = 38.0
+offset_right = 2034.0
+offset_bottom = 277.0
+pivot_offset = Vector2(250, 75)
+text = "WASD to move"
+label_settings = SubResource("LabelSettings_12dhm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CrowdSounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_bnibw")

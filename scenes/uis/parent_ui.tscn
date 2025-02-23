@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf14n8kges4qh"]
+[gd_scene load_steps=6 format=3 uid="uid://bf14n8kges4qh"]
 
 [ext_resource type="PackedScene" uid="uid://td08ua34067u" path="res://scenes/uis/main_menu.tscn" id="1_v4qmk"]
 [ext_resource type="PackedScene" uid="uid://cwjascb1eanlj" path="res://scenes/uis/ui_settings_menu/settings_menu.tscn" id="2_3nd0b"]
 [ext_resource type="PackedScene" uid="uid://dxdjiv7cl2i4e" path="res://scenes/uis/ui_chapter_menu/chapter_menu.tscn" id="3_0e7s2"]
 [ext_resource type="PackedScene" uid="uid://c7t4tw0gk18cp" path="res://scenes/uis/gover_menu.tscn" id="3_twc6u"]
-[ext_resource type="AudioStream" uid="uid://c4erlpc6ses5h" path="res://assets/audios/make_me_laugh_final.mp3" id="5_inbnj"]
 
 [sub_resource type="GDScript" id="GDScript_qiud6"]
 script/source = "extends CanvasLayer
@@ -14,15 +13,12 @@ signal button_test
 signal show_main_menu
 signal show_chapter_menu
 
-@onready var background_sound : AudioStreamPlayer = $Sound as AudioStreamPlayer
-
 func _on_main_menu_test_button():
 	button_test.emit()
 
-
 func _on_main_menu_start_button():
 	button_start.emit()
-	background_sound.stop()
+	AudioManager.main_menu.stop()
 
 func _on_game_show_main_menu():
 	show_main_menu.emit()
@@ -31,10 +27,12 @@ func _on_game_show_chapter_menu():
 	show_chapter_menu.emit()
 
 func _lauch_music():
-	$Sound.play()
+	AudioManager.defeat_music.stop()
+	if (!AudioManager.main_menu.playing):
+		AudioManager.main_menu.play()
 
 func _stop_music():
-	$Sound.stop()
+	AudioManager.main_menu.stop()
 "
 
 [node name="ParentUi" type="CanvasLayer"]
@@ -52,10 +50,6 @@ visible = false
 [node name="GoverMenu" parent="." instance=ExtResource("3_twc6u")]
 visible = false
 
-[node name="Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_inbnj")
-parameters/looping = true
-
 [connection signal="show_chapter_menu" from="." to="ChapterMenu" method="_on_main_menu_show_chapter"]
 [connection signal="show_main_menu" from="." to="MainMenu" method="_on_someone_menu_show_main_menu"]
 [connection signal="lauchMusic" from="MainMenu" to="." method="_lauch_music"]
@@ -66,6 +60,7 @@ parameters/looping = true
 [connection signal="test_button" from="MainMenu" to="." method="_on_main_menu_test_button"]
 [connection signal="ShowMainMenu" from="SettingsMenu" to="MainMenu" method="_on_someone_menu_show_main_menu"]
 [connection signal="ShowMainMenu" from="ChapterMenu" to="." method="_on_game_show_main_menu"]
+[connection signal="refresh" from="ChapterMenu" to="ChapterMenu/VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" method="refresh"]
 [connection signal="startMusic" from="ChapterMenu" to="." method="_lauch_music"]
 [connection signal="stopMusic" from="ChapterMenu" to="." method="_stop_music"]
 [connection signal="ShowMainMenu" from="GoverMenu" to="MainMenu" method="_on_someone_menu_show_main_menu"]

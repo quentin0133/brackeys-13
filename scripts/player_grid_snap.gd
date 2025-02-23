@@ -16,6 +16,7 @@ func _ready():
 	
 func _process(_delta):
 	if GameManager.timer_timeout :
+		print(win)
 		win.emit()
 		HP = 69
 		$"../Health".visible = false

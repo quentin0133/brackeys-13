@@ -354,6 +354,14 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="FlashDmg" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JMTAGRANDMERE" parent="." instance=ExtResource("9_51doj")]
 position = Vector2(948, 150)
 scale = Vector2(30, 30)
@@ -379,12 +387,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_e2wxr")
-
-[node name="FlashDmg" type="ColorRect" parent="."]
-visible = false
-offset_top = 176.0
-offset_right = 1922.0
-offset_bottom = 871.0
 
 [node name="AlarmSounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_jlud3")

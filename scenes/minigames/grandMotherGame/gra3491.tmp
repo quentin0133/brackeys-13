@@ -6,12 +6,13 @@
 [ext_resource type="AudioStream" uid="uid://xk300xgicxw2" path="res://assets/audios/Oh Yeah sound effect.mp3" id="4_iwq60"]
 
 [sub_resource type="GDScript" id="GDScript_2ju0h"]
-script/source = "extends Node2D
+script/source = "extends Node
 
 @onready var spwan_area : Polygon2D = $SpawnArea as Polygon2D
 @onready var liquor : Area2D = $Liquor as Area2D
 @onready var victory_UI: Control = $Victory
 @onready var lose_UI: Control = $Lose
+
 
 var obstacleScene = preload(\"res://scenes/minigames/grandMotherGame/obstacle.tscn\")
 var itemMax = 8
@@ -19,8 +20,6 @@ var end_game_flag = false
 var win_flag = false
 var timer_on = false
 var time = 0
-
-var object_selected: ObstacleGrandma = null
 
 func _process(delta):
 	if(timer_on):
@@ -40,8 +39,8 @@ func _process(delta):
 
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if end_game_flag and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if end_game_flag:
 			if!GameManager.story_mode :
 				GameManager.next_scene_to_call = \"chapter_menu\"
 			elif GameManager.story_mode and win_flag:
@@ -50,25 +49,7 @@ func _input(event):
 				GameManager.next_scene_to_call = \"scene_cinematic1lose\"
 			queue_free()
 		else:
-			if (event.pressed):
-				var space_state = get_world_2d().direct_space_state
-				var mouse_pos = event.position
-				
-				var query = PhysicsPointQueryParameters2D.new()
-				query.position = event.position
-				query.collide_with_areas = true
-				
-				var results = space_state.intersect_point(query)
-				
-				if (results):
-					results.sort_custom(func(hit1, hit2): return hit1.collider.z_index > hit2.collider.z_index)
-					var obstacle = results[0].collider as ObstacleGrandma
-					if (obstacle):
-						obstacle.is_dragging = true
-						object_selected = obstacle
-			elif object_selected:
-				object_selected.is_dragging = false
-				object_selected = null
+			print(\"A\")
 
 
 func _ready():
@@ -102,7 +83,6 @@ func _ready():
 
 func _on_liquor_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and !liquor.has_overlapping_areas():
-		print(liquor.has_overlapping_areas())
 		win_flag = true
 		GameManager.timer_lock = false
 		timer_on = false
@@ -131,7 +111,7 @@ font_size = 50
 outline_size = 25
 outline_color = Color(0, 0, 0, 1)
 
-[node name="GrandMotherGame" type="Node2D"]
+[node name="GrandMotherGame" type="Node"]
 script = SubResource("GDScript_2ju0h")
 
 [node name="Background" type="CanvasLayer" parent="."]

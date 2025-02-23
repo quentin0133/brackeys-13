@@ -479,6 +479,8 @@ volume_db = -9.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1000
+position = Vector2(-2, 6)
+scale = Vector2(0.324779, 0.413503)
 texture = ExtResource("11_v0uxk")
 
 [node name="Throw" type="AudioStreamPlayer" parent="."]
