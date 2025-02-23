@@ -18,10 +18,11 @@ var is_game_win = false
 var is_game_loose = false
 var end_game_flag = false
 
-static var isJournalistShowed = false
+var isJournalistShowed = false
+static var instance
 
 func _ready():
-	isJournalistShowed = false
+	instance = self
 	AudioManager.defeat_music.stop()
 	AudioManager.journalope_music.play()
 	if !GameManager.story_mode:
@@ -70,7 +71,6 @@ func win():
 		await get_tree().create_timer(0.005).timeout
 		victory_UI.modulate.a += 0.01
 	end_game_flag = true
-	isJournalistShowed = false
 	
 func game_over():
 	AudioManager.defeat_music.play()
@@ -86,13 +86,11 @@ func game_over():
 	player.input_enable = false
 	$MortParFlash.play()
 	$RunningSounds.stop()
-	isJournalistShowed = false
 
 func _on_timer_timeout() -> void:
 	while (indication.modulate.a > 0):
 		await get_tree().create_timer(0.005).timeout
 		indication.modulate.a -= 0.01
-
 
 func _on_animation_player_animation_finished(anim_name):
 	end_game_flag = true

@@ -60,7 +60,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "show_up"):
 		AudioManager.paparazzi.play()
 		sprite.play()
-		Journalope.isJournalistShowed = true
+		Journalope.instance.isJournalistShowed = true
 		#print("Journalist are shown up")
 		hide_timer.start()
 
@@ -68,7 +68,7 @@ func hideJournalist():
 	sprite.stop()
 	AudioManager.paparazzi.stop()
 	animation_player.play("hide")
-	Journalope.isJournalistShowed = false
+	Journalope.instance.isJournalistShowed = false
 	#print("Journalist are hidden")
 
 func _process(delta: float) -> void:
