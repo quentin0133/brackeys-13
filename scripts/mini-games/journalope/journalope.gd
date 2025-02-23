@@ -68,6 +68,7 @@ func win():
 	while (victory_UI.modulate.a < 1):
 		await get_tree().create_timer(0.005).timeout
 		victory_UI.modulate.a += 0.01
+	end_game_flag = true
 	
 func game_over():
 	AudioManager.defeat_music.play()
