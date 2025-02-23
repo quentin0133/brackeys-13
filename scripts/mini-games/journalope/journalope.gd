@@ -32,7 +32,7 @@ func _input(event):
 		if event.pressed and end_game_flag and GameManager.story_mode and is_game_win :
 			GameManager.next_scene_to_call = "scene_cinematic3"
 			queue_free()
-		elif event.pressed and end_game_flag and !GameManager.story_mode  :
+		elif event.pressed and end_game_flag and !GameManager.story_mode:
 			GameManager.next_scene_to_call = "chapter_menu"
 			GameManager.update_score("scene_journalope")
 			queue_free()
@@ -83,7 +83,7 @@ func game_over():
 	player.input_enable = false
 	$MortParFlash.play()
 	$RunningSounds.stop()
-
+	end_game_flag = true
 
 func _on_timer_timeout() -> void:
 	while (indication.modulate.a > 0):

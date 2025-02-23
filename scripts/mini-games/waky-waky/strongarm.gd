@@ -6,7 +6,7 @@ var mooving = false
 var reached = false
 var forward = true
 var playing = true
-
+var first_time = true
 var max_dist = 600
 @onready var starting: Vector2 = Vector2.ZERO
 @onready var animation = $AnimationPlayer
@@ -14,6 +14,9 @@ var max_dist = 600
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if first_time:
+			await get_tree().create_timer(0.25).timeout
+			first_time = false
 		if playing:
 			if !animation.is_playing():
 				animation.play("hit")
