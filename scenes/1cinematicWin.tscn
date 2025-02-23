@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://duodsedvfj3ut" path="res://assets/images/cinematics/cinematic-grandma-liqueur-2.png" id="4_otf4c"]
 [ext_resource type="AudioStream" uid="uid://7vvktyo262wo" path="res://assets/audios/drink.ogg" id="5_javqp"]
 [ext_resource type="AudioStream" uid="uid://cnhstd4q3pvd5" path="res://assets/audios/ambulance.ogg" id="6_f33li"]
-[ext_resource type="AudioStream" uid="uid://dwc3haefg4ekr" path="res://assets/audios/Bruh sound effect.mp3" id="7_me6i6"]
+[ext_resource type="AudioStream" uid="uid://dsgnxw6lsk2ir" path="res://assets/audios/ah shit.ogg" id="7_6fp0o"]
 
 [node name="1cinematicWin" type="Sprite2D"]
 position = Vector2(963.978, 541.392)
@@ -23,6 +23,6 @@ stream = ExtResource("6_f33li")
 volume_db = -9.0
 
 [node name="1cinematicWin3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_me6i6")
+stream = ExtResource("7_6fp0o")
 volume_db = -9.0
 pitch_scale = 0.85
