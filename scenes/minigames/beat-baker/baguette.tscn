@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr0peh3q051p0"]
+
+[ext_resource type="Script" path="res://scripts/mini-games/beat-baker/baguette.gd" id="1_k4tnd"]
+[ext_resource type="Texture2D" uid="uid://qayb7g46fenk" path="res://assets/sprites/bread-bresom.png" id="2_jrh4a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meehk"]
+radius = 8.0
+height = 44.0
+
+[node name="Baguette" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_k4tnd")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(2, 2)
+texture = ExtResource("2_jrh4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57058
+shape = SubResource("CapsuleShape2D_meehk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

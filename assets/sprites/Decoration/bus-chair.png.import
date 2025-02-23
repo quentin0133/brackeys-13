@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxknghxwj4m54"
-path="res://.godot/imported/bus-chair.png-3951e26ab36b01282bdbf69fd564b6d8.ctex"
+path="res://.godot/imported/bus-chair.png-33a2b9cd61ee41170d5d0b91c784924d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/decoration/bus-chair.png"
-dest_files=["res://.godot/imported/bus-chair.png-3951e26ab36b01282bdbf69fd564b6d8.ctex"]
+source_file="res://assets/sprites/Decoration/bus-chair.png"
+dest_files=["res://.godot/imported/bus-chair.png-33a2b9cd61ee41170d5d0b91c784924d.ctex"]
 
 [params]
 

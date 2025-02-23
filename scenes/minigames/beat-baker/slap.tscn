@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwn5xacbd63mv"]
+
+[ext_resource type="Texture2D" uid="uid://qayb7g46fenk" path="res://assets/sprites/bread-bresom.png" id="1_a5f32"]
+[ext_resource type="Script" path="res://scenes/minigames/beat-baker/slap.gd" id="1_o6t0a"]
+[ext_resource type="AudioStream" uid="uid://d28vd0qwh44if" path="res://assets/audios/turn_page.wav" id="3_o88b4"]
+
+[sub_resource type="Curve2D" id="Curve2D_xxmti"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 50, -2.18268, 48.2142, 2.18268, -48.2142, 50, 0)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hh32n"]
+radius = 19.8494
+
+[sub_resource type="Gradient" id="Gradient_l7dug"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wxbsg"]
+gradient = SubResource("Gradient_l7dug")
+fill_from = Vector2(0.633621, 0.413793)
+fill_to = Vector2(0.564655, 0.353448)
+
+[node name="Node2D" type="Path2D"]
+curve = SubResource("Curve2D_xxmti")
+script = ExtResource("1_o6t0a")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 50)
+rotation = -0.785398
+loop = false
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="Slap" type="AudioStreamPlayer" parent="PathFollow2D/Area2D"]
+stream = ExtResource("3_o88b4")
+volume_db = -9.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
+shape = SubResource("CircleShape2D_hh32n")
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/Area2D"]
+clip_children = 2
+z_index = 100
+rotation = 2.35619
+scale = Vector2(2, 2)
+texture = ExtResource("1_a5f32")
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/Area2D/Sprite2D"]
+modulate = Color(1, 1, 1, 0.705882)
+texture = SubResource("GradientTexture2D_wxbsg")
