@@ -226,6 +226,10 @@ _data = {
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_11q26"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
+atlas = ExtResource("11_iatli")
+region = Rect2(16, 0, 8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vmp4"]
 atlas = ExtResource("11_iatli")
 region = Rect2(0, 0, 8, 8)
@@ -233,10 +237,6 @@ region = Rect2(0, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqxac"]
 atlas = ExtResource("11_iatli")
 region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rf3q1"]
-atlas = ExtResource("11_iatli")
-region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7tjp"]
 atlas = ExtResource("11_iatli")
@@ -740,10 +740,11 @@ offset_right = -35.0
 offset_bottom = 8.0
 grow_horizontal = 0
 scale = Vector2(10, 10)
-texture = SubResource("AtlasTexture_3vmp4")
+texture = SubResource("AtlasTexture_rf3q1")
 stretch_mode = 4
 script = ExtResource("9_bfobt")
 sprites = SubResource("SpriteFrames_ca55y")
+frame_index = 2
 auto_play = true
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]
