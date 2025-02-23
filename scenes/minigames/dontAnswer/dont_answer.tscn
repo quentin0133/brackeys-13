@@ -383,6 +383,7 @@ offset_left = 562.0
 offset_top = -2.0
 offset_right = 1246.0
 offset_bottom = 778.0
+mouse_filter = 2
 texture = ExtResource("2_xny18")
 
 [node name="FourgasWitoutShadow" type="TextureRect" parent="."]
@@ -392,6 +393,7 @@ offset_left = 612.0
 offset_top = 7.0
 offset_right = 1212.0
 offset_bottom = 751.0
+mouse_filter = 2
 texture = ExtResource("3_bcoto")
 
 [node name="TimerFourgas" type="Timer" parent="FourgasWitoutShadow"]
