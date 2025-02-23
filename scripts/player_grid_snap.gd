@@ -6,8 +6,17 @@ var grid_positions = [Vector2(0,0), Vector2(1,0), Vector2(2,0),
 var current_index = 4 # Centre
 var HP := 3
 
+signal win
+signal lose
+
 func _ready():
+	GameManager.timer_hud = 15
+	GameManager.show_timer_hud = true
 	global_position = grid_positions[4] * 100
+	
+func _process(_delta):
+	if GameManager.timer_timeout :
+		win.emit()
 
 func _input(event):
 	if event.is_action_pressed("Left") and current_index % 3 > 0:
@@ -24,10 +33,9 @@ func _input(event):
 func takeDmg():
 	HP -= 1
 	if HP <= 0:
-		print("INSERER LOGIQUE DE GAME OVER")
 		$"../Health".visible = false
 		AudioManager.defeat_sound.play()
-	
+		lose.emit()
 	$"../FlashDmg".visible = true
 	$"../FlashDmg".modulate.a = 1.0
 	$"../Health".hframes += 1

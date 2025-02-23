@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://bwpxyckqnqpvd"]
+[gd_scene load_steps=51 format=4 uid="uid://bwpxyckqnqpvd"]
 
 [ext_resource type="Script" path="res://scripts/player_grid_snap.gd" id="1_8pqyr"]
 [ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/monologue_dodging_game.gd" id="1_iheio"]
@@ -218,6 +218,26 @@ stream_10 = ExtResource("14_sw0n2")
 stream_11 = ExtResource("15_cn1de")
 stream_12 = ExtResource("16_302pr")
 
+[sub_resource type="LabelSettings" id="LabelSettings_po447"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_miyr4"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uq42t"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i4qd3"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
 [node name="MonologueDodgingGame" type="Node2D"]
 script = ExtResource("1_iheio")
 attack_scenes = Array[PackedScene]([ExtResource("2_sl0x2"), ExtResource("3_47qms"), ExtResource("4_trvei"), ExtResource("5_dcrwe")])
@@ -282,4 +302,91 @@ max_polyphony = 3
 stream = SubResource("AudioStreamPlaylist_qe21f")
 pitch_scale = 3.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Victory" type="Control" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bg" type="ColorRect" parent="CanvasLayer/Victory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Label" type="Label" parent="CanvasLayer/Victory"]
+layout_mode = 0
+offset_left = 694.0
+offset_top = 469.0
+offset_right = 1226.0
+offset_bottom = 610.0
+text = "You've won! Congratz!"
+label_settings = SubResource("LabelSettings_po447")
+horizontal_alignment = 1
+
+[node name="ClickToContinue" type="Label" parent="CanvasLayer/Victory"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 985.0
+offset_right = 1460.0
+offset_bottom = 1067.0
+text = "Click to continue"
+label_settings = SubResource("LabelSettings_miyr4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Lose" type="Control" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="ColorRect" parent="CanvasLayer/Lose"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Label" type="Label" parent="CanvasLayer/Lose"]
+layout_mode = 0
+offset_left = 694.0
+offset_top = 469.0
+offset_right = 1226.0
+offset_bottom = 610.0
+text = "Perdu !"
+label_settings = SubResource("LabelSettings_uq42t")
+horizontal_alignment = 1
+
+[node name="ClickToContinue" type="Label" parent="CanvasLayer/Lose"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 985.0
+offset_right = 1460.0
+offset_bottom = 1067.0
+text = "Click to retry"
+label_settings = SubResource("LabelSettings_i4qd3")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="end_game" from="." to="Player" method="endgame"]
+[connection signal="lose" from="Player" to="." method="lose"]
+[connection signal="win" from="Player" to="." method="win"]
 [connection signal="timeout" from="AttackSpawnerTimer" to="." method="_on_attack_spawner_timer_timeout"]

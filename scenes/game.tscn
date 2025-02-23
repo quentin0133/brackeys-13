@@ -26,7 +26,7 @@ func _process(_delta):
 
 func _on_parent_ui_button_test():
 	GameManager.story_mode = true
-	load_next_scene(\"scene_wakywaky\")
+	load_next_scene(\"scene_monologue\")
 
 
 func load_next_scene(name_of_scene:String):
