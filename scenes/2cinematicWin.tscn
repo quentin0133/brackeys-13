@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dri4tpwt406jl"]
+
+[ext_resource type="Texture2D" uid="uid://bw71vbimc33ml" path="res://assets/images/cinematics/kid-tackle-1.png" id="1_rq8m4"]
+[ext_resource type="Texture2D" uid="uid://b1a4f6jwxpbem" path="res://assets/images/cinematics/kid-tackle-2.png" id="2_rtjys"]
+[ext_resource type="Texture2D" uid="uid://ddkisk528hn4c" path="res://assets/images/cinematics/kid-tackle-3.png" id="3_4vq1v"]
+[ext_resource type="Texture2D" uid="uid://cc7ptj2b5lce8" path="res://assets/images/cinematics/kid-tackle-4.png" id="4_6imwj"]
+[ext_resource type="AudioStream" uid="uid://bahb1nrg0j647" path="res://assets/audios/2cinematicWin.ogg" id="5_r8wwb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_do02b"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("1_rq8m4")
+}, {
+"duration": 22.0,
+"texture": ExtResource("2_rtjys")
+}, {
+"duration": 10.0,
+"texture": ExtResource("3_4vq1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6imwj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_deqjl"]
+script/source = "extends AnimatedSprite2D
+
+func _ready():
+
+		$\"2cinematicWin\".play()
+"
+
+[node name="2cinematicWin" type="AnimatedSprite2D"]
+position = Vector2(960, 539)
+scale = Vector2(1.01442, 1.01442)
+sprite_frames = SubResource("SpriteFrames_do02b")
+autoplay = "default"
+script = SubResource("GDScript_deqjl")
+
+[node name="2cinematicWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r8wwb")
+volume_db = -9.0
+autoplay = true
