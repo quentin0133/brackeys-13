@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsgnxw6lsk2ir"
+path="res://.godot/imported/ah shit.ogg-d262e89aa3427fe0a5c18665e09f8532.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audios/ah shit.ogg"
+dest_files=["res://.godot/imported/ah shit.ogg-d262e89aa3427fe0a5c18665e09f8532.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
