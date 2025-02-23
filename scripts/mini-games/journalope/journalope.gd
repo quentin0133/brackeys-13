@@ -33,8 +33,9 @@ func _input(event):
 			GameManager.next_scene_to_call = "scene_cinematic3"
 			queue_free()
 		elif event.pressed and end_game_flag and !GameManager.story_mode:
-			GameManager.next_scene_to_call = "chapter_menu"
 			GameManager.update_score("scene_journalope")
+			GameManager.show_score = false
+			GameManager.next_scene_to_call = "chapter_menu"
 			queue_free()
 		elif is_game_loose and end_game_flag and GameManager.story_mode:
 			is_game_loose =false
@@ -67,7 +68,6 @@ func win():
 	while (victory_UI.modulate.a < 1):
 		await get_tree().create_timer(0.005).timeout
 		victory_UI.modulate.a += 0.01
-	end_game_flag = true
 	
 func game_over():
 	AudioManager.defeat_music.play()
@@ -83,7 +83,6 @@ func game_over():
 	player.input_enable = false
 	$MortParFlash.play()
 	$RunningSounds.stop()
-	end_game_flag = true
 
 func _on_timer_timeout() -> void:
 	while (indication.modulate.a > 0):
