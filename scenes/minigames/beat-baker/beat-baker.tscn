@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b4dkyjt1u13b7" path="res://assets/sprites/mini-main-character.png" id="5_holy3"]
 [ext_resource type="Texture2D" uid="uid://bk6aaa7nxxnuk" path="res://assets/sprites/boulanger-bresom.png" id="6_1gj3l"]
 [ext_resource type="Script" path="res://scenes/minigames/beat-baker/baker.gd" id="6_qlmur"]
-[ext_resource type="PackedScene" uid="uid://4jv7jiyjgo8o" path="res://scenes/minigames/waking_up/container.tscn" id="7_8t10j"]
+[ext_resource type="PackedScene" uid="uid://dlmvnojj17gqt" path="res://scenes/minigames/waking_up/container.tscn" id="7_8t10j"]
 [ext_resource type="AudioStream" uid="uid://dr3l011pxmr8b" path="res://assets/audios/jojos bizarre adventure yes yes yes sound effect (#436).ogg" id="9_lkqn7"]
 [ext_resource type="AudioStream" uid="uid://bmv8erhq503ck" path="res://assets/audios/AUUGHHH Sound Effect.ogg" id="10_ed0ao"]
 [ext_resource type="AudioStream" uid="uid://tj7on42k5emi" path="res://assets/audios/SLAP SOUND EFFECT.ogg" id="11_u75in"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byqbnsqushdf6"
-path="res://.godot/imported/car.png-ebd69c0ee82117f3f0b049ab4b28cc30.ctex"
+uid="uid://bnhad81hd1flg"
+path="res://.godot/imported/boulanger-bresom-animation.png-d6171322b62e4bd23fe88ca9aea0f980.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/decoration/car.png"
-dest_files=["res://.godot/imported/car.png-ebd69c0ee82117f3f0b049ab4b28cc30.ctex"]
+source_file="res://assets/sprites/boulanger-bresom-animation.png"
+dest_files=["res://.godot/imported/boulanger-bresom-animation.png-d6171322b62e4bd23fe88ca9aea0f980.ctex"]
 
 [params]
 
