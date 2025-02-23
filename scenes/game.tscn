@@ -85,7 +85,7 @@ func load_next_scene(name_of_scene:String):
 		\"scene_cinematic2\":
 			scene = scene_cinematic2.instantiate()
 			add_child(scene)
-		\"scene_cinematic2Win\":
+		\"scene_cinematic2win\":
 			scene = scene_cinematic2win.instantiate()
 			add_child(scene)
 		\"scene_cinematic3\":
