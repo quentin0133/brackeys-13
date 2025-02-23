@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://be1v012nn001m"
+path="res://.godot/imported/Sans titre.ogg-07161b5f3566ea076c27987a30acfabc.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/video/Sans titre.ogg"
+dest_files=["res://.godot/imported/Sans titre.ogg-07161b5f3566ea076c27987a30acfabc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
