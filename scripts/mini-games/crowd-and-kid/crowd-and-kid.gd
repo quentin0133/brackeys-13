@@ -10,6 +10,7 @@ var end_game = false
 @onready var animation: AnimationPlayer = $CanvasLayer/Control/Journal/AnimationPlayer
 @onready var image: TextureRect = $CanvasLayer/Control/Journal
 @onready var kid: RigidBody2D = $Kid
+@onready var kidAnimation: AnimatedSprite2D = $Kid/AnimatedSprite2D
 @onready var indication_text = $CanvasLayer/IndicationText
 
 func _input(event):
@@ -27,10 +28,14 @@ func _on_shit_body_entered(body: Node2D) -> void:
 		return
 	if (body.name == "Kid"):
 		$ShitSound.play()
+		kidAnimation.stop()
+		kid.constant_force.x = 0
+		kid.linear_velocity.x = 0
 		is_game_loose = true
 		animation.play("fade_journal")
 		image.texture = loosing_picture
 		indication_text.visible = false
+		kidAnimation.global_rotation_degrees = 90
 
 func _on_kid_body_entered(body: Node) -> void:
 	if (is_game_loose):

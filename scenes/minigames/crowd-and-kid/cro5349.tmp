@@ -325,7 +325,7 @@ tile_map_data = PackedByteArray("AAD6//3/AAABAAAAAAD7//3/AAABAAAAAAD8//3/AAABAAA
 tile_set = SubResource("TileSet_2rchv")
 
 [node name="Kid" type="RigidBody2D" parent="."]
-position = Vector2(-91, 36)
+position = Vector2(-91, 39)
 collision_layer = 4
 collision_mask = 4
 mass = 0.5
@@ -335,7 +335,7 @@ freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 1
 linear_damp = 1.5
-constant_force = Vector2(17.5, 0)
+constant_force = Vector2(20, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Kid"]
 position = Vector2(-0.5, 8)

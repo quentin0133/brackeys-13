@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ei0t33ntr70v"
-path="res://.godot/imported/cat-in-trash.png-8d26f0855cc0827973207cd0a000d9c4.ctex"
+path="res://.godot/imported/cat-in-trash.png-b65b749cc8f74b87962d0a9b6baf278c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Decoration/cat-in-trash.png"
-dest_files=["res://.godot/imported/cat-in-trash.png-8d26f0855cc0827973207cd0a000d9c4.ctex"]
+source_file="res://assets/sprites/decoration/cat-in-trash.png"
+dest_files=["res://.godot/imported/cat-in-trash.png-b65b749cc8f74b87962d0a9b6baf278c.ctex"]
 
 [params]
 
