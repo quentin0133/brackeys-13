@@ -128,7 +128,7 @@ func _on_timer_before_end_timeout():
 	timer_endgame.stop()
 	print(\"End Game\")
 	if GameManager.story_mode :
-		GameManager.next_scene_to_call = \"main_menu\"
+		GameManager.next_scene_to_call = \"scene_monologue\"
 		GameManager.story_mode_finish = true
 	else:
 		GameManager.next_scene_to_call = \"chapter_menu\"
