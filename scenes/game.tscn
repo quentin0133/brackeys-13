@@ -12,6 +12,12 @@ const scene_dont_answer = preload(\"res://scenes/minigames/dontAnswer/dont_answe
 const scene_journalope = preload(\"res://scenes/minigames/journalope/journalope.tscn\")
 const scene_wakywaky = preload(\"res://scenes/minigames/waking_up/waky-waky.tscn\")
 const scene_monologue = preload(\"res://scenes/minigames/monologue-dodging/monologue_dodging_game.tscn\")
+const scene_cinematic0 = preload(\"res://scenes/0cinematic.tscn\")
+const scene_cinematic1 = preload(\"res://scenes/1cinematic.tscn\")
+const scene_cinematic1win = preload(\"res://scenes/1cinematicWin.tscn\")
+const scene_cinematic1lose = preload(\"res://scenes/1cinematicLose.tscn\")
+const scene_cinematic2 = preload(\"res://scenes/2cinematic.tscn\")
+const scene_cinematic2win = preload(\"res://scenes/2cinematicWin.tscn\")
 
 signal show_main_menu
 signal show_chapter_menu
@@ -59,11 +65,28 @@ func load_next_scene(name_of_scene:String):
 		\"scene_monologue\":
 			scene = scene_monologue.instantiate()
 			add_child(scene)
-
-
+		\"scene_cinematic0\":
+			scene = scene_cinematic0.instantiate()
+			add_child(scene)
+		\"scene_cinematic1\":
+			scene = scene_cinematic1.instantiate()
+			add_child(scene)
+		\"scene_cinematic1win\":
+			scene = scene_cinematic1win.instantiate()
+			add_child(scene)
+		\"scene_cinematic1lose\":
+			scene = scene_cinematic1lose.instantiate()
+			add_child(scene)
+		\"scene_cinematic2\":
+			scene = scene_cinematic2.instantiate()
+			add_child(scene)
+		\"scene_cinematic2Win\":
+			scene = scene_cinematic2win.instantiate()
+			add_child(scene)
+			
 func _on_parent_ui_button_start():
 	GameManager.story_mode = true
-	load_next_scene(\"scene_wakywaky\")
+	load_next_scene(\"scene_cinematic0\")
 "
 
 [node name="Game" type="Node"]

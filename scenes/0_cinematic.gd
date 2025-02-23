@@ -21,5 +21,6 @@ func _input(event):
 				2:
 					$AlarmSounds.volume_db += 20
 		else:
+			GameManager.next_scene_to_call = "scene_wakywaky"
 			queue_free()
 	

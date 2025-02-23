@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7mjj3ncgu2tb"]
+[gd_scene load_steps=8 format=3 uid="uid://b8b7baf8ykg4p"]
 
 [ext_resource type="Script" path="res://scenes/1_cinematic_win.gd" id="1_fx2xf"]
 [ext_resource type="Texture2D" uid="uid://b5p8j20kmru8l" path="res://assets/images/cinematics/grandma-liquor-drinking.png" id="2_ske4d"]

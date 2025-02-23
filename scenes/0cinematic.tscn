@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://lyoh7twceeun"]
+[gd_scene load_steps=8 format=3 uid="uid://bmchkqa631rgc"]
 
 [ext_resource type="Script" path="res://scenes/0_cinematic.gd" id="1_st4j6"]
 [ext_resource type="Texture2D" uid="uid://dem7buuj1vu1e" path="res://assets/images/cinematics/waky-waky-cinematic-1.png" id="2_hv1sp"]

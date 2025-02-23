@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://crcesi8on6yb8"]
+[gd_scene load_steps=4 format=3 uid="uid://bami8vhk0qi6v"]
 
 [ext_resource type="Texture2D" uid="uid://dtmg7grfbg0xg" path="res://assets/images/cinematics/kid-toward-shit.png" id="1_vrfxb"]
 [ext_resource type="AudioStream" uid="uid://v2xuuc8vd7ms" path="res://assets/audios/zawa.ogg" id="1_xdsqx"]
@@ -10,6 +10,11 @@ func _ready():
 	$\"2cinematic\".play()
 	var tween = create_tween()
 	tween.tween_property(self, \"position:y\", 720, 1.0)  # 200 = position finale, 1.0 = durée en secondes
+
+func _input(event):
+	if event.is_action_pressed(\"Action\") or event.is_action_pressed(\"Attack\"):
+		GameManager.next_scene_to_call = \"scene_crowd_kid\"
+		queue_free()
 "
 
 [node name="2cinematic" type="Sprite2D"]

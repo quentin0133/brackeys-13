@@ -27,5 +27,6 @@ func _input(event):
 				6:
 					$"1cinematic7".play()
 		else:
+			GameManager.next_scene_to_call = "scene_grand_mother"
 			queue_free()
 	
