@@ -25,6 +25,7 @@ func _input(event):
 				1:
 					$\"0cinematic\".play()
 		else:
+			GameManager.story_mode_finish = true
 			GameManager.next_scene_to_call = \"main_menu\"
 			queue_free()
 	

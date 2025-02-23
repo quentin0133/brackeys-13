@@ -29,6 +29,7 @@ func is_safe():
 	return y > -35 && y < 35
 
 func win():
+	end_game=true
 	stop()
 	$CanvasLayer/Victory.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false

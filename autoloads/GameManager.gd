@@ -2,7 +2,7 @@ extends Node
 
 var next_scene_to_call : String = "main_menu"
 var story_mode : bool = true
-var story_mode_finish : bool = true
+var story_mode_finish : bool = false
 var in_game : bool = false
 var show_score : bool = false
 var time_score : String = "00:000"
