@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c86faj6f3nbws"]
+[gd_scene load_steps=12 format=3 uid="uid://c86faj6f3nbws"]
 
 [ext_resource type="Texture2D" uid="uid://0rcof8ppx0cn" path="res://assets/images/illustration/Picture_journalope.png" id="1_i4sg1"]
 [ext_resource type="Texture2D" uid="uid://dos5nelumxq0c" path="res://assets/images/illustration/no-image-icon.png" id="1_ovadw"]
@@ -54,6 +54,23 @@ func _on_child_exiting_tree(node):
 	_ready()
 "
 
+[sub_resource type="LabelSettings" id="LabelSettings_pwodc"]
+font_size = 24
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iepyr"]
+font_size = 24
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg200"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+
 [node name="GameDetailUi" type="Control"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 3
@@ -78,13 +95,16 @@ texture = ExtResource("1_ovadw")
 expand_mode = 3
 
 [node name="LabelText" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(550, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Ceci est un texte qui explique le jeu en long et large comme on les aime
 Ceci est un texte qui explique le jeu en long et large comme on les aime
 Ceci est un texte qui explique le jeu en long et large comme on les aime
 Ceci est un texte qui explique le jeu en long et large comme on les aime
 Ceci est un texte qui explique le jeu en long et large comme on les aime"
+label_settings = SubResource("LabelSettings_pwodc")
+autowrap_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -97,9 +117,14 @@ layout_mode = 2
 text = "Best Score : 999 999
 
 Last Score : 999 999"
+label_settings = SubResource("LabelSettings_iepyr")
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_mg200")
 text = "Play"
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

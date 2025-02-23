@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwjascb1eanlj"]
+[gd_scene load_steps=5 format=3 uid="uid://cwjascb1eanlj"]
 
 [ext_resource type="PackedScene" uid="uid://djr2t3rkhwdl0" path="res://scenes/uis/ui_settings_menu/hot_key_rebind_button.tscn" id="1_bbcvh"]
+[ext_resource type="Texture2D" uid="uid://bmbj0aau330ei" path="res://assets/backgrounds/MickeyHouseNight.png" id="2_1pulo"]
 
 [sub_resource type="GDScript" id="GDScript_bxmxr"]
 script/source = "extends Control
@@ -203,6 +204,16 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Back to Menu"
+
+[node name="Bg" type="TextureRect" parent="."]
+z_index = -25
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1pulo")
 
 [connection signal="RestKeyRebind" from="." to="VBoxContainer/HBoxContainer/VBoxContainerBiding/VBoxContainer" method="_on_settings_menu_rest_key_rebind"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainerSound/GridContainerSound/HSliderMasterVolume" to="." method="_on_h_slider_master_volume_value_changed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://td08ua34067u"]
+[gd_scene load_steps=4 format=3 uid="uid://td08ua34067u"]
 
 [ext_resource type="Texture2D" uid="uid://d0vule7d4tl88" path="res://assets/images/illustration/Speaker_Icon.png" id="1_47g0k"]
+[ext_resource type="Texture2D" uid="uid://bmbj0aau330ei" path="res://assets/backgrounds/MickeyHouseNight.png" id="1_nr14x"]
 
 [sub_resource type="GDScript" id="GDScript_phvel"]
 script/source = "extends Control
@@ -64,6 +65,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_phvel")
 
+[node name="Bg" type="TextureRect" parent="."]
+z_index = -25
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nr14x")
+
 [node name="VSliderMasterVolume" type="VSlider" parent="."]
 custom_minimum_size = Vector2(25, 200)
 layout_mode = 2
@@ -76,42 +87,33 @@ step = 0.001
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1355.0
-offset_top = 111.0
-offset_right = 1785.0
-offset_bottom = 214.0
+offset_left = 1203.0
+offset_top = 82.0
+offset_right = 1883.0
+offset_bottom = 291.0
 theme_override_font_sizes/font_size = 75
-text = "Brackeys 13"
-
-[node name="TestButton" type="Button" parent="."]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-offset_left = 35.0
-offset_top = 636.0
-offset_right = 289.0
-offset_bottom = 686.0
-theme_override_font_sizes/font_size = 30
-text = "Test"
+text = "Nobody can break my stride"
+autowrap_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 125.0
+offset_left = 94.0
 offset_top = 725.0
-offset_right = 379.0
+offset_right = 410.0
 offset_bottom = 1115.0
 theme_override_constants/separation = 35
-
-[node name="ChapterButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Select mini game"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Start"
+
+[node name="ChapterButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Select mini game"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
@@ -136,8 +138,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_47g0k")
 
 [connection signal="value_changed" from="VSliderMasterVolume" to="." method="_on_v_slider_master_volume_value_changed"]
-[connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]
-[connection signal="button_up" from="VBoxContainer/ChapterButton" to="." method="_on_chapter_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/ChapterButton" to="." method="_on_chapter_button_button_up"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
