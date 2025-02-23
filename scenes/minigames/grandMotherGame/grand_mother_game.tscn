@@ -17,6 +17,7 @@ script/source = "extends Node
 var obstacleScene = preload(\"res://scenes/minigames/grandMotherGame/obstacle.tscn\")
 var itemMax = 8
 var end_game_flag = false
+var win_flag = false
 var timer_on = false
 var time = 0
 
@@ -42,8 +43,10 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and end_game_flag and event.pressed:
 		if!GameManager.story_mode :
 			GameManager.next_scene_to_call = \"chapter_menu\"
+		elif GameManager.story_mode and win_flag:
+			GameManager.next_scene_to_call = \"scene_cinematic1win\"
 		else:
-			GameManager.next_scene_to_call = \"scene_crowd_kid\"
+			GameManager.next_scene_to_call = \"scene_cinematic1lose\"
 		queue_free()
 
 

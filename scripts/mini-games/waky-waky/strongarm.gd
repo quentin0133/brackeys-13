@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 				await get_tree().create_timer(0.3).timeout
 				AudioManager.hit.play()
 		elif (GameManager.story_mode):
-			GameManager.next_scene_to_call = "scene_grand_mother"
+			GameManager.next_scene_to_call = "scene_cinematic1"
 			if(get_parent()):
 				get_parent().queue_free()
 		elif (!GameManager.story_mode):

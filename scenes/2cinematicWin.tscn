@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dri4tpwt406jl"]
+[gd_scene load_steps=8 format=3 uid="uid://k0lnytwm2q48"]
 
 [ext_resource type="Texture2D" uid="uid://bw71vbimc33ml" path="res://assets/images/cinematics/kid-tackle-1.png" id="1_rq8m4"]
 [ext_resource type="Texture2D" uid="uid://b1a4f6jwxpbem" path="res://assets/images/cinematics/kid-tackle-2.png" id="2_rtjys"]
@@ -30,8 +30,12 @@ animations = [{
 script/source = "extends AnimatedSprite2D
 
 func _ready():
-
-		$\"2cinematicWin\".play()
+	$\"2cinematicWin\".play()
+	
+func _input(event):
+	if event.is_action_pressed(\"Action\") or event.is_action_pressed(\"Attack\"):
+		GameManager.next_scene_to_call = \"scene_journalope\"
+		queue_free()
 "
 
 [node name="2cinematicWin" type="AnimatedSprite2D"]

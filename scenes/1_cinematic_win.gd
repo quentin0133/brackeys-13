@@ -21,5 +21,6 @@ func _input(event):
 					self.scale = Vector2(2.413,2.413)
 
 		else:
+			GameManager.next_scene_to_call = "scene_cinematic2"
 			queue_free()
 	
