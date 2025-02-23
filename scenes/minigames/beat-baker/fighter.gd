@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Fighter extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 static var slap = preload("res://scenes/minigames/beat-baker/slap.tscn")
@@ -9,6 +9,9 @@ var state: String = "down"
 
 var cooldown = 1.0
 var playing = true
+
+var baguettes = 1
+signal explode
 
 func _physics_process(delta: float) -> void:	
 	if !playing:
@@ -54,3 +57,12 @@ func _input(event: InputEvent) -> void:
 			GameManager.next_scene_to_call = "chapter_menu"
 			if(get_parent()):
 				get_parent().queue_free()
+
+func eat(): 
+	baguettes += 1
+	if baguettes < 3:
+		var s = Vector2(baguettes,baguettes)
+		$AnimatedSprite2D.scale = s
+		$CollisionShape2D.scale = s
+	else:
+		explode.emit()

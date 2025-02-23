@@ -15,4 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 	#var e = explo.instantiate()
 	#e.global_position = global_position
 	#parent.add_child(e)
+	if body is Fighter:
+		body.eat()
 	queue_free()

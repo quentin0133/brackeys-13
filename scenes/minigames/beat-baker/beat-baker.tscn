@@ -1,12 +1,12 @@
-[gd_scene load_steps=40 format=3 uid="uid://c157take65vrq"]
+[gd_scene load_steps=45 format=3 uid="uid://c157take65vrq"]
 
 [ext_resource type="Script" path="res://scenes/minigames/beat-baker/beat_baker.gd" id="1_wtce2"]
 [ext_resource type="Script" path="res://scenes/minigames/beat-baker/fighter.gd" id="3_3syq4"]
 [ext_resource type="Texture2D" uid="uid://unhunsxufee4" path="res://assets/sprites/shadow.png" id="4_vy88p"]
 [ext_resource type="Texture2D" uid="uid://b4dkyjt1u13b7" path="res://assets/sprites/mini-main-character.png" id="5_holy3"]
-[ext_resource type="Texture2D" uid="uid://bk6aaa7nxxnuk" path="res://assets/sprites/boulanger-bresom.png" id="6_1gj3l"]
+[ext_resource type="Texture2D" uid="uid://bnhad81hd1flg" path="res://assets/sprites/boulanger-bresom-animation.png" id="6_jxvwi"]
 [ext_resource type="Script" path="res://scenes/minigames/beat-baker/baker.gd" id="6_qlmur"]
-[ext_resource type="PackedScene" uid="uid://dlmvnojj17gqt" path="res://scenes/minigames/waking_up/container.tscn" id="7_8t10j"]
+[ext_resource type="PackedScene" uid="uid://4jv7jiyjgo8o" path="res://scenes/minigames/waking_up/container.tscn" id="7_8t10j"]
 [ext_resource type="AudioStream" uid="uid://dr3l011pxmr8b" path="res://assets/audios/jojos bizarre adventure yes yes yes sound effect (#436).ogg" id="9_lkqn7"]
 [ext_resource type="AudioStream" uid="uid://bmv8erhq503ck" path="res://assets/audios/AUUGHHH Sound Effect.ogg" id="10_ed0ao"]
 [ext_resource type="AudioStream" uid="uid://tj7on42k5emi" path="res://assets/audios/SLAP SOUND EFFECT.ogg" id="11_u75in"]
@@ -165,10 +165,46 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gsreu"]
-radius = 3.16228
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qyhig"]
 radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nef3"]
+atlas = ExtResource("6_jxvwi")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwkgn"]
+atlas = ExtResource("6_jxvwi")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa8fu"]
+atlas = ExtResource("6_jxvwi")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2757"]
+atlas = ExtResource("6_jxvwi")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71us4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nef3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwkgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa8fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2757")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5hxg7"]
 font_size = 50
@@ -281,7 +317,7 @@ collision_mask = 11
 shape = SubResource("SegmentShape2D_ojahn")
 
 [node name="Right-Border" type="StaticBody2D" parent="."]
-position = Vector2(96, -54)
+position = Vector2(94, -54)
 collision_layer = 2
 collision_mask = 2
 
@@ -306,11 +342,11 @@ animation = &"Idle_down"
 autoplay = "Idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fighter"]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_gsreu")
 
 [node name="Baker" type="Area2D" parent="."]
-position = Vector2(85, 0)
+position = Vector2(88, 0)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("6_qlmur")
@@ -319,13 +355,14 @@ script = ExtResource("6_qlmur")
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_qyhig")
 
-[node name="Sprite2D" type="Sprite2D" parent="Baker"]
-texture = ExtResource("6_1gj3l")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Baker"]
+sprite_frames = SubResource("SpriteFrames_71us4")
+autoplay = "default"
 
 [node name="Baker-Patern" parent="." instance=ExtResource("7_8t10j")]
-position = Vector2(85, -50)
+position = Vector2(88, -40)
 rotation = 1.5708
-scale = Vector2(1, 0.1)
+scale = Vector2(0.8, 0.1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -445,5 +482,6 @@ volume_db = -9.0
 z_index = -1000
 texture = ExtResource("11_v0uxk")
 
+[connection signal="explode" from="Fighter" to="." method="_on_fighter_explode"]
 [connection signal="area_entered" from="Baker" to="." method="_on_baker_area_entered"]
 [connection signal="current_position" from="Baker-Patern" to="." method="_on_baker_patern_current_position"]

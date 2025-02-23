@@ -28,6 +28,7 @@ func win():
 	$Victory.play()
 	
 func game_over():
+	if !baker.proud : return
 	$Defeat.play()
 	stop()
 	$CanvasLayer/GameOver.modulate.a = 1
@@ -36,10 +37,15 @@ func game_over():
 func stop():
 	$Fighter.playing = false
 	baker.proud = false
-	baker_pattern.queue_free()
+	if is_instance_valid(baker_pattern):
+		baker_pattern.queue_free()
 
 
 func _on_baker_area_entered(area: Area2D) -> void:
 	area.find_child("Slap").stop()
 	$Slap.play()
 	win()
+
+
+func _on_fighter_explode() -> void:
+	game_over() # Replace with function body.
