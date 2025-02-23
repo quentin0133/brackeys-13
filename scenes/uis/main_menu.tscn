@@ -10,11 +10,14 @@ signal showSettings
 signal showChapter
 signal start_button
 signal test_button
+signal lauchMusic
+signal stopMusic
 
 @onready var slider_master_volume = $VSliderMasterVolume as VSlider
 @onready var chapter_button = $VBoxContainer/ChapterButton as Button
 
 func _ready():
+	lauchMusic.emit()
 	slider_master_volume.value = SettingsManager.settings_dict[\"master_volume\"]
 	if OS.has_feature(\"web\") :
 		$VBoxContainer/QuitButton.hide()
@@ -53,7 +56,9 @@ func _on_chapter_button_button_up():
 
 func _on_start_button_button_up():
 	self.hide()
+	stopMusic.emit()
 	start_button.emit()
+	
 "
 
 [node name="MainMenu" type="Control"]

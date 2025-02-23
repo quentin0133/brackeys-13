@@ -8,7 +8,8 @@ script/source = "extends Control
 
 signal ShowMainMenu
 signal refresh
-
+signal startMusic
+signal stopMusic
 
 func _on_back_button_pressed():
 	self.hide()
@@ -17,10 +18,12 @@ func _on_back_button_pressed():
 
 func _on_main_menu_show_chapter():
 	self.show()
+	startMusic.emit()
 	refresh.emit()
 
 
 func _launch_game():
+	stopMusic.emit()
 	self.hide()
 "
 
