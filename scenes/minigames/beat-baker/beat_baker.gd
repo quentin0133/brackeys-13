@@ -4,7 +4,7 @@ extends Node2D
 @onready var baker_pattern = $"Baker-Patern" as SlideContainer
 
 var end_game : bool = false
-
+var win_flag : bool = false
 func _ready() -> void:
 	AudioManager.defeat_music.stop()
 	AudioManager.baker_music.play()
@@ -12,9 +12,16 @@ func _ready() -> void:
 	baker_pattern.pointer.velocity = 60
 
 func _input(event):
-	if (event.is_action_pressed("Action") or event.is_action_pressed("Attack")) and end_game:
+	if (event.is_action_pressed("Action") or event.is_action_pressed("Attack")) and end_game and win_flag:
 		GameManager.next_scene_to_call = "scene_cinematic7"
 		queue_free()
+	elif (event.is_action_pressed("Action") or event.is_action_pressed("Attack")) and end_game:
+		GameManager.next_scene_to_call = "scene_beatbaker"
+		queue_free()
+		print(GameManager.next_scene_to_call)
+	else:
+		pass
+		
 
 func _on_baker_patern_current_position(pos: Vector2) -> void:
 	baker.global_position = pos
@@ -30,6 +37,7 @@ func is_safe():
 
 func win():
 	end_game=true
+	win_flag=true
 	stop()
 	$CanvasLayer/Victory.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
@@ -37,6 +45,7 @@ func win():
 	$YES.play()
 	
 func game_over():
+	end_game=true
 	if !baker.proud : return
 	$NO.play()
 	AudioManager.defeat_music.play()
