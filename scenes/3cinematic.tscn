@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct3nb1lpollcd"]
+[gd_scene load_steps=4 format=3 uid="uid://ct3nb1lpollcd"]
 
 [ext_resource type="Texture2D" uid="uid://c3h4i0lh767yo" path="res://assets/images/cinematics/pole-in-the-face-cinematic.png" id="1_va85h"]
 [ext_resource type="AudioStream" uid="uid://b4w4cuvio05" path="res://assets/audios/wind1.wav" id="2_r6dr8"]
+
+[sub_resource type="GDScript" id="GDScript_g7j3e"]
+script/source = "extends Sprite2D
+"
 
 [node name="3cinematic" type="Sprite2D"]
 position = Vector2(969.779, 540.25)
 scale = Vector2(1.93649, 1.93649)
 texture = ExtResource("1_va85h")
+script = SubResource("GDScript_g7j3e")
 
 [node name="Wind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_r6dr8")

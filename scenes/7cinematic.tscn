@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxj7wmjydchbt"]
+
+[ext_resource type="Texture2D" uid="uid://cht3krrui2ywf" path="res://assets/images/cinematics/Return-to-home-cinematic.png" id="1_oi8vh"]
+[ext_resource type="Texture2D" uid="uid://dem7buuj1vu1e" path="res://assets/images/cinematics/waky-waky-cinematic-1.png" id="2_xq5hf"]
+
+[sub_resource type="GDScript" id="GDScript_ii84e"]
+script/source = "extends Sprite2D
+
+@export var cinematics: Array[Texture2D]
+var current_image_index = 0
+
+func _ready():
+	if cinematics.size() > 0:
+		texture = cinematics[current_image_index]
+		$\"7cinematic\".play()
+
+func _input(event):
+	if event.is_action_pressed(\"Action\") or event.is_action_pressed(\"Attack\"):
+		current_image_index += 1
+		if current_image_index < cinematics.size():
+			texture = cinematics[current_image_index]
+			match current_image_index:
+				1:
+					$\"7cinematic2\".play()
+		else:
+			queue_free()
+	
+"
+
+[node name="7cinematic" type="Sprite2D"]
+position = Vector2(963.978, 575.937)
+scale = Vector2(8.483, 8.483)
+script = SubResource("GDScript_ii84e")
+cinematics = Array[Texture2D]([ExtResource("1_oi8vh"), ExtResource("2_xq5hf")])

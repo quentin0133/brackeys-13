@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc4rr1s2gxprc"]
+[gd_scene load_steps=5 format=3 uid="uid://bc4rr1s2gxprc"]
 
 [ext_resource type="Texture2D" uid="uid://bjkvkypph3io8" path="res://assets/images/cinematics/nerd-turn.png" id="1_0jb5g"]
 [ext_resource type="AudioStream" uid="uid://dqcod68jwoo3i" path="res://assets/audios/hmh.ogg" id="2_nujkv"]
 [ext_resource type="AudioStream" uid="uid://brcscxxvra4ie" path="res://assets/audios/Whistling Kettle - Free Sound Effect SFX.ogg" id="3_pvhty"]
 
+[sub_resource type="GDScript" id="GDScript_uxymh"]
+script/source = "extends Sprite2D
+"
+
 [node name="5cinematic" type="Sprite2D"]
 position = Vector2(957.344, 543)
 scale = Vector2(2.13752, 2.13752)
 texture = ExtResource("1_0jb5g")
+script = SubResource("GDScript_uxymh")
 
 [node name="Hmh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nujkv")

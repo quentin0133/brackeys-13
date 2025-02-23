@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccsk2p0o6ofq8"]
+
+[ext_resource type="Texture2D" uid="uid://5isrlopxj3to" path="res://assets/images/cinematics/bAkErY.png" id="1_idbwm"]
+[ext_resource type="AudioStream" uid="uid://dut1kx3n77wg8" path="res://assets/audios/Surprised.ogg" id="2_5l0e6"]
+
+[sub_resource type="GDScript" id="GDScript_ck5df"]
+script/source = "extends Sprite2D
+"
+
+[node name="6cinematic" type="Sprite2D"]
+position = Vector2(960.923, 528.078)
+scale = Vector2(2.41613, 2.41613)
+texture = ExtResource("1_idbwm")
+script = SubResource("GDScript_ck5df")
+
+[node name="MmmmmaisNon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5l0e6")
+volume_db = -6.0
+autoplay = true

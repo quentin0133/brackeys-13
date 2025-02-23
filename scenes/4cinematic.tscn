@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://yqdruf4ircgw"]
+[gd_scene load_steps=4 format=3 uid="uid://yqdruf4ircgw"]
 
 [ext_resource type="Texture2D" uid="uid://b18e01stqp85b" path="res://assets/images/cinematics/come-back-here-cinematic.png" id="1_v5d4e"]
 [ext_resource type="AudioStream" uid="uid://j1n3d27aqhe6" path="res://assets/audios/GET OVER HERE! SFX Non Copyright Gaming Sound Effect.mp3" id="2_o842m"]
+
+[sub_resource type="GDScript" id="GDScript_wybb5"]
+script/source = "extends Sprite2D
+"
 
 [node name="4cinematic" type="Sprite2D"]
 position = Vector2(968, 537)
 scale = Vector2(1.63764, 1.63764)
 texture = ExtResource("1_v5d4e")
+script = SubResource("GDScript_wybb5")
 
 [node name="Get over here" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_o842m")
