@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://crcesi8on6yb8"]
+
+[ext_resource type="Texture2D" uid="uid://dtmg7grfbg0xg" path="res://assets/images/cinematics/kid-toward-shit.png" id="1_vrfxb"]
+[ext_resource type="AudioStream" uid="uid://v2xuuc8vd7ms" path="res://assets/audios/zawa.ogg" id="1_xdsqx"]
+
+[sub_resource type="GDScript" id="GDScript_w01sr"]
+script/source = "extends Sprite2D
+
+func _ready():
+	$\"2cinematic\".play()
+	var tween = create_tween()
+	tween.tween_property(self, \"position:y\", 720, 1.0)  # 200 = position finale, 1.0 = durée en secondes
+"
+
+[node name="2cinematic" type="Sprite2D"]
+position = Vector2(964, 373)
+scale = Vector2(2.395, 2.395)
+texture = ExtResource("1_vrfxb")
+script = SubResource("GDScript_w01sr")
+
+[node name="2cinematic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_xdsqx")
+volume_db = -9.0

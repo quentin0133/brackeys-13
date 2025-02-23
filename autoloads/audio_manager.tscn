@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0aqsylvsxw7s"]
+[gd_scene load_steps=26 format=3 uid="uid://d0aqsylvsxw7s"]
 
 [ext_resource type="AudioStream" uid="uid://tdc3anp0d63y" path="res://assets/audios/Purple.mp3" id="1_u38yu"]
 [ext_resource type="AudioStream" uid="uid://hygyrowya146" path="res://assets/audios/Purple2.mp3" id="2_k010g"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ctdhk8s8ue7ej" path="res://assets/audios/music1.ogg" id="12_eyymm"]
 [ext_resource type="AudioStream" uid="uid://b124qxh8idfmi" path="res://assets/audios/music2.ogg" id="13_uqvtt"]
 [ext_resource type="AudioStream" uid="uid://cw0vx6ut1tjfv" path="res://assets/audios/music3.ogg" id="14_20nwn"]
+[ext_resource type="AudioStream" uid="uid://bp6gnxfl6ljxo" path="res://assets/audios/moonKidBO.mp3" id="14_icncj"]
 [ext_resource type="AudioStream" uid="uid://bcq62xgj3d1pq" path="res://assets/audios/music4.ogg" id="15_on2f8"]
 [ext_resource type="AudioStream" uid="uid://4ud07141yhjx" path="res://assets/audios/music5.ogg" id="16_vpak1"]
 [ext_resource type="AudioStream" uid="uid://bau2l30yd2af6" path="res://assets/audios/music6.ogg" id="17_q8k2d"]
@@ -104,6 +105,7 @@ stream = ExtResource("12_eyymm")
 stream = ExtResource("15_on2f8")
 
 [node name="CrowdMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_icncj")
 
 [node name="JournalopeMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_uqvtt")

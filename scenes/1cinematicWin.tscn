@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ck6wpovfwe4wd" path="res://assets/images/cinematics/grandma-hospital.png" id="3_kl5kh"]
 [ext_resource type="Texture2D" uid="uid://duodsedvfj3ut" path="res://assets/images/cinematics/cinematic-grandma-liqueur-2.png" id="4_otf4c"]
 [ext_resource type="AudioStream" uid="uid://7vvktyo262wo" path="res://assets/audios/drink.ogg" id="5_javqp"]
-[ext_resource type="AudioStream" uid="uid://dt5firdiht7b5" path="res://assets/audios/Ambulance_1.ogg" id="6_nrqmn"]
+[ext_resource type="AudioStream" uid="uid://cnhstd4q3pvd5" path="res://assets/audios/ambulance.ogg" id="6_f33li"]
 [ext_resource type="AudioStream" uid="uid://dwc3haefg4ekr" path="res://assets/audios/Bruh sound effect.mp3" id="7_me6i6"]
 
 [node name="1cinematicWin" type="Sprite2D"]
@@ -19,7 +19,7 @@ stream = ExtResource("5_javqp")
 volume_db = -9.0
 
 [node name="1cinematicWin2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_nrqmn")
+stream = ExtResource("6_f33li")
 volume_db = -9.0
 
 [node name="1cinematicWin3" type="AudioStreamPlayer" parent="."]
