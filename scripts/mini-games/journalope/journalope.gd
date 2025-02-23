@@ -62,7 +62,7 @@ func win():
 	generator.is_generating = false
 	animation_player_player.play("winning")
 	player.input_enable = false
-	await get_tree().create_timer(2.35).timeout
+	await get_tree().create_timer(1.9).timeout
 	$Poteau.play()
 	while (victory_UI.modulate.a < 1):
 		await get_tree().create_timer(0.005).timeout

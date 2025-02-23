@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bxtmqaykkdwwa" path="res://assets/sprites/main-character/flashed-main-character.png" id="2_cvulu"]
 [ext_resource type="Script" path="res://scripts/mini-games/journalope/player_hide_and_seek.gd" id="2_v2ndh"]
 [ext_resource type="Script" path="res://scripts/mini-games/journalope/loop_background.gd" id="2_yvqll"]
-[ext_resource type="Texture2D" uid="uid://rkjwfqf8rf6s" path="res://assets/sprites/Decoration/Box-upside-down.png" id="3_tsnxq"]
-[ext_resource type="Texture2D" uid="uid://nojxqaryfhhu" path="res://assets/sprites/Decoration/background-runner.png" id="3_wco5m"]
+[ext_resource type="Texture2D" uid="uid://rkjwfqf8rf6s" path="res://assets/sprites/decoration/Box-upside-down.png" id="3_tsnxq"]
+[ext_resource type="Texture2D" uid="uid://nojxqaryfhhu" path="res://assets/sprites/decoration/background-runner.png" id="3_wco5m"]
 [ext_resource type="Script" path="res://scripts/mini-games/journalope/obstacles_generator.gd" id="6_r1vyy"]
 [ext_resource type="Texture2D" uid="uid://bsamlblre8m7n" path="res://assets/sprites/journalope-stalking/journalists-flash.png" id="7_xcvwp"]
 [ext_resource type="PackedScene" uid="uid://dcyh6c24wvvyc" path="res://scenes/minigames/journalope/obstacles/tree.tscn" id="8_3q53q"]
@@ -16,9 +16,9 @@
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_nx4xm"]
 [ext_resource type="Texture2D" uid="uid://dbvonytcgn0lh" path="res://assets/sprites/timer/dynamite.png" id="10_eng7b"]
 [ext_resource type="Texture2D" uid="uid://bmkoad33pnb7u" path="res://assets/sprites/sfx/dynamite_fire.png" id="11_iatli"]
-[ext_resource type="Texture2D" uid="uid://lolbq8m8ihhl" path="res://assets/sprites/Decoration/pole.png" id="15_2dvoa"]
+[ext_resource type="Texture2D" uid="uid://lolbq8m8ihhl" path="res://assets/sprites/decoration/pole.png" id="15_2dvoa"]
 [ext_resource type="PackedScene" uid="uid://dearhoyx36unj" path="res://scenes/minigames/journalope/obstacles/bush.tscn" id="16_2w6tb"]
-[ext_resource type="Texture2D" uid="uid://byqbnsqushdf6" path="res://assets/sprites/Decoration/car.png" id="17_1wr8l"]
+[ext_resource type="Texture2D" uid="uid://byqbnsqushdf6" path="res://assets/sprites/decoration/car.png" id="17_1wr8l"]
 [ext_resource type="PackedScene" uid="uid://cuxa6v2calt10" path="res://scenes/minigames/journalope/obstacles/garbage.tscn" id="17_qitqb"]
 [ext_resource type="PackedScene" uid="uid://b75njoddebi3f" path="res://scenes/minigames/journalope/obstacles/cat_trash.tscn" id="18_i0g7n"]
 [ext_resource type="PackedScene" uid="uid://c3h615nnomoxh" path="res://scenes/minigames/journalope/obstacles/light.tscn" id="20_qp0r2"]
@@ -262,13 +262,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lo5j8"]
-atlas = ExtResource("7_xcvwp")
-region = Rect2(0, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_d82r8"]
 atlas = ExtResource("7_xcvwp")
 region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo5j8"]
+atlas = ExtResource("7_xcvwp")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20lyo"]
 atlas = ExtResource("7_xcvwp")
@@ -668,7 +668,7 @@ stream_4/stream = ExtResource("30_uks6n")
 [node name="Journalope" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_lmx7g")
-distance_parcoured_winning = 1250
+distance_parcoured_winning = 950
 range_journalist_show_up = Vector2(4, 8)
 player_flashed = ExtResource("2_cvulu")
 
@@ -704,7 +704,7 @@ offset_right = -294.0
 offset_bottom = 84.0
 grow_horizontal = 2
 script = ExtResource("9_nx4xm")
-duration = 60
+duration = 50
 
 [node name="Progress" type="TextureRect" parent="CanvasLayer/Timer"]
 layout_mode = 1
@@ -777,10 +777,11 @@ offset_bottom = -504.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(24, 24)
-texture = SubResource("AtlasTexture_lo5j8")
+texture = SubResource("AtlasTexture_d82r8")
 stretch_mode = 4
 script = ExtResource("9_bfobt")
 sprites = SubResource("SpriteFrames_b7i7d")
+frame_index = 1
 auto_play = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameOver/Journalist"]
