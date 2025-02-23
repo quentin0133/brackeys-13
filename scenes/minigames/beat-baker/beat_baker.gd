@@ -3,12 +3,18 @@ extends Node2D
 @onready var baker = $Baker as Area2D
 @onready var baker_pattern = $"Baker-Patern" as SlideContainer
 
+var end_game : bool = false
+
 func _ready() -> void:
 	AudioManager.defeat_music.stop()
 	AudioManager.baker_music.play()
 	baker_pattern.pointer.direction = Vector2.DOWN
 	baker_pattern.pointer.velocity = 60
 
+func _input(event):
+	if (event.is_action_pressed("Action") or event.is_action_pressed("Attack")) and end_game:
+		GameManager.next_scene_to_call = "scene_cinematic7"
+		queue_free()
 
 func _on_baker_patern_current_position(pos: Vector2) -> void:
 	baker.global_position = pos

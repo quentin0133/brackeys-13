@@ -25,6 +25,7 @@ func _input(event):
 				1:
 					$\"0cinematic\".play()
 		else:
+			GameManager.next_scene_to_call = \"main_menu\"
 			queue_free()
 	
 "

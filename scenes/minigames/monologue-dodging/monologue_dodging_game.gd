@@ -24,12 +24,11 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and end_game_flag and event.pressed:
 
 		if!GameManager.story_mode :
-			GameManager.next_scene_to_call = "main_menu"
-			GameManager.update_score("scene_cinematic6")
+			GameManager.next_scene_to_call = "chapter_menu"
 		elif GameManager.story_mode and flag_lose:
 			GameManager.next_scene_to_call = "scene_monologue"
 		else:
-			GameManager.next_scene_to_call = "main_menu"
+			GameManager.next_scene_to_call = "scene_cinematic6"
 		queue_free()
 
 

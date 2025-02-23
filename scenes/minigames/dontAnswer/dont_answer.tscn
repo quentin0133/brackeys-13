@@ -97,7 +97,7 @@ func another_question():
 	if endgame_phase:
 		timer_endgame.start(15)
 		print(try)
-		if try == 300:
+		if try == 10000:
 				var testZ = true
 				timer_endgame.stop()
 				video.play()
@@ -149,7 +149,7 @@ func _on_timer_before_end_timeout():
 	print(\"End Game\")
 	AudioManager.dont_answer_music.stop()
 	if GameManager.story_mode :
-		GameManager.next_scene_to_call = \"scene_cinematic4\"
+		GameManager.next_scene_to_call = \"scene_cinematic5\"
 	else:
 		GameManager.next_scene_to_call = \"chapter_menu\"
 	queue_free()

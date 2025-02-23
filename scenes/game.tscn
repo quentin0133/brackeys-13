@@ -12,6 +12,7 @@ const scene_dont_answer = preload(\"res://scenes/minigames/dontAnswer/dont_answe
 const scene_journalope = preload(\"res://scenes/minigames/journalope/journalope.tscn\")
 const scene_wakywaky = preload(\"res://scenes/minigames/waking_up/waky-waky.tscn\")
 const scene_monologue = preload(\"res://scenes/minigames/monologue-dodging/monologue_dodging_game.tscn\")
+const scene_beatbaker = preload(\"res://scenes/minigames/beat-baker/beat-baker.tscn\")
 const scene_cinematic0 = preload(\"res://scenes/0cinematic.tscn\")
 const scene_cinematic1 = preload(\"res://scenes/1cinematic.tscn\")
 const scene_cinematic1win = preload(\"res://scenes/1cinematicWin.tscn\")
@@ -69,6 +70,9 @@ func load_next_scene(name_of_scene:String):
 			add_child(scene)
 		\"scene_monologue\":
 			scene = scene_monologue.instantiate()
+			add_child(scene)
+		\"scene_beatbaker\":
+			scene = scene_beatbaker.instantiate()
 			add_child(scene)
 		\"scene_cinematic0\":
 			scene = scene_cinematic0.instantiate()
