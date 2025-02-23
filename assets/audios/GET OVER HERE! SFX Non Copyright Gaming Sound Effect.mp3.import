@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://j1n3d27aqhe6"
+path="res://.godot/imported/GET OVER HERE! SFX Non Copyright Gaming Sound Effect.mp3-583158f061f93f7eacd0dc7f07f14072.mp3str"
+
+[deps]
+
+source_file="res://assets/audios/GET OVER HERE! SFX Non Copyright Gaming Sound Effect.mp3"
+dest_files=["res://.godot/imported/GET OVER HERE! SFX Non Copyright Gaming Sound Effect.mp3-583158f061f93f7eacd0dc7f07f14072.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

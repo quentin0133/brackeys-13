@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cij6cgvstq4hn"
-path="res://.godot/imported/garbage-bin.png-c0ca26c87e6ddac4de57c36588dab155.ctex"
+path="res://.godot/imported/garbage-bin.png-b3c22df72bcb10b1bba8b67e4a6a8424.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/decoration/garbage-bin.png"
-dest_files=["res://.godot/imported/garbage-bin.png-c0ca26c87e6ddac4de57c36588dab155.ctex"]
+source_file="res://assets/sprites/Decoration/garbage-bin.png"
+dest_files=["res://.godot/imported/garbage-bin.png-b3c22df72bcb10b1bba8b67e4a6a8424.ctex"]
 
 [params]
 
