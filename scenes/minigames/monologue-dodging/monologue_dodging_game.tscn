@@ -388,7 +388,6 @@ label_settings = SubResource("LabelSettings_i4qd3")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[connection signal="end_game" from="." to="Player" method="endgame"]
 [connection signal="lose" from="Player" to="." method="lose"]
 [connection signal="win" from="Player" to="." method="win"]
 [connection signal="timeout" from="AttackSpawnerTimer" to="." method="_on_attack_spawner_timer_timeout"]

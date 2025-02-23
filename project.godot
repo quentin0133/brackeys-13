@@ -29,21 +29,31 @@ lien de la démo du jeu : ...
 🔧 Technologies utilisées
 Moteur de jeu : Godot
 Langage : GDScript
-Assets : ...
+Assets : From scratch
 Versioning : GitHub
 
-📷 Image du jeu
-[Ajoutez des visuels du jeu ici une fois disponibles.]
-
 📜 Mentions et crédits
-...
+Développeurs :
+iokko
+shimi92
+anonymat
+Quentin YAHIA
+
+Designer :
+Quentin YAHIA
+
+Musique :
+Niro
+
+SFX :
+OpenGameArt.com and Youtube
 
 🏆 Remerciements
 Un grand merci aux organisateurs de la Brackeys Game Jam et à la communauté !"
 config/version="1.0"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.png"
+config/icon="res://icon-512.png"
 
 [autoload]
 
