@@ -21,6 +21,8 @@ var end_game_flag = false
 static var isJournalistShowed = false
 
 func _ready():
+	AudioManager.defeat_music.stop()
+	AudioManager.journalope_music.play()
 	if !GameManager.story_mode:
 		timer.visible = false
 
@@ -52,6 +54,8 @@ func _process(delta: float) -> void:
 
 	
 func win():
+	AudioManager.defeat_music.stop()
+	AudioManager.journalope_music.stop()
 	is_game_win = true
 	#print("Win")
 	timer.stop()
@@ -66,6 +70,8 @@ func win():
 	end_game_flag = true
 	
 func game_over():
+	AudioManager.defeat_music.play()
+	AudioManager.journalope_music.stop()
 	if (is_game_win):
 		return
 	animation_player_gameover.play("gameover")

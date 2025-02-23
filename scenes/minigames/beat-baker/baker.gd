@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 		cooldown -= delta
 	
 func shoot():
+	$"../Throw".play()
 	var b: Bullet = bullet.instantiate()
 	b.global_position = global_position + (Vector2.LEFT * 15)
 	b.z_index = b.global_position.y

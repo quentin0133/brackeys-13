@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://bwpxyckqnqpvd"]
+[gd_scene load_steps=50 format=4 uid="uid://bwpxyckqnqpvd"]
 
 [ext_resource type="Script" path="res://scripts/player_grid_snap.gd" id="1_8pqyr"]
 [ext_resource type="Script" path="res://scenes/minigames/monologue-dodging/monologue_dodging_game.gd" id="1_iheio"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ffxm5fx4mepf" path="res://scenes/minigames/monologue-dodging/attackPatterns/attaque_horizontale.tscn" id="2_sl0x2"]
 [ext_resource type="PackedScene" uid="uid://d0kbfivnpa4sk" path="res://scenes/minigames/monologue-dodging/attackPatterns/attaque_horizontale_vague.tscn" id="3_47qms"]
 [ext_resource type="Texture2D" uid="uid://unhunsxufee4" path="res://assets/sprites/shadow.png" id="3_rg32g"]
-[ext_resource type="Texture2D" uid="uid://rpflxk4ojni1" path="res://assets/tictactoe grid.png" id="4_rp5hp"]
 [ext_resource type="PackedScene" uid="uid://bfforknl2kpf2" path="res://scenes/minigames/monologue-dodging/attackPatterns/attaque_verticale.tscn" id="4_trvei"]
 [ext_resource type="PackedScene" uid="uid://6fdqmjf287hn" path="res://scenes/minigames/monologue-dodging/attackPatterns/attaque_verticale_vague.tscn" id="5_dcrwe"]
 [ext_resource type="Texture2D" uid="uid://lb13kweetua7" path="res://assets/images/coeurs.png" id="10_0jewp"]
@@ -272,13 +271,6 @@ texture = ExtResource("3_rg32g")
 offset = Vector2(100, 90)
 zoom = Vector2(2.765, 2.765)
 
-[node name="Grille" type="Sprite2D" parent="."]
-visible = false
-z_index = -100
-position = Vector2(130, 134)
-scale = Vector2(6, 6)
-texture = ExtResource("4_rp5hp")
-
 [node name="AttackSpawnerTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
@@ -369,11 +361,13 @@ color = Color(0, 0, 0, 0.501961)
 
 [node name="Label" type="Label" parent="CanvasLayer/Lose"]
 layout_mode = 0
-offset_left = 694.0
-offset_top = 469.0
-offset_right = 1226.0
-offset_bottom = 610.0
-text = "Perdu !"
+offset_left = 91.0
+offset_top = 399.0
+offset_right = 1785.0
+offset_bottom = 647.0
+text = "You were brutally assaulted by a stupid nerdy kid... 
+His words pierced your eardrums
+ and then you died of ligma"
 label_settings = SubResource("LabelSettings_uq42t")
 horizontal_alignment = 1
 
@@ -388,7 +382,6 @@ label_settings = SubResource("LabelSettings_i4qd3")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[connection signal="end_game" from="." to="Player" method="endgame"]
 [connection signal="lose" from="Player" to="." method="lose"]
 [connection signal="win" from="Player" to="." method="win"]
 [connection signal="timeout" from="AttackSpawnerTimer" to="." method="_on_attack_spawner_timer_timeout"]

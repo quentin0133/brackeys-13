@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7mjj3ncgu2tb"]
+
+[ext_resource type="Script" path="res://scenes/1_cinematic_win.gd" id="1_fx2xf"]
+[ext_resource type="Texture2D" uid="uid://b5p8j20kmru8l" path="res://assets/images/cinematics/grandma-liquor-drinking.png" id="2_ske4d"]
+[ext_resource type="Texture2D" uid="uid://ck6wpovfwe4wd" path="res://assets/images/cinematics/grandma-hospital.png" id="3_kl5kh"]
+[ext_resource type="Texture2D" uid="uid://duodsedvfj3ut" path="res://assets/images/cinematics/cinematic-grandma-liqueur-2.png" id="4_otf4c"]
+[ext_resource type="AudioStream" uid="uid://7vvktyo262wo" path="res://assets/audios/drink.ogg" id="5_javqp"]
+[ext_resource type="AudioStream" uid="uid://dt5firdiht7b5" path="res://assets/audios/Ambulance_1.ogg" id="6_nrqmn"]
+[ext_resource type="AudioStream" uid="uid://dwc3haefg4ekr" path="res://assets/audios/Bruh sound effect.mp3" id="7_me6i6"]
+
+[node name="1cinematicWin" type="Sprite2D"]
+position = Vector2(963.978, 541.392)
+scale = Vector2(4.783, 4.783)
+script = ExtResource("1_fx2xf")
+cinematics = Array[Texture2D]([ExtResource("2_ske4d"), ExtResource("3_kl5kh"), ExtResource("4_otf4c")])
+
+[node name="1cinematicWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_javqp")
+volume_db = -9.0
+
+[node name="1cinematicWin2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nrqmn")
+volume_db = -9.0
+
+[node name="1cinematicWin3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_me6i6")
+volume_db = -9.0
+pitch_scale = 0.85

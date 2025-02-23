@@ -68,6 +68,7 @@ var seconde_time : bool = false
 var endgame_phase : bool = false
 
 func _ready():
+	AudioManager.defeat_music.stop()
 	hint.modulate.a = 0.00
 	background_with_light.modulate.a = 0.00
 	fourgas.modulate.a = 0.00
@@ -77,6 +78,7 @@ func _ready():
 	timer_begin.start(3)
 	await get_tree().create_timer(3).timeout
 	$OldManSound.play()
+	AudioManager.dont_answer_music.play()
 
 
 func another_question():
@@ -145,6 +147,7 @@ func another_question():
 func _on_timer_before_end_timeout():
 	timer_endgame.stop()
 	print(\"End Game\")
+	AudioManager.dont_answer_music.stop()
 	if GameManager.story_mode :
 		GameManager.next_scene_to_call = \"scene_monologue\"
 	else:

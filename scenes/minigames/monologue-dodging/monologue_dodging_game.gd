@@ -9,7 +9,9 @@ var end_game_flag : bool = false
 var flag_lose : bool = false
 
 func _ready():
+	AudioManager.defeat_music.stop()
 	$AttackSpawnerTimer.start()
+	AudioManager.monologue_music.play()
 
 func _on_attack_spawner_timer_timeout() -> void:
 	if attack_scenes.size() > 0:
@@ -32,6 +34,9 @@ func _input(event):
 
 
 func lose():
+	$AttackSpawnerTimer.wait_time = 4096
+	AudioManager.defeat_music.play()
+	AudioManager.monologue_music.stop()
 	GameManager.timer_lock = false
 	while (lose_UI.modulate.a < 1):
 		await get_tree().create_timer(0.005).timeout
@@ -41,6 +46,8 @@ func lose():
 
 
 func win():
+	$AttackSpawnerTimer.wait_time = 4096
+	AudioManager.monologue_music.stop()
 	GameManager.timer_lock = false
 	while (victory_UI.modulate.a < 1):
 		await get_tree().create_timer(0.005).timeout

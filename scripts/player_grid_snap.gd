@@ -17,6 +17,8 @@ func _ready():
 func _process(_delta):
 	if GameManager.timer_timeout :
 		win.emit()
+		HP = 69
+		$"../Health".visible = false
 
 func _input(event):
 	if event.is_action_pressed("Left") and current_index % 3 > 0:

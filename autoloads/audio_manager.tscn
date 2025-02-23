@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0aqsylvsxw7s"]
+[gd_scene load_steps=25 format=3 uid="uid://d0aqsylvsxw7s"]
 
 [ext_resource type="AudioStream" uid="uid://tdc3anp0d63y" path="res://assets/audios/Purple.mp3" id="1_u38yu"]
 [ext_resource type="AudioStream" uid="uid://hygyrowya146" path="res://assets/audios/Purple2.mp3" id="2_k010g"]
@@ -11,6 +11,13 @@
 [ext_resource type="AudioStream" uid="uid://lfduqrvlwigw" path="res://assets/audios/Inventory_Open_01.mp3" id="9_ka237"]
 [ext_resource type="AudioStream" uid="uid://dxqdxbqodyuc8" path="res://assets/audios/leather_inventory.wav" id="10_skuvj"]
 [ext_resource type="AudioStream" uid="uid://d28vd0qwh44if" path="res://assets/audios/turn_page.wav" id="11_lwx6n"]
+[ext_resource type="AudioStream" uid="uid://ctdhk8s8ue7ej" path="res://assets/audios/music1.ogg" id="12_eyymm"]
+[ext_resource type="AudioStream" uid="uid://b124qxh8idfmi" path="res://assets/audios/music2.ogg" id="13_uqvtt"]
+[ext_resource type="AudioStream" uid="uid://cw0vx6ut1tjfv" path="res://assets/audios/music3.ogg" id="14_20nwn"]
+[ext_resource type="AudioStream" uid="uid://bcq62xgj3d1pq" path="res://assets/audios/music4.ogg" id="15_on2f8"]
+[ext_resource type="AudioStream" uid="uid://4ud07141yhjx" path="res://assets/audios/music5.ogg" id="16_vpak1"]
+[ext_resource type="AudioStream" uid="uid://bau2l30yd2af6" path="res://assets/audios/music6.ogg" id="17_q8k2d"]
+[ext_resource type="AudioStream" uid="uid://bantoufkbh6gp" path="res://assets/audios/Faluchards-Interfilieres-Organises-Normands-F.I.O.N.mp3" id="17_tu6x8"]
 
 [sub_resource type="GDScript" id="GDScript_43omd"]
 script/source = "extends Node
@@ -20,6 +27,14 @@ script/source = "extends Node
 @onready var paparazzi: AudioStreamPlayer = $Paparazzi
 @onready var hiding_sounds: AudioStreamPlayer = $HidingSounds
 @onready var items_sfx: AudioStreamPlayer = $ItemsSFX
+@onready var wakyWaky_music: AudioStreamPlayer = $WakyWakyMusic
+@onready var grandMa_music: AudioStreamPlayer = $GrandMaMusic
+@onready var crowd_music: AudioStreamPlayer = $CrowdMusic
+@onready var journalope_music: AudioStreamPlayer = $JournalopeMusic
+@onready var dont_answer_music: AudioStreamPlayer = $DontAnswerMusic
+@onready var monologue_music: AudioStreamPlayer = $MonologueMusic
+@onready var baker_music: AudioStreamPlayer = $BeatBakerMusic
+@onready var defeat_music: AudioStreamPlayer = $DefeatMusic
 "
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j75rw"]
@@ -81,3 +96,27 @@ pitch_scale = 1.2
 stream = SubResource("AudioStreamRandomizer_vkbvl")
 volume_db = -9.0
 pitch_scale = 1.1
+
+[node name="WakyWakyMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_eyymm")
+
+[node name="GrandMaMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_on2f8")
+
+[node name="CrowdMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="JournalopeMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_uqvtt")
+
+[node name="DontAnswerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_vpak1")
+
+[node name="MonologueMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_q8k2d")
+
+[node name="BeatBakerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_tu6x8")
+
+[node name="DefeatMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_20nwn")
+volume_db = 6.0

@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://lyoh7twceeun"]
+
+[ext_resource type="Script" path="res://scenes/0_cinematic.gd" id="1_st4j6"]
+[ext_resource type="Texture2D" uid="uid://dem7buuj1vu1e" path="res://assets/images/cinematics/waky-waky-cinematic-1.png" id="2_hv1sp"]
+[ext_resource type="Texture2D" uid="uid://7yvkgwxw70wp" path="res://assets/images/cinematics/waky-waky-cinematic-2.png" id="3_ydl5k"]
+[ext_resource type="Texture2D" uid="uid://cd26v5qqkddg4" path="res://assets/images/cinematics/waky-waky-cinematics-3.png" id="4_dm7f3"]
+[ext_resource type="AudioStream" uid="uid://dkxpqn5a5l5om" path="res://assets/audios/Sleeping meme sound.mp3" id="5_8qnhh"]
+[ext_resource type="AudioStream" uid="uid://w2l58dd1lk0i" path="res://assets/audios/huh.ogg" id="6_uh1uv"]
+[ext_resource type="AudioStream" uid="uid://u1vy5oaefjgd" path="res://assets/audios/Alarm Clock Loud Ringing.mp3" id="7_uyggd"]
+
+[node name="0cinematic" type="Sprite2D"]
+position = Vector2(963.978, 543.882)
+scale = Vector2(1.975, 1.975)
+script = ExtResource("1_st4j6")
+cinematics = Array[Texture2D]([ExtResource("2_hv1sp"), ExtResource("3_ydl5k"), ExtResource("4_dm7f3")])
+
+[node name="0cinematic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8qnhh")
+volume_db = -9.0
+
+[node name="0cinematic2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_uh1uv")
+volume_db = -9.0
+pitch_scale = 0.85
+
+[node name="AlarmSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_uyggd")
+volume_db = -29.0

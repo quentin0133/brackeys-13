@@ -22,9 +22,11 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
+	AudioManager.defeat_music.stop()
 	arm.pointer.velocity = 300
 	alarm.pointer.direction = Vector2.LEFT
 	alarm.pointer.velocity = 5000
+	AudioManager.wakyWaky_music.play()
 
 
 func _on_arm_current_position(pos: Vector2) -> void:
@@ -57,6 +59,7 @@ func game_over():
 	stop()
 	$CanvasLayer/GameOver.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
+	AudioManager.defeat_music.play()
 
 func stop():
 	gm.playing = false
@@ -64,6 +67,7 @@ func stop():
 	alarm.queue_free()
 	$CanvasLayer/Timer.queue_free()
 	$AlarmSounds.queue_free()
+	AudioManager.wakyWaky_music.stop()
 	
 
 func _on_timer_on_timeout() -> void:

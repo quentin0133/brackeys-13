@@ -17,7 +17,9 @@ var timer_on = false
 var time = 0
 
 func _ready():
+	AudioManager.defeat_music.stop()
 	timer_on = true
+	AudioManager.crowd_music.play()
 	
 func _process(delta):
 	if(timer_on):
@@ -39,6 +41,8 @@ func _on_shit_body_entered(body: Node2D) -> void:
 	if (is_game_win):
 		return
 	if (body.name == "Kid"):
+		AudioManager.crowd_music.stop()
+		AudioManager.defeat_music.play()
 		timer_on = false
 		$ShitSound.play()
 		kidAnimation.stop()
@@ -54,6 +58,7 @@ func _on_kid_body_entered(body: Node) -> void:
 	if (is_game_loose):
 		return
 	if (body.name == "Player"):
+		AudioManager.crowd_music.stop()
 		timer_on = false
 		AudioManager.hit.play()
 		is_game_win = true

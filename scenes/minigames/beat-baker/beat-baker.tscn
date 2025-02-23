@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c157take65vrq"]
+[gd_scene load_steps=47 format=3 uid="uid://c157take65vrq"]
 
 [ext_resource type="Script" path="res://scenes/minigames/beat-baker/beat_baker.gd" id="1_wtce2"]
 [ext_resource type="Script" path="res://scenes/minigames/beat-baker/fighter.gd" id="3_3syq4"]
@@ -7,10 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bnhad81hd1flg" path="res://assets/sprites/boulanger-bresom-animation.png" id="6_jxvwi"]
 [ext_resource type="Script" path="res://scenes/minigames/beat-baker/baker.gd" id="6_qlmur"]
 [ext_resource type="PackedScene" uid="uid://4jv7jiyjgo8o" path="res://scenes/minigames/waking_up/container.tscn" id="7_8t10j"]
-[ext_resource type="AudioStream" uid="uid://dr3l011pxmr8b" path="res://assets/audios/jojos bizarre adventure yes yes yes sound effect (#436).ogg" id="9_lkqn7"]
-[ext_resource type="AudioStream" uid="uid://bmv8erhq503ck" path="res://assets/audios/AUUGHHH Sound Effect.ogg" id="10_ed0ao"]
+[ext_resource type="AudioStream" uid="uid://clnw4gdc31b3g" path="res://assets/audios/YES!!!!!!!!!!!!!!.ogg" id="11_8r4jl"]
 [ext_resource type="AudioStream" uid="uid://tj7on42k5emi" path="res://assets/audios/SLAP SOUND EFFECT.ogg" id="11_u75in"]
 [ext_resource type="Texture2D" uid="uid://dtqsaspdxn35w" path="res://assets/backgrounds/bakery.png" id="11_v0uxk"]
+[ext_resource type="AudioStream" uid="uid://ccbj0rul60cub" path="res://assets/audios/throw.ogg" id="12_1ghqy"]
+[ext_resource type="AudioStream" uid="uid://1iwhwqx1fegj" path="res://assets/audios/oh no.ogg" id="12_lfkss"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pi482"]
 a = Vector2(192, 0)
@@ -288,6 +289,12 @@ _data = {
 "text_moving": SubResource("Animation_6ubo7")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c8jtb"]
+random_pitch = 1.5
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("12_1ghqy")
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_wtce2")
 
@@ -390,7 +397,7 @@ offset_left = 474.0
 offset_top = 385.0
 offset_right = 1434.0
 offset_bottom = 598.0
-text = "Wake up lazy bastard"
+text = "Oof.. That's real PAIN"
 label_settings = SubResource("LabelSettings_5hxg7")
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -426,11 +433,11 @@ color = Color(0, 0, 0, 0.501961)
 
 [node name="Label" type="Label" parent="CanvasLayer/Victory"]
 layout_mode = 0
-offset_left = 694.0
+offset_left = 137.0
 offset_top = 469.0
-offset_right = 1226.0
+offset_right = 1723.0
 offset_bottom = 610.0
-text = "Damn clock !"
+text = "I sure hope you tasted my cream real good"
 label_settings = SubResource("LabelSettings_fqc3g")
 horizontal_alignment = 1
 
@@ -452,7 +459,7 @@ offset_right = 976.0
 offset_bottom = 464.0
 rotation = -0.0576806
 pivot_offset = Vector2(250, 75)
-text = "Get that motherfucker!"
+text = "Get close and make him taste your wrath"
 label_settings = SubResource("LabelSettings_jk1al")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/IndicationText"]
@@ -466,14 +473,6 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="Victory" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_lkqn7")
-volume_db = 9.0
-
-[node name="Defeat" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ed0ao")
-volume_db = -9.0
-
 [node name="Slap" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_u75in")
 volume_db = -9.0
@@ -481,6 +480,17 @@ volume_db = -9.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1000
 texture = ExtResource("11_v0uxk")
+
+[node name="Throw" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_c8jtb")
+volume_db = -6.0
+max_polyphony = 3
+
+[node name="YES" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_8r4jl")
+
+[node name="NO" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_lfkss")
 
 [connection signal="explode" from="Fighter" to="." method="_on_fighter_explode"]
 [connection signal="area_entered" from="Baker" to="." method="_on_baker_area_entered"]

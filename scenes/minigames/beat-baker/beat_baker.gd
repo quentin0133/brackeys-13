@@ -4,6 +4,8 @@ extends Node2D
 @onready var baker_pattern = $"Baker-Patern" as SlideContainer
 
 func _ready() -> void:
+	AudioManager.defeat_music.stop()
+	AudioManager.baker_music.play()
 	baker_pattern.pointer.direction = Vector2.DOWN
 	baker_pattern.pointer.velocity = 60
 
@@ -25,16 +27,18 @@ func win():
 	$CanvasLayer/Victory.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
 	await get_tree().create_timer(0.6).timeout
-	$Victory.play()
+	$YES.play()
 	
 func game_over():
 	if !baker.proud : return
-	$Defeat.play()
+	$NO.play()
+	AudioManager.defeat_music.play()
 	stop()
 	$CanvasLayer/GameOver.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
 
 func stop():
+	AudioManager.baker_music.stop()
 	$Fighter.playing = false
 	baker.proud = false
 	if is_instance_valid(baker_pattern):
