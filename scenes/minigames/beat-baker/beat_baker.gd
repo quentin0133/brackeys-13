@@ -13,7 +13,10 @@ func _ready() -> void:
 
 func _input(event):
 	if (event.is_action_pressed("Action") or event.is_action_pressed("Attack")) and end_game and win_flag:
-		GameManager.next_scene_to_call = "scene_cinematic7"
+		if (GameManager.story_mode):
+			GameManager.next_scene_to_call = "scene_cinematic7"
+		else:
+			GameManager.next_scene_to_call = "chapter_menu"
 		queue_free()
 	elif (event.is_action_pressed("Action") or event.is_action_pressed("Attack")) and end_game:
 		GameManager.next_scene_to_call = "scene_beatbaker"

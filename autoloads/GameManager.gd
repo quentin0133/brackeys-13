@@ -18,8 +18,10 @@ var data_game = {
 	"scene_wakywaky" : ['Waky waky','Cross the crowd and tackle the kid',2,'','',0,0,false],
 	"scene_grand_mother" : ['Grand Mother Game','Looking for Granny\'s medicine',3,'','Last time','',time_score,true],
 	"scene_dont_answer" : ['Father Fouras','Ignore it and run away',4,'','','','',false],
-	"scene_monologue" : ['Boring monologue','Dodging boring nerd monologues',5,'','',0,0,false]
+	"scene_monologue" : ['Boring monologue','Dodging boring nerd monologues',5,'','',0,0,false],
+	"scene_beatbaker" : ['Beat Baker','Description',6,'','',0,0,false]
 	#"main_menu" : ['Default title','Default description','Score hud','Best Score','Last Score',0,0,false]
+	
 }
 
 func update_score(scene_name: String):

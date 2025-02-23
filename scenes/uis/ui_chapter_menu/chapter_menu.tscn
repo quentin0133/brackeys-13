@@ -164,6 +164,15 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 scene_name = "scene_monologue"
 
+[node name="MarginContainer7" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GameDetailUi" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer7" instance=ExtResource("1_hl1ti")]
+layout_mode = 2
+scene_name = "scene_beatbaker"
+
 [node name="MarginContainerBackButton" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
@@ -183,4 +192,5 @@ text = "Back to menu"
 [connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer4/GameDetailUi" to="." method="_launch_game"]
 [connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer5/GameDetailUi" to="." method="_launch_game"]
 [connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer6/GameDetailUi" to="." method="_launch_game"]
+[connection signal="launch_game" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer7/GameDetailUi" to="." method="_launch_game"]
 [connection signal="pressed" from="VBoxContainer/MarginContainerBackButton/BackButton" to="." method="_on_back_button_pressed"]

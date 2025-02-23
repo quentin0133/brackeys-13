@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c86faj6f3nbws"]
+[gd_scene load_steps=13 format=3 uid="uid://c86faj6f3nbws"]
 
 [ext_resource type="Texture2D" uid="uid://0rcof8ppx0cn" path="res://assets/images/illustration/Picture_journalope.png" id="1_i4sg1"]
 [ext_resource type="Texture2D" uid="uid://dos5nelumxq0c" path="res://assets/images/illustration/no-image-icon.png" id="1_ovadw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://y4qp51oelsej" path="res://assets/images/illustration/Picture_grand_mother.png" id="4_as2i6"]
 [ext_resource type="Texture2D" uid="uid://c6b5jbx5vvfgg" path="res://assets/images/illustration/Picture_Fourgas.png" id="5_a4s2t"]
 [ext_resource type="Texture2D" uid="uid://c862dtlc5lnbj" path="res://assets/images/illustration/Picture_monologue.png" id="6_sec25"]
+[ext_resource type="Texture2D" uid="uid://b5eu4w7dfiqew" path="res://assets/images/illustration/Picture_baguette.png" id="7_c0s2o"]
 
 [sub_resource type="GDScript" id="GDScript_yv7me"]
 script/source = "extends Control
@@ -80,7 +81,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_yv7me")
-image_list = Array[Texture2D]([ExtResource("1_i4sg1"), ExtResource("2_wvab7"), ExtResource("3_wds1b"), ExtResource("4_as2i6"), ExtResource("5_a4s2t"), ExtResource("6_sec25")])
+image_list = Array[Texture2D]([ExtResource("1_i4sg1"), ExtResource("2_wvab7"), ExtResource("3_wds1b"), ExtResource("4_as2i6"), ExtResource("5_a4s2t"), ExtResource("6_sec25"), ExtResource("7_c0s2o")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
