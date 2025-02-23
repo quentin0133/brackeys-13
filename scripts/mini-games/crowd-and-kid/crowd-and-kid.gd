@@ -38,7 +38,7 @@ func _input(event):
 			queue_free()
 			
 func _on_shit_body_entered(body: Node2D) -> void:
-	if (is_game_win):
+	if (is_game_win || is_game_loose):
 		return
 	if (body.name == "Kid"):
 		AudioManager.crowd_music.stop()
@@ -55,7 +55,7 @@ func _on_shit_body_entered(body: Node2D) -> void:
 		kidAnimation.global_rotation_degrees = 90
 
 func _on_kid_body_entered(body: Node) -> void:
-	if (is_game_loose):
+	if (is_game_loose || is_game_win):
 		return
 	if (body.name == "Player"):
 		AudioManager.crowd_music.stop()

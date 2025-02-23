@@ -36,22 +36,24 @@ func is_safe():
 	return y > -35 && y < 35
 
 func win():
-	end_game=true
 	win_flag=true
 	stop()
 	$CanvasLayer/Victory.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
 	await get_tree().create_timer(0.6).timeout
 	$YES.play()
+	await get_tree().create_timer(0.4).timeout
+	end_game=true
 	
 func game_over():
-	end_game=true
 	if !baker.proud : return
 	$NO.play()
 	AudioManager.defeat_music.play()
 	stop()
 	$CanvasLayer/GameOver.modulate.a = 1
 	$CanvasLayer/IndicationText.visible = false
+	await get_tree().create_timer(1.0).timeout
+	end_game=true
 
 func stop():
 	AudioManager.baker_music.stop()

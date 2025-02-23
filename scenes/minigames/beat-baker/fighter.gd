@@ -10,7 +10,7 @@ var state: String = "down"
 var cooldown = 1.0
 var playing = true
 
-var baguettes = 1
+var baguettes = 0
 signal explode
 
 func _physics_process(delta: float) -> void:	
@@ -60,9 +60,9 @@ func _input(event: InputEvent) -> void:
 
 func eat(): 
 	baguettes += 1
-	if baguettes < 3:
-		var s = Vector2(baguettes,baguettes)
-		$AnimatedSprite2D.scale = s
-		$CollisionShape2D.scale = s
+	if baguettes <= 3:
+		var s = Vector2(baguettes / 2.5, baguettes / 2.5)
+		$AnimatedSprite2D.scale = s + $AnimatedSprite2D.scale
+		$CollisionShape2D.scale = s + $CollisionShape2D.scale
 	else:
 		explode.emit()
