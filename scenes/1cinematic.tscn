@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cch1apk3ktla4"]
+[gd_scene load_steps=16 format=3 uid="uid://dlvvpnvysmwua"]
 
 [ext_resource type="Script" path="res://scenes/1_cinematic.gd" id="1_m87lg"]
 [ext_resource type="Texture2D" uid="uid://bqmi8bb64pwyy" path="res://assets/images/cinematics/cinematic-grandma-2.png" id="1_ww74i"]

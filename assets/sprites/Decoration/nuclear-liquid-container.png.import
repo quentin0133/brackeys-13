@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://v77w2sw8uba1"
-path="res://.godot/imported/nuclear-liquid-container.png-a8a6c800239f5a5d7c39ce1c74e465a4.ctex"
+path="res://.godot/imported/nuclear-liquid-container.png-aa6af54c5c75a5d507150b1dc8b833e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Decoration/nuclear-liquid-container.png"
-dest_files=["res://.godot/imported/nuclear-liquid-container.png-a8a6c800239f5a5d7c39ce1c74e465a4.ctex"]
+source_file="res://assets/sprites/decoration/nuclear-liquid-container.png"
+dest_files=["res://.godot/imported/nuclear-liquid-container.png-aa6af54c5c75a5d507150b1dc8b833e7.ctex"]
 
 [params]
 

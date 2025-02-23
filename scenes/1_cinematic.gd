@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var cinematics: Array[Texture2D]
-@onready var cinematicSFX = $"1cinematicSFX"
+@export var cinematicsSFX: Array[AudioStreamPlayer]
 var current_image_index = 0
 
 func _ready():

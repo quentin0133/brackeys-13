@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byqbnsqushdf6"
-path="res://.godot/imported/car.png-ebd69c0ee82117f3f0b049ab4b28cc30.ctex"
+uid="uid://dtqsaspdxn35w"
+path="res://.godot/imported/bakery.png-ea6afd277b8d9fdeae627c144466a419.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/decoration/car.png"
-dest_files=["res://.godot/imported/car.png-ebd69c0ee82117f3f0b049ab4b28cc30.ctex"]
+source_file="res://assets/backgrounds/bakery.png"
+dest_files=["res://.godot/imported/bakery.png-ea6afd277b8d9fdeae627c144466a419.ctex"]
 
 [params]
 
