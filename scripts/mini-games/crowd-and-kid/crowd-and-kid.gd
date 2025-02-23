@@ -31,7 +31,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and end_game && GameManager.story_mode:
-			GameManager.next_scene_to_call = "scene_journalope"
+			GameManager.next_scene_to_call = "scene_cinematic2win"
 			queue_free()
 		if event.pressed and end_game && !GameManager.story_mode:
 			GameManager.next_scene_to_call = "chapter_menu"

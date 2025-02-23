@@ -30,7 +30,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and end_game_flag and GameManager.story_mode and is_game_win :
-			GameManager.next_scene_to_call = "scene_cinematic2Win"
+			GameManager.next_scene_to_call = "scene_cinematic3"
 			queue_free()
 		elif event.pressed and end_game_flag and !GameManager.story_mode  :
 			GameManager.next_scene_to_call = "chapter_menu"

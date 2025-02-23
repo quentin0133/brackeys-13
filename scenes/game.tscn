@@ -18,6 +18,11 @@ const scene_cinematic1win = preload(\"res://scenes/1cinematicWin.tscn\")
 const scene_cinematic1lose = preload(\"res://scenes/1cinematicLose.tscn\")
 const scene_cinematic2 = preload(\"res://scenes/2cinematic.tscn\")
 const scene_cinematic2win = preload(\"res://scenes/2cinematicWin.tscn\")
+const scene_cinematic3 = preload(\"res://scenes/3cinematic.tscn\")
+const scene_cinematic4 = preload(\"res://scenes/4cinematic.tscn\")
+const scene_cinematic5 = preload(\"res://scenes/5cinematic.tscn\")
+const scene_cinematic6 = preload(\"res://scenes/6cinematic.tscn\")
+const scene_cinematic7 = preload(\"res://scenes/7cinematic.tscn\")
 
 signal show_main_menu
 signal show_chapter_menu
@@ -83,6 +88,23 @@ func load_next_scene(name_of_scene:String):
 		\"scene_cinematic2Win\":
 			scene = scene_cinematic2win.instantiate()
 			add_child(scene)
+		\"scene_cinematic3\":
+			scene = scene_cinematic3.instantiate()
+			add_child(scene)
+		\"scene_cinematic4\":
+			scene = scene_cinematic4.instantiate()
+			add_child(scene)
+		\"scene_cinematic5\":
+			scene = scene_cinematic5.instantiate()
+			add_child(scene)
+		\"scene_cinematic6\":
+			scene = scene_cinematic6.instantiate()
+			add_child(scene)	
+		\"scene_cinematic7\":
+			scene = scene_cinematic7.instantiate()
+			add_child(scene)
+			
+			
 			
 func _on_parent_ui_button_start():
 	GameManager.story_mode = true

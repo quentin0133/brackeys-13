@@ -25,7 +25,7 @@ func _input(event):
 
 		if!GameManager.story_mode :
 			GameManager.next_scene_to_call = "main_menu"
-			GameManager.update_score("scene_journalope")
+			GameManager.update_score("scene_cinematic6")
 		elif GameManager.story_mode and flag_lose:
 			GameManager.next_scene_to_call = "scene_monologue"
 		else:

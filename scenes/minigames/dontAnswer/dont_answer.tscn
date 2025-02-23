@@ -149,7 +149,7 @@ func _on_timer_before_end_timeout():
 	print(\"End Game\")
 	AudioManager.dont_answer_music.stop()
 	if GameManager.story_mode :
-		GameManager.next_scene_to_call = \"scene_monologue\"
+		GameManager.next_scene_to_call = \"scene_cinematic4\"
 	else:
 		GameManager.next_scene_to_call = \"chapter_menu\"
 	queue_free()

@@ -5,6 +5,11 @@
 
 [sub_resource type="GDScript" id="GDScript_g7j3e"]
 script/source = "extends Sprite2D
+
+func _input(event):
+	if event.is_action_pressed(\"Action\") or event.is_action_pressed(\"Attack\"):
+		GameManager.next_scene_to_call = \"scene_cinematic4\"
+		queue_free()
 "
 
 [node name="3cinematic" type="Sprite2D"]
