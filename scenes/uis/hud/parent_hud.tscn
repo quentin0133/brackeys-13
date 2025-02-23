@@ -10,7 +10,11 @@ var timer_hud = preload(\"res://scenes/uis/hud/timer_dynamite_standalone.tscn\")
 func _process(_delta):
 	if (!GameManager.story_mode && GameManager.in_game && GameManager.show_score):
 		get_child(0).visible = true
-		label.text = \"Score : \" + str(GameManager.data_game[GameManager.next_scene_to_call][6])
+		match GameManager.next_scene_to_call:
+			\"scene_journalope\":
+				label.text = \"Score : \" + str(GameManager.data_game[GameManager.next_scene_to_call][6])
+			_:
+				label.text = \"Time : \" + str(GameManager.data_game[GameManager.next_scene_to_call][6])
 		self.show()
 	elif (!GameManager.timer_lock && GameManager.in_game && GameManager.show_timer_hud):
 		get_child(0).visible = false
@@ -32,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0

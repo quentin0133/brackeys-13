@@ -7,7 +7,6 @@ extends Node2D
 
 var end_game_flag : bool = false
 var flag_lose : bool = false
-signal end_game
 
 func _ready():
 	$AttackSpawnerTimer.start()

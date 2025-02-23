@@ -51,7 +51,7 @@ func _input(event):
 			is_dragging = false
 		
 			
-func _on_area_2d_area_entered(area : Area2D):
+func _on_area_2d_area_entered(_area : Area2D):
 #	if area_2D.has_overlapping_areas() and (area.obstacle_number > obstacle_number)  and (GameManager.select_obstacle != obstacle_number):
 #		dont_move = true
 #		print( str(obstacle_number) + ' bloqué par ' + str(area.obstacle_number) )
@@ -61,7 +61,6 @@ func _on_area_2d_area_exited(_area):
 	pass
 
 func _on_area_2d_mouse_entered():
-	print('Select :' + str(obstacle_number))
 	GameManager.select_obstacle = obstacle_number
 "
 

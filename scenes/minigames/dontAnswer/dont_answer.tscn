@@ -37,13 +37,12 @@ script/source = "extends Control
 @onready var fourgas : TextureRect = $Fourgas as TextureRect
 @onready var fourgas_witout_shadow : TextureRect = $FourgasWitoutShadow as TextureRect
 
-@onready var label_button : RichTextLabel = $VBoxContainer/GridContainer/Button/MarginContainer/RichTextLabel as RichTextLabel
-@onready var label_button2 : RichTextLabel = $VBoxContainer/GridContainer/Button2/MarginContainer/RichTextLabel as RichTextLabel
-@onready var label_button3 : RichTextLabel = $VBoxContainer/GridContainer/Button3/MarginContainer/RichTextLabel as RichTextLabel
-@onready var label_button4 : RichTextLabel = $VBoxContainer/GridContainer/Button4/MarginContainer/RichTextLabel as RichTextLabel
+@onready var label_button : RichTextLabel = $VBoxContainer/GridContainer/Button/RichTextLabel as RichTextLabel
+@onready var label_button2 : RichTextLabel = $VBoxContainer/GridContainer/Button2/RichTextLabel as RichTextLabel
+@onready var label_button3 : RichTextLabel = $VBoxContainer/GridContainer/Button3/RichTextLabel as RichTextLabel
+@onready var label_button4 : RichTextLabel = $VBoxContainer/GridContainer/Button4/RichTextLabel as RichTextLabel
 
 @onready var background : ColorRect = $Backgroud as ColorRect
-@onready var margin_edit : MarginContainer = $VBoxContainer/MarginContainer as MarginContainer
 
 var question : Array = [\"Who are you ?\",\"What is your destination ?\",\"Where am I ?\",\"Who am I ?\"]
 var reponse1 : Array = [\"Your son\",\"Gare du nord\",\" ... \",\" ??? \"]
@@ -51,7 +50,6 @@ var reponse2 : Array = [\"I'am vENGEANce ! è_é\",\"None of [b]your[/b] busines
 var reponse3 : Array = [\"Someone ?\",\" ... \",\"Have you already forgotten where you are ???\",\" ??? \"]
 var reponse4 : Array = [\" ... \",\"Somewhere ?\",\"None of [b]my[/b] business\",\" ??? \"]
 
-var test_fouras = [\"Il est toujours au cœur des flammes,\\n Mais c'est loin d'elles qu'on le fonde. \\nEncore nombreuses y sont les femmes, \\nEt les étudiants y abondent. \\nQui est-il ?\",\"Foyer\"]
 
 var number : int = 0
 var try : int = 0
@@ -73,10 +71,6 @@ func _ready():
 	timer_begin.start(3)
 	await get_tree().create_timer(3).timeout
 	$OldManSound.play()
-
-
-func another_question_fouras():
-	label.text = test_fouras[0]
 
 
 func another_question():
@@ -129,7 +123,6 @@ func _on_timer_before_end_timeout():
 	print(\"End Game\")
 	if GameManager.story_mode :
 		GameManager.next_scene_to_call = \"scene_monologue\"
-		GameManager.story_mode_finish = true
 	else:
 		GameManager.next_scene_to_call = \"chapter_menu\"
 	queue_free()
@@ -170,17 +163,10 @@ func _on_timer_for_backgroud_timeout():
 	background_with_light.modulate.a += 0.10
 	fourgas.modulate.a += 0.10
 	if background_with_light.modulate.a > 1:
-		#if GameManager.story_mode:
-			another_question()
-			timer_backgroud.stop()
-			timer_container.start(0.1)
-			timer_label.start(0.1)
-		#else:
-		#	timer_backgroud.stop()
-		#	container.visible = false
-		#	margin_edit.visible = true
-		#	another_question_fouras()
-		#	timer_label.start(0.1)
+		another_question()
+		timer_backgroud.stop()
+		timer_container.start(0.1)
+		timer_label.start(0.1)
 
 
 func _on_timer_label():
@@ -219,13 +205,6 @@ func _on_timer_for_transition_during_talk_timeout():
 	show_label = true
 	seconde_time = true
 	timer_label.start(0.1)
-
-
-func _on_line_edit_text_submitted(new_text):
-	print(new_text)
-	if new_text.to_lower() in test_fouras[1].to_lower():
-		print('yes')
-		
 "
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4xcbf"]
@@ -306,16 +285,10 @@ custom_minimum_size = Vector2(750, 110)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GridContainer/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/GridContainer/Button/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/GridContainer/Button"]
 layout_mode = 2
+offset_right = 750.0
+offset_bottom = 110.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 35
 theme_override_font_sizes/bold_font_size = 36
@@ -328,16 +301,10 @@ custom_minimum_size = Vector2(750, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GridContainer/Button2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/GridContainer/Button2/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/GridContainer/Button2"]
 layout_mode = 2
+offset_right = 750.0
+offset_bottom = 110.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 35
 theme_override_font_sizes/bold_font_size = 30
@@ -350,16 +317,10 @@ custom_minimum_size = Vector2(750, 110)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GridContainer/Button3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/GridContainer/Button3/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/GridContainer/Button3"]
 layout_mode = 2
+offset_right = 750.0
+offset_bottom = 110.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 35
 theme_override_font_sizes/bold_font_size = 36
@@ -372,38 +333,16 @@ custom_minimum_size = Vector2(750, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GridContainer/Button4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/GridContainer/Button4/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/GridContainer/Button4"]
 layout_mode = 2
+offset_right = 750.0
+offset_bottom = 110.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 35
 theme_override_font_sizes/bold_font_size = 36
 bbcode_enabled = true
 text = "[center] C'est une réponse, [b]une vrai [/b][/center] "
 fit_content = true
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 750
-theme_override_constants/margin_right = 750
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.462745, 0.462745, 0.462745, 0.478431)
 
 [node name="TimerContainer" type="Timer" parent="VBoxContainer"]
 
@@ -474,7 +413,6 @@ pitch_scale = 0.9
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button2" to="." method="another_question"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button3" to="." method="another_question"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button4" to="." method="another_question"]
-[connection signal="text_submitted" from="VBoxContainer/MarginContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="timeout" from="VBoxContainer/TimerContainer" to="." method="_on_timer_container"]
 [connection signal="timeout" from="TimerBeforeEnd" to="." method="_on_timer_before_end_timeout"]
 [connection signal="timeout" from="FourgasWitoutShadow/TimerFourgas" to="." method="_on_timer_fourgas_timeout"]

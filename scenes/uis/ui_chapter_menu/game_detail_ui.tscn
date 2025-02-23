@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c86faj6f3nbws"]
+[gd_scene load_steps=9 format=3 uid="uid://c86faj6f3nbws"]
 
 [ext_resource type="Texture2D" uid="uid://0rcof8ppx0cn" path="res://assets/images/illustration/Picture_journalope.png" id="1_i4sg1"]
 [ext_resource type="Texture2D" uid="uid://dos5nelumxq0c" path="res://assets/images/illustration/no-image-icon.png" id="1_ovadw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://wy4d2g0jx4rf" path="res://assets/images/illustration/Picture_waky_waky.png" id="3_wds1b"]
 [ext_resource type="Texture2D" uid="uid://y4qp51oelsej" path="res://assets/images/illustration/Picture_grand_mother.png" id="4_as2i6"]
 [ext_resource type="Texture2D" uid="uid://c6b5jbx5vvfgg" path="res://assets/images/illustration/Picture_Fourgas.png" id="5_a4s2t"]
+[ext_resource type="Texture2D" uid="uid://c862dtlc5lnbj" path="res://assets/images/illustration/Picture_monologue.png" id="6_sec25"]
 
 [sub_resource type="GDScript" id="GDScript_yv7me"]
 script/source = "extends Control
@@ -29,10 +30,16 @@ func _ready():
 	
 	
 func set_detail_ui() -> void:
-		texture.texture = image_list[GameManager.data_game[scene_name][2]]
-		label_text.text = GameManager.data_game[scene_name][0] + \" :\\n \\n \" + GameManager.data_game[scene_name][1]
-		label_score.text = GameManager.data_game[scene_name][3] + \" : \" + str(GameManager.data_game[scene_name][5]) + \"\\n\\n \" + GameManager.data_game[scene_name][4] + \" : \" + str(GameManager.data_game[scene_name][6])
+	var label1 : String = ''
+	var label2 : String = ''
+	texture.texture = image_list[GameManager.data_game[scene_name][2]]
+	label_text.text = GameManager.data_game[scene_name][0] + \" :\\n \\n \" + GameManager.data_game[scene_name][1]
+	if GameManager.data_game[scene_name][3].length() != 0:
+		label1 = GameManager.data_game[scene_name][3] + \" : \" + str(GameManager.data_game[scene_name][5]) + \"\\n\\n \"
+	if GameManager.data_game[scene_name][4].length() != 0:			
+		label2 = GameManager.data_game[scene_name][4] + \" : \" + str(GameManager.data_game[scene_name][6])		
 
+	label_score.text = label1 + label2
 
 func _on_button_pressed():
 	launch_game.emit()
@@ -56,7 +63,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_yv7me")
-image_list = Array[Texture2D]([ExtResource("1_i4sg1"), ExtResource("2_wvab7"), ExtResource("3_wds1b"), ExtResource("4_as2i6"), ExtResource("5_a4s2t")])
+image_list = Array[Texture2D]([ExtResource("1_i4sg1"), ExtResource("2_wvab7"), ExtResource("3_wds1b"), ExtResource("4_as2i6"), ExtResource("5_a4s2t"), ExtResource("6_sec25")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -80,6 +87,7 @@ Ceci est un texte qui explique le jeu en long et large comme on les aime
 Ceci est un texte qui explique le jeu en long et large comme on les aime"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1

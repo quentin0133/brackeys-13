@@ -1,9 +1,5 @@
 extends Node
 
-var is_game_win = false
-var is_game_loose = false
-var end_game = false
-
 @export var winning_picture: Texture2D
 @export var loosing_picture: Texture2D
 
@@ -13,6 +9,23 @@ var end_game = false
 @onready var kidAnimation: AnimatedSprite2D = $Kid/AnimatedSprite2D
 @onready var indication_text = $CanvasLayer/IndicationText
 
+var is_game_win = false
+var is_game_loose = false
+var end_game = false
+
+var timer_on = false
+var time = 0
+
+func _ready():
+	timer_on = true
+	
+func _process(delta):
+	if(timer_on):
+		time += delta
+	var mils = fmod(time,1)*1000
+	var secs = fmod(time,60)
+	GameManager.data_game["scene_crowd_kid"][6] = "%02d:%03d" % [secs,mils]
+	
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and end_game && GameManager.story_mode:
@@ -20,13 +33,13 @@ func _input(event):
 			queue_free()
 		if event.pressed and end_game && !GameManager.story_mode:
 			GameManager.next_scene_to_call = "chapter_menu"
-			GameManager.update_score("scene_crowd_kid")
 			queue_free()
 			
 func _on_shit_body_entered(body: Node2D) -> void:
 	if (is_game_win):
 		return
 	if (body.name == "Kid"):
+		timer_on = false
 		$ShitSound.play()
 		kidAnimation.stop()
 		kid.constant_force.x = 0
@@ -41,6 +54,7 @@ func _on_kid_body_entered(body: Node) -> void:
 	if (is_game_loose):
 		return
 	if (body.name == "Player"):
+		timer_on = false
 		AudioManager.hit.play()
 		is_game_win = true
 		animation.play("fade_journal")

@@ -52,4 +52,5 @@ visible = false
 [connection signal="test_button" from="MainMenu" to="." method="_on_main_menu_test_button"]
 [connection signal="ShowMainMenu" from="SettingsMenu" to="MainMenu" method="_on_someone_menu_show_main_menu"]
 [connection signal="ShowMainMenu" from="ChapterMenu" to="." method="_on_game_show_main_menu"]
+[connection signal="refresh" from="ChapterMenu" to="ChapterMenu/VBoxContainer/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" method="refresh"]
 [connection signal="ShowMainMenu" from="GoverMenu" to="MainMenu" method="_on_someone_menu_show_main_menu"]

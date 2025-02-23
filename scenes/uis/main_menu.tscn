@@ -18,7 +18,7 @@ func _ready():
 	if OS.has_feature(\"web\") :
 		$VBoxContainer/QuitButton.hide()
 
-func _process(delta):
+func _process(_delta):
 	chapter_button.visible = GameManager.story_mode_finish
 
 func _on_settings_button_pressed():
@@ -38,7 +38,6 @@ func _on_someone_menu_show_main_menu():
 func _on_v_slider_master_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(0,linear_to_db(value))
 	SettingsManager.settings_dict[\"master_volume\"] = value
-	print(SettingsManager.settings_dict[\"master_volume\"])
 
 func _on_test_button_pressed():
 	self.hide()
